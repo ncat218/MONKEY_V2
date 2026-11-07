@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.runtime/
+.venv*/
+*.pth
+*.safetensors
+*.npz
+*.jsonl
+*.tar
+*.zip
+.env
