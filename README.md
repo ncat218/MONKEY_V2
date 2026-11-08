@@ -1,5 +1,8 @@
 # MONKEY_V2 · Low Resolution pilot
 
+[Rev.4 TASK 2A trên H200](rev4/README.md) dùng lệnh `python submit_s2a.py`.
+Hướng dẫn bên dưới mô tả pilot S1 v2.0 và lệnh `python run_all.py`.
+
 Pilot Phase 1 trên TextVQA FULL_R1, theo FROZEN v2.0. B0 là checkpoint gốc
 của MonkeyOCRv2-AS + DBNet, suy luận FP32 như job E0 10326. Bộ sinh dùng
 Pillow 11.3.0 và bicubic độc lập từ ảnh clean cho LR2/LR4/LR8. Ở B_up,
