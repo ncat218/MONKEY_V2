@@ -13,6 +13,7 @@ validation trong layout HPC cũ. Có thể chỉ đường dẫn qua
 `--legacy-root`, `--clean-root` và `--runtime-root`.
 
 ```bash
+cd "/datastore/$USER/textvqa/Tuan"
 git clone https://github.com/ncat218/MONKEY_V2.git
 cd MONKEY_V2
 python run_all.py --plan-only
@@ -21,8 +22,9 @@ python run_all.py
 
 Lệnh cuối submit một job vào Slurm `normal` với `gpu:2g.35gb:1`,
 `qos=mig2-35`, RAM 40 GB và 8 giờ. Job ID và thư mục logs xuất trên
-terminal. Runtime mặc định ở
-`/datastore/$USER/_workspace_cs431_monkey/lowres/MONKEY_V2__FULL_R1_LowRes_pilot_FROZEN_v2_0/`.
+terminal. Runtime mặc định nằm trong checkout MONKEY_V2, tại
+`/datastore/$USER/textvqa/Tuan/MONKEY_V2/.runtime/MONKEY_V2__FULL_R1_LowRes_pilot_FROZEN_v2_0/`
+nếu clone theo hướng dẫn trên.
 Lần chạy đầu cài riêng Pillow 11.3.0 cho bước sinh ảnh. Inference dùng
 stack E0 đã có. Dung lượng đầu ra chủ yếu là 2.500 P-map float16 nén.
 

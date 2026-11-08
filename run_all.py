@@ -13,6 +13,7 @@ from pathlib import Path
 from lowres.common import read_json, run_lock, save_json
 
 REPO = Path(__file__).resolve().parent
+LOCAL_RUNTIME = REPO/'.runtime'
 RUN_NAME = 'MONKEY_V2__FULL_R1_LowRes_pilot_FROZEN_v2_0'
 PHASE4 = 'phase4_FULL_R1_official_train_GT_intersection_DBNet_vs_ASF_mixed_10000updates_final_weights_only_seed42_v2'
 PHASE5 = 'phase5_FULL_R1_E0_original_vs_Aprime_FP32_job9793__inference_EDA_native_selected_seed42_v1'
@@ -24,7 +25,7 @@ def options(argv=None):
     parser.add_argument('--legacy-root', type=Path, default=datastore/'textvqa/Tuan/monkeyocr_workspace')
     parser.add_argument('--clean-root', type=Path,
                         default=datastore/'textvqa/data/benchmark_v1/raw/textvqa_clean/TextVQA')
-    parser.add_argument('--runtime-root', type=Path, default=datastore/'_workspace_cs431_monkey/lowres')
+    parser.add_argument('--runtime-root', type=Path, default=LOCAL_RUNTIME)
     parser.add_argument('--plan-only', action='store_true', help='Print the plan without reading data or submitting')
     parser.add_argument('--worker', action='store_true', help=argparse.SUPPRESS)
     parser.add_argument('--prepare', action='store_true', help=argparse.SUPPRESS)
@@ -33,9 +34,12 @@ def options(argv=None):
     args.clean_root = args.clean_root.expanduser().resolve()
     args.runtime_root = args.runtime_root.expanduser().resolve()
     args.output = args.runtime_root/RUN_NAME
-    for source in (args.legacy_root, args.clean_root, REPO):
+    for source in (args.legacy_root, args.clean_root):
         if args.output.is_relative_to(source) or source.is_relative_to(args.output):
-            raise ValueError('Use a runtime outside the code, legacy workspace and clean image roots')
+            raise ValueError('Use a runtime outside the legacy workspace and clean image roots')
+    if (REPO.is_relative_to(args.output) or
+            (args.output.is_relative_to(REPO) and not args.output.is_relative_to(LOCAL_RUNTIME))):
+        raise ValueError('Use .runtime for outputs inside MONKEY_V2')
     stack = args.legacy_root/'environment_and_models__phase1_verified_stack'
     args.python = stack/'python311_venv/bin/python'
     args.cuda = stack/'cuda_toolkit_12_8_1__private_nvidia_conda_environment'
