@@ -53,19 +53,19 @@ P-map float16 cùng polygon/score trước cutoff theo từng mẫu.
 
 ## B1 Clean + LR2
 
-Nếu HPC thiếu manifest TRAIN và metadata FULL_R1, khôi phục từ ảnh clean
-và annotation official train đã audit:
+Nếu HPC thiếu manifest TRAIN và thư mục FULL_R1 gốc, khôi phục từ bảng
+metadata job 8323 và annotation official train đã audit:
 
 ```bash
 cd /datastore/dungmt/textvqa/Tuan/MONKEY_V2
 git pull --ff-only && python recover_b1_train.py
 ```
 
-Launcher cài thư viện của generator vào thư mục runtime riêng và submit
-job CPU. Job dùng mã generator đã pin và các hash từ audit job 9276. Nó
-kiểm tra PNG và geometry theo từng nhóm toán tử trên validation, dựng lại
-membership từ official train, rồi tái tạo SHA-256 ảnh mixed của đúng các
-nguồn TRAIN trong bộ nhớ. Chỉ xuất manifest khi hash toàn file khớp khóa.
+Launcher dùng đường dẫn audit có sẵn trên HPC và submit job CPU. Worker
+đối chiếu SHA-256 của audit và annotation, dựng lại các dòng validation
+đã khóa và kiểm tra split theo mã lịch sử. Bảng audit đã lưu tham số và
+SHA-256 của ảnh mixed, nên bước này không cần mở ảnh. Worker chỉ xuất
+manifest TRAIN khi hash toàn file khớp khóa.
 Xem `.runtime/rev4_b1/train_recovery/verified/recovery.json` để xác nhận PASS.
 
 Sau khi khôi phục PASS, hoặc khi manifest TRAIN gốc đã có sẵn, submit từ

@@ -7,25 +7,12 @@ from pathlib import Path
 import shlex
 import subprocess
 import sys
-from tempfile import TemporaryDirectory
 
 from lowres.common import read_json, run_lock, save_json, sha256
 from rev4 import require
-from rev4.full_r1_generator import REQUIREMENTS
+from rev4.train_recovery import AUDIT
 from rev4.training_data import TRAIN_NAME, TRAIN_SHA256
 from submit_b1 import REPO, verified_context
-
-
-def install_packages(a):
-    destination = a.recovery/'packages'
-    if destination.is_dir():
-        return
-    with TemporaryDirectory(prefix='.packages-', dir=a.recovery) as temporary:
-        target = Path(temporary)/'packages'
-        subprocess.run([str(a.python), '-m', 'pip', '--isolated', 'install', '--no-user', '--no-deps',
-                        '--only-binary=:all:', '--disable-pip-version-check', '--target', str(target),
-                        *REQUIREMENTS], check=True)
-        target.rename(destination)
 
 
 def sbatch_args(a):
@@ -33,7 +20,7 @@ def sbatch_args(a):
     command = 'export PYTHONDONTWRITEBYTECODE=1; exec '+shlex.join(
         [str(a.python), '-u', str(Path(__file__).resolve()), '--worker'])
     return ['sbatch', '--parsable', '--job-name=monkey_v2_recover_train', '--ntasks=1', '--account=uit',
-            '--partition=normal', '--qos=mig2-35', '--cpus-per-task=8', '--mem=32G', '--time=08:00:00',
+            '--partition=normal', '--qos=mig2-35', '--cpus-per-task=2', '--mem=16G', '--time=04:00:00',
             '--chdir='+str(REPO), '--output='+str(log/'job_%j.stdout.log'),
             '--error='+str(log/'job_%j.stderr.log'), '--wrap', command]
 
@@ -53,7 +40,7 @@ def submit(a):
             if prior in queued:
                 print('TRAIN recovery already queued or running:', prior)
                 return
-        install_packages(a)
+        require(AUDIT.is_file(), f'Missing the job 8323 metadata archive: {AUDIT}')
         (a.recovery/'logs').mkdir(exist_ok=True)
         job = subprocess.check_output(sbatch_args(a), text=True).strip().split(';')[0]
         require(job.isdecimal(), f'Unexpected sbatch response: {job}')
@@ -79,7 +66,6 @@ def main():
         require(sys.platform == 'linux' and not os.environ.get('SLURM_JOB_ID'), 'Submit from the UIT-HPC login node')
         for key in ('clean_json', 'textocr_json'):
             require(a.raw_sources[key].is_file(), f'Missing original annotation {a.raw_sources[key]}')
-        require((a.clean_root/'train_images').is_dir(), 'Missing original clean train images')
         submit(a)
 
 
