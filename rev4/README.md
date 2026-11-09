@@ -31,3 +31,22 @@ Mã audit và dry-run TASK 1 ở `rev4/audit_split.py` và
 `rev4/run_task1_checks.sh`. Mã hiệu chuẩn TRAIN và test giả lập nằm trong
 `rev4/ssim_calibration.py` và `tests/`. Nhánh Blur/JPEG và τ phụ thuộc
 kết quả G1–G3 của LR2.
+
+## TASK 2B mô tả
+
+Job 11907 đã chọn LR2 theo thứ tự Rev.4. Trên cùng checkout, dùng:
+
+```bash
+git pull --ff-only
+python submit_s2b.py --plan-only
+python submit_s2b.py
+```
+
+Launcher đối chiếu hash báo cáo và identity S2-A, cả ba cổng LR2 và
+hash S2. Nó dùng lại clean matching từ job 11907, rồi chạy B0 FP32 với
+Blur 1.88/3.75 và JPEG 30/10 trên cùng 500 source. Báo cáo mô tả G1/G2
+và ghi `G3 = NOT ASSESSED`, `τ = N/A`.
+
+Kết quả nằm trong `.runtime/rev4_task2b/run/results/`, gồm
+`s2b_report.md`, `s2b_summary.json`, `review_examples.json` và
+P-map float16 cùng polygon/score trước cutoff theo từng mẫu.
