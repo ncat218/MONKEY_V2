@@ -1,6 +1,6 @@
 """Reconstruct the frozen FULL_R1 train fold and prepare Clean/LR2 data."""
 from collections import Counter
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import random
 import shutil
 import subprocess
@@ -72,9 +72,18 @@ def read_legacy_modules(repo, temporary):
     return data, full_data, shared_manifest
 
 
+def degraded_relative(recorded_path):
+    parts = PurePosixPath(str(recorded_path).replace('\\', '/')).parts
+    anchors = [i for i in range(len(parts)-1) if parts[i:i+2] == ('main', 'images')]
+    require(len(anchors) == 1, f'Unexpected recorded mixed path: {recorded_path}')
+    relative = parts[anchors[0]:]
+    require(len(relative) > 2 and '..' not in relative, f'Unexpected recorded mixed path: {recorded_path}')
+    return PurePosixPath(*relative)
+
+
 def recover_train(a, destination, scratch, legacy, full_data, manifest):
-    """Recreate membership from frozen metadata and open pixels only for the chosen TRAIN rows."""
-    archived = a.validation_manifest.with_name(TRAIN_NAME)
+    """Recover membership from frozen metadata without opening mixed or held-out image pixels."""
+    archived = a.train_manifest
     if archived.is_file():
         require(sha256(archived) == TRAIN_SHA256, 'Historical TRAIN SHA-256 mismatch')
         shutil.copyfile(archived, destination)
@@ -105,22 +114,52 @@ def recover_train(a, destination, scratch, legacy, full_data, manifest):
     del textocr
     require(len(memberships) == 21_747, 'FULL_R1 membership count differs from the frozen split')
     folds = legacy.split_source_groups(memberships, dict(train=.7, validation=.15, test=.15), 42)
-    frozen_val = {row['source_image_id']: row['clean_sha256'] for row in jsonl(a.validation_manifest)}
+    frozen_val = {row['source_image_id']: row for row in jsonl(a.validation_manifest)}
     by_source = {row['source_image_id']: row['clean_sha256'] for row in memberships}
     require(len(folds['train']) == TRAIN_SOURCES and len(frozen_val) == 3262 and
-            {source: by_source[source] for source in folds['validation']} == frozen_val,
+            {source: by_source[source] for source in folds['validation']} ==
+            {source: row['clean_sha256'] for source, row in frozen_val.items()},
             'Reconstructed membership differs from frozen FULL_R1 validation')
+    for row in records:
+        original = frozen_val.get(row['image_id'])
+        if original is None:
+            continue
+        require(degraded_relative(row['output_path']).as_posix() == original['degraded_relpath'] and
+                [int(row['degraded_width']), int(row['degraded_height'])] == original['degraded_size'] and
+                row['output_sha256'] == original['degraded_sha256'],
+                f'Recorded mixed metadata differs from frozen validation {row["image_id"]}')
     selected = set(folds['train'])
     train_records = [row for row in records if row['image_id'] in selected]
     require(len(train_records) == TRAIN_SOURCES, 'Reconstructed TRAIN membership count differs')
-    print(f'Locked membership recovered. Verifying pixels for {len(train_records)} TRAIN sources.', flush=True)
-    with patch.object(full_data, 'read_metadata', return_value=(train_records, provenance)):
+    mixed_root = a.full_r1_root.resolve()
+    mixed_paths, mixed_sizes = {}, {}
+    for row in train_records:
+        path = mixed_root/degraded_relative(row['output_path'])
+        mixed_paths[row['output_path'], row['output_sha256']] = path
+        mixed_sizes[path] = (int(row['degraded_width']), int(row['degraded_height']))
+    original_resolve = manifest.resolve_recorded_path
+    original_size = manifest.image_size
+
+    def recorded_path(recorded, root, index, expected_hash, kind):
+        if kind == 'degraded':
+            return mixed_paths[recorded, expected_hash]
+        return original_resolve(recorded, root, index, expected_hash, kind)
+
+    def recorded_size(path):
+        if path in mixed_sizes:
+            return mixed_sizes[path]
+        return original_size(path)
+
+    print(f'Locked membership recovered. Verifying clean pixels for {len(train_records)} TRAIN sources.', flush=True)
+    with (patch.object(full_data, 'read_metadata', return_value=(train_records, provenance)),
+          patch.object(manifest, 'resolve_recorded_path', side_effect=recorded_path),
+          patch.object(manifest, 'image_size', side_effect=recorded_size)):
         rebuilt = full_data.build_full_shared(a.raw_sources, scratch/'train_only_recovery')
     rebuilt_path = Path(rebuilt['manifest'])
     require(rebuilt['sources'] == TRAIN_SOURCES and sha256(rebuilt_path) == TRAIN_SHA256,
             f'Rebuilt TRAIN SHA-256 mismatch: {sha256(rebuilt_path)}')
     shutil.move(rebuilt_path, destination)
-    return f'exact TRAIN rebuilt with {LEGACY_COMMIT}'
+    return f'exact TRAIN rebuilt from clean pixels and frozen FULL_R1 metadata with {LEGACY_COMMIT}'
 
 
 def check_split(train_file, validation, s1, s2):

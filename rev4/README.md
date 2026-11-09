@@ -57,16 +57,28 @@ Chạy từ checkout MONKEY_V2 có đủ bằng chứng S2-A và S2-B:
 
 ```bash
 git pull --ff-only
-python submit_b1.py --plan-only
+python submit_b1.py --plan-only &&
 python submit_b1.py
 ```
 
-Nếu TRAIN lịch sử đã mất, worker dùng snapshot mã `816c6d6` và metadata
-FULL_R1 để khôi phục membership. Nó đối chiếu validation với fold đã
-khóa, dựng lại manifest cho đúng 15.222 nguồn TRAIN và so SHA-256 trước
-khi mở training. Việc tạo lại membership từ metadata đọc annotation
-official train của nguồn TextVQA. Chỉ các nguồn TRAIN được mở ảnh khi
-dựng manifest khôi phục. Không tạo artifact test.
+Nếu manifest `manifest__train__textvqa_clean_degraded_same_textocr_word_gt.jsonl`
+nằm ở đường dẫn khác trên HPC, chỉ định bản gốc đã sao lưu:
+
+```bash
+train=/path/to/manifest__train__textvqa_clean_degraded_same_textocr_word_gt.jsonl
+python submit_b1.py --plan-only --train-manifest "$train" &&
+python submit_b1.py --train-manifest "$train"
+```
+
+Nếu còn bản sao metadata FULL_R1, dùng `--full-r1-root /path/to/full_textvqa_degraded`
+ở cả hai lệnh thay cho `--train-manifest`. Thư mục cần `main/image_manifest.csv`,
+`config/frozen_degradation_config.json` và thư mục `metadata/` nguyên bản,
+gồm `split_policy.json`, `locked_eval_manifest.csv` và CSV nguồn khớp SHA-256
+trong frozen config. Cách này dùng metadata và ảnh clean, nên có thể dùng bản
+sao thiếu `main/images/`. `--plan-only` kiểm tra sự hiện diện của metadata.
+Trong job, worker dùng mã lịch sử `816c6d6`, đối chiếu fold validation đã khóa
+và chỉ chấp nhận manifest 15.222 nguồn TRAIN có SHA-256
+`ca1b91636cbe025823041ce336ffb59affa826a073f666dd7ba386bcab6c983d`.
 
 Job huấn luyện B1 từ B0 FP32, 10.000 optimizer updates, seed 42, AdamW
 LR 2e-5, batch hiệu dụng 4 và clean replay đúng 50% theo microbatch.

@@ -20,7 +20,7 @@ RUN = REPO/'.runtime/rev4_b1/run'
 S2B_SUMMARY_SHA256 = '0ca4156736a4c96dca10c2cae276b29c9491b74ecaaf2bd022c17f9b569f5b51'
 
 
-def verified_inputs():
+def verified_inputs(train_manifest=None, full_r1_root=None):
     a = submit_s2b.verified_inputs()
     a.s2b_run = a.output
     a.output = RUN
@@ -34,20 +34,31 @@ def verified_inputs():
     a.original_remaining_ids = read_json(a.s1/'frozen_v2_0/split_lock.json')['remaining_validation']
     raw = a.clean_root.parents[1]
     a.legacy_repo = a.legacy_root.parent/'MonKeyOCR-'
+    a.full_r1_root = (full_r1_root.expanduser().resolve() if full_r1_root else raw/'full_textvqa_degraded')
+    a.train_manifest = (train_manifest.expanduser().resolve() if train_manifest else
+                        a.validation_manifest.with_name(TRAIN_NAME))
     a.raw_sources = dict(clean_json=a.clean_root/'TextVQA_0.5.1_train.json',
                          textocr_json=raw/'textocr_0_1_train_json/TextOCR_0.1_train.json',
-                         clean_images_root=a.clean_root, degraded_root=raw/'full_textvqa_degraded',
-                         main_image_manifest=raw/'full_textvqa_degraded/main/image_manifest.csv')
+                         clean_images_root=a.clean_root, degraded_root=a.full_r1_root,
+                         main_image_manifest=a.full_r1_root/'main/image_manifest.csv')
     require(a.legacy_repo.is_dir(), f'Require historical source repository {a.legacy_repo}')
     revision = subprocess.check_output(['git', '-C', str(a.legacy_repo), 'rev-parse',
                                         f'{LEGACY_COMMIT}^{{commit}}'], text=True).strip()
     require(revision == LEGACY_COMMIT, 'Historical reconstruction revision mismatch')
-    train = a.validation_manifest.with_name(TRAIN_NAME)
-    if train.is_file():
-        require(sha256(train) == TRAIN_SHA256, f'Unexpected frozen TRAIN identity at {train}')
+    if train_manifest:
+        require(a.train_manifest.is_file(), f'TRAIN file not found: {a.train_manifest}')
+    if a.train_manifest.is_file():
+        require(sha256(a.train_manifest) == TRAIN_SHA256,
+                f'Frozen TRAIN SHA-256 mismatch at {a.train_manifest}. Expected {TRAIN_SHA256}')
     elif not (RUN/'prepared'/TRAIN_NAME).is_file():
-        for key, source in a.raw_sources.items():
-            require(source.exists(), f'Missing TRAIN reconstruction input {key}: {source}')
+        for source in (
+            a.raw_sources['clean_json'], a.raw_sources['textocr_json'], a.raw_sources['main_image_manifest'],
+            a.full_r1_root/'config/frozen_degradation_config.json',
+            a.full_r1_root/'metadata/split_policy.json', a.full_r1_root/'metadata/locked_eval_manifest.csv',
+        ):
+            require(source.is_file(), f'Missing frozen TRAIN and reconstruction metadata: {source}. '
+                    'Provide the original file with --train-manifest or a FULL_R1 metadata backup with '
+                    f'--full-r1-root. Expected TRAIN SHA-256 {TRAIN_SHA256}.')
     return a
 
 
@@ -56,7 +67,10 @@ def sbatch_args(a):
     pillow = shlex.quote(str(a.s1/'pillow-11.3.0'))
     command = ('export PYTHONDONTWRITEBYTECODE=1 PYTHONPATH='+pillow+' LD_LIBRARY_PATH='+lib+
                '${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}; exec ')
-    command += shlex.join([str(a.python), '-u', str(Path(__file__).resolve()), '--worker'])
+    args = [str(a.python), '-u', str(Path(__file__).resolve()), '--worker', '--full-r1-root', str(a.full_r1_root)]
+    if a.train_manifest.is_file():
+        args += ['--train-manifest', str(a.train_manifest)]
+    command += shlex.join(args)
     return ['sbatch', '--parsable', '--job-name=monkey_v2_rev4_b1', '--ntasks=1',
             '--account=uit', '--partition=normal', '--gres=gpu:2g.35gb:1', '--qos=mig2-35',
             '--cpus-per-task=8', '--mem=40G', '--time=12:00:00', '--chdir='+str(REPO),
@@ -108,8 +122,10 @@ def main():
     actions = parser.add_mutually_exclusive_group()
     actions.add_argument('--plan-only', action='store_true', help='Verify frozen inputs and print the B1 job')
     actions.add_argument('--worker', action='store_true', help=argparse.SUPPRESS)
+    parser.add_argument('--train-manifest', type=Path, help='Original TRAIN JSONL from any backup location')
+    parser.add_argument('--full-r1-root', type=Path, help='FULL_R1 backup with config, metadata and main/image_manifest.csv')
     args = parser.parse_args()
-    a = verified_inputs()
+    a = verified_inputs(args.train_manifest, args.full_r1_root)
     if args.plan_only:
         print(json.dumps(dict(stage='B1', selected_condition='lr2', train_sha256=TRAIN_SHA256,
                               train_sources=15_222, remaining_validation_sources=2_262,
