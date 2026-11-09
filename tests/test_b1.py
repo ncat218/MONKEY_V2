@@ -13,7 +13,7 @@ from lowres.common import sha256
 from rev4 import training_data
 from rev4.b1_training import choose_checkpoint
 from rev4.training_data import balanced_indices, degraded_relative, lr2_dimensions, native_lr2, scale_instance
-from submit_b1 import sbatch_args
+import submit_b1
 
 
 class B1Tests(TestCase):
@@ -76,6 +76,17 @@ class B1Tests(TestCase):
             manifest.touch()
             inputs = SimpleNamespace(s1=root/'s1', cuda=root/'cuda', python=root/'python',
                                      full_r1_root=root/'metadata backup', train_manifest=manifest)
-            worker = shlex.split(sbatch_args(inputs)[-1].split('; exec ', 1)[1])
+            worker = shlex.split(submit_b1.sbatch_args(inputs)[-1].split('; exec ', 1)[1])
             self.assertEqual(worker[-4:], ['--full-r1-root', str(inputs.full_r1_root),
                                           '--train-manifest', str(manifest)])
+
+    def test_recovered_train_is_found_without_user_paths(self):
+        with TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            recovered = root/'recovery/verified'/submit_b1.TRAIN_NAME
+            recovered.parent.mkdir(parents=True)
+            recovered.write_bytes(b'fixture')
+            inputs = SimpleNamespace(recovery=root/'recovery', validation_manifest=root/'validation.jsonl')
+            with (patch.object(submit_b1, 'verified_context', return_value=inputs),
+                  patch.object(submit_b1, 'TRAIN_SHA256', sha256(recovered))):
+                self.assertEqual(submit_b1.verified_inputs().train_manifest, recovered)

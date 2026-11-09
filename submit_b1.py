@@ -17,13 +17,15 @@ import submit_s2b
 
 REPO = Path(__file__).resolve().parent
 RUN = REPO/'.runtime/rev4_b1/run'
+RECOVERY = REPO/'.runtime/rev4_b1/train_recovery'
 S2B_SUMMARY_SHA256 = '0ca4156736a4c96dca10c2cae276b29c9491b74ecaaf2bd022c17f9b569f5b51'
 
 
-def verified_inputs(train_manifest=None, full_r1_root=None):
+def verified_context(full_r1_root=None):
     a = submit_s2b.verified_inputs()
     a.s2b_run = a.output
     a.output = RUN
+    a.recovery = RECOVERY
     s2b_summary = a.s2b_run/'results/s2b_summary.json'
     submit_s2a.check_hash(s2b_summary, S2B_SUMMARY_SHA256)
     b = read_json(s2b_summary)
@@ -35,8 +37,6 @@ def verified_inputs(train_manifest=None, full_r1_root=None):
     raw = a.clean_root.parents[1]
     a.legacy_repo = a.legacy_root.parent/'MonKeyOCR-'
     a.full_r1_root = (full_r1_root.expanduser().resolve() if full_r1_root else raw/'full_textvqa_degraded')
-    a.train_manifest = (train_manifest.expanduser().resolve() if train_manifest else
-                        a.validation_manifest.with_name(TRAIN_NAME))
     a.raw_sources = dict(clean_json=a.clean_root/'TextVQA_0.5.1_train.json',
                          textocr_json=raw/'textocr_0_1_train_json/TextOCR_0.1_train.json',
                          clean_images_root=a.clean_root, degraded_root=a.full_r1_root,
@@ -45,8 +45,17 @@ def verified_inputs(train_manifest=None, full_r1_root=None):
     revision = subprocess.check_output(['git', '-C', str(a.legacy_repo), 'rev-parse',
                                         f'{LEGACY_COMMIT}^{{commit}}'], text=True).strip()
     require(revision == LEGACY_COMMIT, 'Historical reconstruction revision mismatch')
+    return a
+
+
+def verified_inputs(train_manifest=None, full_r1_root=None):
+    a = verified_context(full_r1_root)
+    a.train_manifest = a.validation_manifest.with_name(TRAIN_NAME)
     if train_manifest:
+        a.train_manifest = train_manifest.expanduser().resolve()
         require(a.train_manifest.is_file(), f'TRAIN file not found: {a.train_manifest}')
+    elif not a.train_manifest.is_file() and (a.recovery/'verified'/TRAIN_NAME).is_file():
+        a.train_manifest = a.recovery/'verified'/TRAIN_NAME
     if a.train_manifest.is_file():
         require(sha256(a.train_manifest) == TRAIN_SHA256,
                 f'Frozen TRAIN SHA-256 mismatch at {a.train_manifest}. Expected {TRAIN_SHA256}')
@@ -57,8 +66,8 @@ def verified_inputs(train_manifest=None, full_r1_root=None):
             a.full_r1_root/'metadata/split_policy.json', a.full_r1_root/'metadata/locked_eval_manifest.csv',
         ):
             require(source.is_file(), f'Missing frozen TRAIN and reconstruction metadata: {source}. '
-                    'Provide the original file with --train-manifest or a FULL_R1 metadata backup with '
-                    f'--full-r1-root. Expected TRAIN SHA-256 {TRAIN_SHA256}.')
+                    'Run python recover_b1_train.py first, or use --train-manifest / --full-r1-root '
+                    f'if a backup is available. Expected TRAIN SHA-256 {TRAIN_SHA256}.')
     return a
 
 
