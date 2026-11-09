@@ -50,3 +50,40 @@ và ghi `G3 = NOT ASSESSED`, `τ = N/A`.
 Kết quả nằm trong `.runtime/rev4_task2b/run/results/`, gồm
 `s2b_report.md`, `s2b_summary.json`, `review_examples.json` và
 P-map float16 cùng polygon/score trước cutoff theo từng mẫu.
+
+## B1 Clean + LR2
+
+Chạy từ checkout MONKEY_V2 có đủ bằng chứng S2-A và S2-B:
+
+```bash
+git pull --ff-only
+python submit_b1.py --plan-only
+python submit_b1.py
+```
+
+Nếu TRAIN lịch sử đã mất, worker dùng snapshot mã `816c6d6` và metadata
+FULL_R1 để khôi phục membership. Nó đối chiếu validation với fold đã
+khóa, dựng lại manifest cho đúng 15.222 nguồn TRAIN và so SHA-256 trước
+khi mở training. Việc tạo lại membership từ metadata đọc annotation
+official train của nguồn TextVQA. Chỉ các nguồn TRAIN được mở ảnh khi
+dựng manifest khôi phục. Không tạo artifact test.
+
+Job huấn luyện B1 từ B0 FP32, 10.000 optimizer updates, seed 42, AdamW
+LR 2e-5, batch hiệu dụng 4 và clean replay đúng 50% theo microbatch.
+LR2 tạo on-the-fly bằng RGB bicubic Pillow 11.3.0 với geometry theo tỉ
+lệ kích thước thực. Giữ pipeline augment 640×640 của config đã dùng.
+Checkpoint định kỳ kèm optimizer để có thể resume bằng cùng lệnh.
+
+Hai checkpoint ở 5.000 và 10.000 updates được chấm với ngưỡng native
+trên 2.262 nguồn remaining validation. Chọn mean Hmean clean/LR2 cao nhất,
+hòa thì lấy checkpoint sớm. Báo cáo `.runtime/rev4_b1/run/b1_report.md`
+và `b1_summary.json`. Calibration theo lưới chung là bước tiếp theo.
+
+Để xem mẫu G4 trên HPC, chạy lệnh CPU dưới đây từ MONKEY_V2. Script dùng
+lại ảnh và P-map S2-A đã có, rồi tạo bảng trong
+`.runtime/rev4_b1/g4_review/lr2_pmap_review.png`.
+
+```bash
+stack=/datastore/dungmt/textvqa/Tuan/monkeyocr_workspace/environment_and_models__phase1_verified_stack
+"$stack/python311_venv/bin/python" -m rev4.g4_review
+```
