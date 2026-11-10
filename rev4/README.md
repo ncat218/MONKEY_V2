@@ -107,11 +107,28 @@ trên 2.262 nguồn remaining validation. Chọn mean Hmean clean/LR2 cao nhất
 hòa thì lấy checkpoint sớm. Báo cáo `.runtime/rev4_b1/run/b1_report.md`
 và `b1_summary.json`. Calibration theo lưới chung là bước tiếp theo.
 
-Để xem mẫu G4 trên HPC, chạy lệnh CPU dưới đây từ MONKEY_V2. Script dùng
-lại ảnh và P-map S2-A đã có, rồi tạo bảng trong
-`.runtime/rev4_b1/g4_review/lr2_pmap_review.png`.
+## G4 và calibration B0/B1
+
+Để chuẩn bị G4, chạy lệnh CPU dưới đây từ MONKEY_V2. Script dùng lại ảnh
+và P-map job 11907 để xuất `g4_report.md`, `evidence.json` và
+`lr2_pmap_review.png` trong `.runtime/rev4_b1/g4_review/`. Báo cáo ghi
+trạng thái chờ review trước khi chọn M.
 
 ```bash
 stack=/datastore/dungmt/textvqa/Tuan/monkeyocr_workspace/environment_and_models__phase1_verified_stack
-"$stack/python311_venv/bin/python" -m rev4.g4_review
+PYTHONDONTWRITEBYTECODE=1 "$stack/python311_venv/bin/python" -m rev4.g4_review
 ```
+
+Để so B0 và checkpoint B1 từ job 12187 trên cùng validation, submit:
+
+```bash
+python submit_calibration.py --plan-only &&
+python submit_calibration.py
+```
+
+Worker kiểm hash checkpoint và 2.262 nguồn validation còn lại. Mỗi model
+dùng cùng 15 cặp ngưỡng đã khóa. Khi hòa điểm ưu tiên native, rồi theo thứ
+tự lưới. Worker yêu cầu điểm B1 native tái lập kết quả job 12187 trước
+khi xuất `calibration_report.md` và `calibration_summary.json` trong
+`.runtime/rev4_calibration/run/results/`. Worker lưu vector đếm mỗi 100
+task để có thể tiếp tục nếu job gián đoạn.

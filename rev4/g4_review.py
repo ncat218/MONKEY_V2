@@ -1,6 +1,7 @@
 """Create a local-to-HPC review sheet from the existing LR2 pilot artifacts."""
 import math
 from pathlib import Path
+from statistics import median
 
 from lowres.common import jsonl, read_json, save_json
 from rev4 import require
@@ -26,6 +27,46 @@ def crop_box(bounds, factors, size):
     sx, sy = factors
     return (max(0, math.floor(x0*sx)), max(0, math.floor(y0*sy)),
             min(size[0], math.ceil(x1*sx)), min(size[1], math.ceil(y1*sy)))
+
+
+def diagnostic_summary(summary):
+    lr2 = summary['conditions']['lr2']
+    losses = lr2['failures']
+    strata = []
+    for height in (0, 4, 6, 8):
+        cohort = [x for x in losses if x['native_height'] >= height and x['kernel_pixels'] >= 4]
+        weak = [x for x in cohort if x['primary'] == 'weak_response']
+        clean_coverages = [x['coverage_clean'] for x in cohort if x['coverage_clean'] is not None]
+        strata.append(dict(min_native_height=height, valid_kernel_misses=len(cohort), weak_response=len(weak),
+                           weak_response_sensitivity=sum(x['sensitivity'] == 'weak_response' for x in cohort),
+                           clean_coverage_ge_030=sum(x >= .30 for x in clean_coverages),
+                           clean_coverage_ge_050=sum(x >= .50 for x in clean_coverages),
+                           weak_median_network_height=median(x['network_input_height'] for x in weak) if weak else None))
+    return dict(review_status='PENDING_HUMAN_REVIEW', clean_tp_to_fn=len(losses),
+                invalid_lr2_kernels=sum(x['kernel_pixels'] < 4 for x in losses), strata=strata,
+                primary_failure_counts=lr2['primary_failure_counts'], native_height_bins=lr2['native_height_bins'],
+                b_up_gain_pp=summary['b_up_lr2_gain_pp'], b_up_gain_95ci_pp=summary['b_up_lr2_gain_95ci_pp'],
+                b_up_recovery_ratio=summary['b_up_lr2_recovery_ratio'])
+
+
+def markdown(evidence):
+    lo, hi = evidence['b_up_gain_95ci_pp']
+    recovery = evidence['b_up_recovery_ratio']
+    lines = ['# Rev.4 G4 review for LR2', '',
+             f'Human review pending. S2-A evidence from job {evidence["source_job"]}.', '',
+             f'B_up Hmean gain {evidence["b_up_gain_pp"]:.2f} pp (95% CI {lo:.2f} to {hi:.2f} pp).',
+             ('B_up recovery ratio N/A.' if recovery is None else f'B_up recovered {recovery:.1%} of the Hmean drop.'),
+             f'Clean TP to LR2 FN {evidence["clean_tp_to_fn"]:,}, including '
+             f'{evidence["invalid_lr2_kernels"]:,} invalid LR2 kernels.', '',
+             '| Minimum native height | Misses with valid kernel | Weak at c0=0.30 | Weak at c0=0.50 | '
+             'Clean coverage ≥0.30 | Clean coverage ≥0.50 |', '|---:|---:|---:|---:|---:|---:|']
+    for item in evidence['strata']:
+        lines.append(f'| {item["min_native_height"]} px | {item["valid_kernel_misses"]:,} | '
+                     f'{item["weak_response"]:,} | {item["weak_response_sensitivity"]:,} | '
+                     f'{item["clean_coverage_ge_030"]:,} | {item["clean_coverage_ge_050"]:,} |')
+    lines += ['', 'See `lr2_pmap_review.png` and `evidence.json` for representative cases. '
+             'Use G4 evidence to review response, scale and teacher suitability before choosing M.', '']
+    return '\n'.join(lines)
 
 
 def main():
@@ -87,8 +128,11 @@ def main():
     output = Path(a.s2a_run).parents[1]/'rev4_b1/g4_review'
     output.mkdir(parents=True, exist_ok=True)
     sheet.save(output/'lr2_pmap_review.png', format='PNG')
-    save_json(output/'evidence.json', dict(source_job=a.s2a_job_id, examples=evidence))
-    print(output/'lr2_pmap_review.png')
+    report = dict(source_job=a.s2a_job_id, s2a_summary_sha256=a.s2a_summary_sha256, examples=evidence,
+                  **diagnostic_summary(a.s2a_summary))
+    save_json(output/'evidence.json', report)
+    (output/'g4_report.md').write_text(markdown(report), encoding='utf-8')
+    print(output/'g4_report.md', output/'lr2_pmap_review.png', sep='\n')
 
 
 if __name__ == '__main__':
