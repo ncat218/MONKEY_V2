@@ -132,3 +132,25 @@ tự lưới. Worker yêu cầu điểm B1 native tái lập kết quả job 121
 khi xuất `calibration_report.md` và `calibration_summary.json` trong
 `.runtime/rev4_calibration/run/results/`. Worker lưu vector đếm mỗi 100
 task để có thể tiếp tục nếu job gián đoạn.
+
+## Chẩn đoán lỗi còn lại của B1-cal
+
+Sau calibration job 12396, chạy từ MONKEY_V2:
+
+```bash
+python -B submit_b1_diagnostics.py --plan-only &&
+python -B submit_b1_diagnostics.py
+```
+
+Job tái lập số đếm của từng task Clean/LR2 với mask 0.30 và score 0.40,
+rồi phân loại các ca Clean TP chuyển thành LR2 FN theo P-map và polygon
+trước/sau cutoff. Báo cáo tách lỗi phản hồi yếu, lọc điểm, contour,
+hình học, ghép cặp mơ hồ và kernel không hợp lệ. Bảng chính dùng
+`c0=0.30`, kèm sensitivity `c0=0.50` và phân tầng theo chiều cao native LR2.
+
+Kết quả ở `.runtime/rev4_b1_diagnostics/run/results/` gồm
+`b1_cal_diagnostics.md`, `b1_cal_diagnostics.json` và ảnh
+`b1_cal_pmap_review.png` khi có mẫu phù hợp. Hồ sơ theo nguồn được lưu
+mỗi 50 nguồn để resume. Độ phủ Clean trong báo cáo thuộc B1-cal trên
+remaining validation. Quyết định PRC cần đối chiếu thêm với bằng chứng
+teacher B0 từ G4.
