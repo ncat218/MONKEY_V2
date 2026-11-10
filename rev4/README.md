@@ -154,3 +154,22 @@ Kết quả ở `.runtime/rev4_b1_diagnostics/run/results/` gồm
 mỗi 50 nguồn để resume. Độ phủ Clean trong báo cáo thuộc B1-cal trên
 remaining validation. Quyết định PRC cần đối chiếu thêm với bằng chứng
 teacher B0 từ G4.
+
+## M với PRC
+
+```bash
+python -B submit_prc.py --plan-only &&
+python -B submit_prc.py
+```
+
+Một trial PRC được chọn sau pilot và chẩn đoán B1-cal job 12434. Student
+khởi tạo từ B0, giữ sampler, augment, supervised loss và 10.000 optimizer
+updates của B1. Teacher B0 đóng băng chạy trên ảnh clean cùng nguồn LR2,
+căn theo hình học augmentation của LR2. Loss phụ là MSE xác suất với
+trọng số 1.0 cố định trên kernel của từ teacher khớp GT TRAIN, bỏ vùng
+ignore và padding. Trọng số được chọn cho trial đầu, không sweep.
+
+Job chọn checkpoint bằng quy tắc native của B1, rồi chạy cùng lưới
+calibration trên 2.262 nguồn remaining validation. Kết quả so với B1-cal
+ở `.runtime/rev4_prc/run/prc_report.md` và `prc_summary.json`. Benchmark
+test là một bước riêng.
