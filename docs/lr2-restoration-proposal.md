@@ -1,6 +1,6 @@
 # Đề xuất phục hồi ảnh LR2 trước khi phát hiện chữ
 
-**Trạng thái: đề xuất để nhóm thảo luận, chưa chạy thí nghiệm.** Đây là một phần mở rộng sau [Rev.4](../rev4/README.md). Câu hỏi nghiên cứu là liệu super-resolution ×2 có giúp B1-cal phát hiện thêm chữ trên LR2 so với bicubic ×2, và lợi ích đó đi kèm bao nhiêu chi phí suy luận.
+Đây là một phần mở rộng sau [Rev.4](../rev4/README.md). Câu hỏi nghiên cứu là liệu super-resolution ×2 có giúp B1-cal phát hiện thêm chữ trên LR2 so với bicubic ×2, và lợi ích đó đi kèm bao nhiêu chi phí suy luận.
 
 ## Kết quả làm căn cứ
 
@@ -27,3 +27,14 @@ Trong 6.454 từ B1-cal tìm được trên Clean nhưng bỏ sót ở LR2, job 
 - Báo Precision, Recall, TP, FP, FN, recall theo chiều cao chữ native LR2 và latency đầu cuối theo ảnh. Dùng chiều cao chữ trước phục hồi để cùng một từ nằm trong cùng nhóm kích thước ở cả ba nhánh.
 - Xem ví dụ từ được tìm lại, từ bị mất thêm và polygon mới bị tính FP. Đối chiếu các ca được tìm lại với chẩn đoán phản hồi yếu và hình học của B1-cal.
 - Nếu EDSR vượt cả LR2 gốc và bicubic, xem mức tăng có đi kèm giảm recall ở nhóm chữ nhỏ hoặc tăng FP và latency hay không. Nếu bicubic và EDSR cho kết quả gần nhau, báo chênh lệch và CI để nhóm cân nhắc chi phí phục hồi. Đây là kết quả validation của phần mở rộng. Benchmark test Rev.4 là một mốc riêng.
+
+## Chạy trên HPC
+
+Launcher dùng checkpoint EDSR baseline ×2 từ bản phát hành torchSR `v1.0.3` và kiểm SHA-256 trước khi chạy. [Nguồn checkpoint torchSR](https://github.com/Coloquinte/torchSR/releases/tag/v1.0.3).
+
+```bash
+python -B submit_restoration.py --plan-only &&
+python -B submit_restoration.py
+```
+
+Báo cáo nằm trong `.runtime/lr2_restoration/run/restoration_report.md`. File `restoration_summary.json` cùng thư mục ghi thêm số từ tìm lại, số từ mất thêm, nhóm lỗi cũ và ID mẫu để review.
