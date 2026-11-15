@@ -1,5 +1,7 @@
 # MONKEY_V2 · Low Resolution pilot
 
+[Bàn giao cho nhóm · protocol, checkpoint và đề bài nghiên cứu](handoff.md)
+
 [Đề xuất nghiên cứu phục hồi ảnh trước DBNet](docs/lr2-restoration-proposal.md)
 
 [Rev.4 TASK 2A trên H200](rev4/README.md) dùng lệnh `python submit_s2a.py`.
