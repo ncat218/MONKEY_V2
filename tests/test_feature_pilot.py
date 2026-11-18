@@ -1,7 +1,10 @@
 """Equal-budget setup, Slurm plan and paired-summary regression checks."""
 import copy
+import json
 from pathlib import Path
 import shlex
+import subprocess
+import sys
 from tempfile import TemporaryDirectory
 from types import SimpleNamespace
 from unittest import TestCase
@@ -50,6 +53,33 @@ def config_fixture():
 
 
 class FeaturePilotTests(TestCase):
+    def test_plan_runs_without_site_packages_or_legacy_imports(self):
+        code = '''
+import sys
+import submit_feature_pilot as launcher
+for name in ('numpy', 'torch', 'importlib.metadata', 'rev4.feature_pilot', 'rev4.b1_training', 'submit_b1_diagnostics'):
+    assert name not in sys.modules, name
+sys.argv = ['submit_feature_pilot.py', '--plan-only']
+launcher.main()
+'''
+        result = subprocess.run([sys.executable, '-S', '-c', code], cwd=submit_feature_pilot.REPO,
+                                capture_output=True, text=True, check=True, timeout=30)
+        plan = json.loads(result.stdout)
+        self.assertTrue(plan['input_verification'].startswith('PENDING'))
+        self.assertIn('--wrap', plan['sbatch'])
+        self.assertEqual(plan['launch_identity']['recipe']['optimizer_updates'], 1000)
+
+    def test_worker_cannot_start_when_full_input_verification_fails(self):
+        with (patch.object(sys, 'argv', ['submit_feature_pilot.py', '--worker']),
+              patch.object(sys, 'platform', 'linux'),
+              patch.dict('os.environ', {'SLURM_JOB_ID': 'fixture'}),
+              patch.object(submit_feature_pilot, 'verified_inputs', side_effect=ValueError('hash mismatch')) as verify,
+              patch.object(submit_feature_pilot, 'worker') as worker):
+            with self.assertRaisesRegex(ValueError, 'hash mismatch'):
+                submit_feature_pilot.main()
+            verify.assert_called_once()
+            worker.assert_not_called()
+
     def test_arms_have_equal_budget_init_and_transform_pipeline(self):
         a = SimpleNamespace(output=Path('pilot'), calibration_prepared=Path('existing'), b1_checkpoint=Path('b1.pth'))
         with patch.object(feature_pilot.b1_training, 'configuration', side_effect=lambda *args: config_fixture()):
@@ -83,7 +113,9 @@ class FeaturePilotTests(TestCase):
 
         with TemporaryDirectory() as temporary:
             root = Path(temporary)
-            a = SimpleNamespace(python=Path('python'), output=root, pilot_identity={'fixture': 1})
+            a = SimpleNamespace(python=Path('python'), output=root, pilot_identity={'fixture': 1},
+                                launch_identity={'fixture': 1})
+            save_json(root/'submission/launch_identity.json', a.launch_identity)
             with (patch.object(submit_feature_pilot, 'RUN', root),
                   patch.object(submit_feature_pilot, 'lock_identity'),
                   patch.object(submit_feature_pilot.subprocess, 'run'),

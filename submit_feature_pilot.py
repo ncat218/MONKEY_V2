@@ -1,29 +1,52 @@
 #!/usr/bin/env python3
 """Prepare or submit the exploratory equal-budget LR2 feature-distillation pilot."""
+import sys
+
+if __name__ == '__main__':
+    print('MONKEY_V2 feature pilot: starting launcher...', file=sys.stderr, flush=True)
+
 import argparse
 import json
 import os
 from pathlib import Path
 import shlex
 import subprocess
-import sys
+from types import SimpleNamespace
 
 from lowres.common import canonical, read_json, run_lock, save_json, sha256
 from rev4 import require
-from rev4.feature_pilot import ARMS, PAIRS, PILOT
-from rev4.training_data import TRAIN_NAME
-from submit_b1 import REPO
-import submit_b1_diagnostics
+from rev4.feature_plan import ARMS, PAIRS, PILOT
 
 
+REPO = Path(__file__).resolve().parent
 RUN = REPO/'.runtime/lr2_feature_distillation/pilot_v1'
-CODE_FILES = ('submit_feature_pilot.py', 'rev4/feature_pilot.py', 'rev4/feature_distillation.py',
+CODE_FILES = ('submit_feature_pilot.py', 'rev4/feature_plan.py', 'rev4/feature_pilot.py', 'rev4/feature_distillation.py',
               'rev4/feature_distillation_plugins.py', 'rev4/prc_geometry.py', 'rev4/prc_plugins.py',
               'tests/test_feature_distillation.py', 'tests/test_feature_pilot.py',
               'docs/lr2-feature-distillation-pilot.md')
 
 
+def launch_identity():
+    return json.loads(canonical(dict(stage='exploratory feature pilot v1', recipe=PILOT,
+                                    arms=ARMS, thresholds=PAIRS,
+                                    code={path: sha256(REPO/path) for path in CODE_FILES})))
+
+
+def launch_inputs():
+    """Read only small repository files; no legacy imports/data/checkpoint reads."""
+    stack = REPO.parent/'monkeyocr_workspace/environment_and_models__phase1_verified_stack'
+    return SimpleNamespace(python=stack/'python311_venv/bin/python',
+                           cuda=stack/'cuda_toolkit_12_8_1__private_nvidia_conda_environment',
+                           s1=REPO/'.runtime/MONKEY_V2__FULL_R1_LowRes_pilot_FROZEN_v2_0',
+                           output=RUN, launch_identity=launch_identity())
+
+
 def verified_inputs():
+    # Full historical imports and SHA-256 audit belong inside the allocation.
+    print('GPU worker: verifying frozen B1 inputs and historical SHA-256 chain...', flush=True)
+    import submit_b1_diagnostics
+    from rev4.training_data import TRAIN_NAME
+
     a = submit_b1_diagnostics.verified_inputs()
     a.output = RUN
     a.pilot_identity = json.loads(canonical(dict(stage='exploratory feature pilot v1', recipe=PILOT,
@@ -36,6 +59,8 @@ def verified_inputs():
                     validation_sha256=sha256(a.calibration_prepared/'validation_remaining.jsonl'),
                     validation_tasks_sha256=sha256(a.calibration_prepared/'validation_tasks.jsonl'),
                     code={path: sha256(REPO/path) for path in CODE_FILES})))
+    a.launch_identity = launch_identity()
+    print('GPU worker: full input verification passed.', flush=True)
     return a
 
 
@@ -60,10 +85,14 @@ def lock_identity(a):
 
 def submit(a):
     with run_lock(RUN/'submission'):
-        lock_identity(a)
+        launch = RUN/'submission/launch_identity.json'
+        if launch.is_file():
+            require(read_json(launch) == a.launch_identity, 'Submitted source changed; stop for version review')
+        else:
+            save_json(launch, a.launch_identity)
         completed = RUN/'results/pilot_summary.json'
         if completed.is_file():
-            require(read_json(completed)['identity'] == a.pilot_identity, 'Completed pilot identity changed')
+            require(read_json(completed)['identity']['code'] == a.launch_identity['code'], 'Completed pilot source changed')
             print('Pilot already complete:', RUN/'results/pilot_report.md')
             return
         receipt = RUN/'submission/latest_job.json'
@@ -74,13 +103,16 @@ def submit(a):
                 print('Pilot already queued or running:', previous['job_id'])
                 return
         (RUN/'logs').mkdir(parents=True, exist_ok=True)
+        require(a.python.is_file(), f'Historical Python executable is missing: {a.python}')
+        print('Submitting Slurm job; full input/GPU checks run before training inside the allocation.', flush=True)
         job = subprocess.check_output(sbatch_args(a), text=True).strip().split(';')[0]
         require(job.isdecimal(), f'Unexpected sbatch response: {job}')
-        save_json(receipt, dict(job_id=job, identity=a.pilot_identity))
+        save_json(receipt, dict(job_id=job, launch_identity=a.launch_identity, input_verification='pending GPU worker'))
         print(f'Submitted job {job}\nLogs: {RUN/"logs"}\nReport: {RUN/"results/pilot_report.md"}')
 
 
 def child(a, *args):
+    print('Starting phase:', ' '.join(args), flush=True)
     subprocess.run([str(a.python), '-u', str(REPO/'submit_feature_pilot.py'), *args], check=True, cwd=REPO)
 
 
@@ -90,6 +122,8 @@ def worker(a):
     RUN.mkdir(parents=True, exist_ok=True)
     with (RUN/'worker.lock').open('a') as handle:
         fcntl.flock(handle, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        require(read_json(RUN/'submission/launch_identity.json') == a.launch_identity,
+                'Source/recipe changed after submission; stopping before GPU work')
         lock_identity(a)
         subprocess.run([str(a.python), '-m', 'unittest', 'tests.test_feature_distillation',
                         'tests.test_feature_pilot', '-v'], check=True, cwd=REPO)
@@ -103,18 +137,23 @@ def worker(a):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     actions = parser.add_mutually_exclusive_group()
-    actions.add_argument('--plan-only', action='store_true', help='Verify inputs without submitting or using a GPU')
+    actions.add_argument('--plan-only', action='store_true', help='Print a lightweight plan; full data audit is deferred to the GPU worker')
     actions.add_argument('--worker', action='store_true', help=argparse.SUPPRESS)
     actions.add_argument('--phase', choices=('probe', 'train', 'evaluate', 'report'), help=argparse.SUPPRESS)
     parser.add_argument('--arm', choices=ARMS, help=argparse.SUPPRESS)
     args = parser.parse_args()
     require(not args.arm or args.phase in ('train', 'evaluate'), '--arm is only valid for train/evaluate')
     require(args.phase not in ('train', 'evaluate') or args.arm, 'train/evaluate require --arm')
-    a = verified_inputs()
     if args.plan_only:
-        print(json.dumps(dict(identity=a.pilot_identity, output=str(RUN), sbatch=sbatch_args(a)), indent=2))
+        a = launch_inputs()
+        print(json.dumps(dict(launch_identity=a.launch_identity, output=str(RUN),
+                              input_verification='PENDING: full SHA-256 and GPU checks run in the allocation before training',
+                              sbatch=sbatch_args(a)), indent=2))
     elif args.worker or args.phase:
         require(sys.platform == 'linux' and os.environ.get('SLURM_JOB_ID'), 'Worker phases require a Slurm GPU allocation')
+        a = verified_inputs()
+        require(read_json(RUN/'submission/launch_identity.json') == a.launch_identity,
+                'Source changed after submission; stopping before training')
         if args.worker:
             worker(a)
         else:
@@ -136,7 +175,7 @@ def main():
                 feature_pilot.summarize(a)
     else:
         require(sys.platform == 'linux' and not os.environ.get('SLURM_JOB_ID'), 'Submit from the UIT-HPC login node')
-        submit(a)
+        submit(launch_inputs())
 
 
 if __name__ == '__main__':

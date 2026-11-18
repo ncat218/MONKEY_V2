@@ -5,11 +5,14 @@ PRC and EDSR results. This does not replace the frozen Rev.4 protocol or change
 historical scores. HPC is under maintenance at preparation time; GPU readiness is
 not yet established. The user will run the launcher when HPC returns.
 
-Local validation: 19 CPU tests passed on Python 3.14/Torch 2.11, including the
+Local validation: 21 CPU tests passed on Python 3.14/Torch 2.11, including the
 new geometry, mask, gradient, equal-budget, failed-preflight and paired-summary
 checks and existing PRC/calibration/diagnostic regression tests. Syntax compilation
 and launcher help also passed. This is not an MMOCR/CUDA integration pass; the
 worker's mandatory GPU probe remains pending on the historical Python 3.11 stack.
+The lightweight plan is tested in a separate `python -S` process without NumPy,
+Torch, legacy modules or `importlib.metadata`. Failed full input verification is
+also tested to stop the worker before training.
 
 ## Question and controls
 
@@ -51,8 +54,14 @@ P-map control, then separate boundary-loss ablations, before stronger claims.
 
 ## Verification and evaluation
 
-`--plan-only` verifies the existing hash chain and prints a plan, without sbatch
-or inference. The allocated worker first runs synthetic alignment/mask/gradient
+`--plan-only` uses only the standard library and a small recipe module. It hashes
+small repository source files and prints a plan, without reading legacy reports,
+datasets or checkpoints, and without sbatch or inference. It explicitly reports
+input verification as **PENDING**, not PASS. Submission is similarly lightweight.
+Full historical input/hash verification is deferred to the allocated GPU worker;
+failure stops it before training. Source hashes are locked at submission and
+checked in the worker so a later code change cannot silently alter the job.
+The allocated worker then runs synthetic alignment/mask/gradient
 tests. Its GPU probe reproduces B1 counts on two paired validation sources,
 then checks a real TRAIN microbatch for correct shapes, nonempty weights, finite
 nonzero KD gradients, frozen teacher and unchanged student state_dict keys.
@@ -93,7 +102,9 @@ checkpoint and remaining-validation images are required.
 Outputs stay under the checkout:
 `.runtime/lr2_feature_distillation/pilot_v1/`.
 
-- `identity.json` and `submission/latest_job.json`: recipe, hashes and job ID.
+- `submission/launch_identity.json`: recipe and source hashes locked at submission.
+- `submission/latest_job.json`: job ID, source identity and verification pending.
+- `identity.json`: full verified input/recipe identity, created inside the worker.
 - `preflight.json`: actual GPU and data checks, only after they pass.
 - `continued/` and `feature_kd/`: training checkpoints, costs and validation records.
 - `results/pilot_report.md` and `results/pilot_summary.json`: paired results.
