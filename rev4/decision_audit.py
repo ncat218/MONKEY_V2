@@ -13,8 +13,9 @@ from rev4.adaptation_jobs import lock_record
 from rev4.calibration import validation_cohort
 from rev4.decision_core import (CandidateMatcher, capture_candidates, choose_setting,
                                 paired_hmean_ci, summarize_counts)
-from rev4.decision_plan import (BOOTSTRAP_SEED, BOOTSTRAP_REPETITIONS, COMMON_INDEX,
-                                GEOMETRIES, INSTALLED_PP_SHA256, SCORES, STAGE, setting_key)
+from rev4.decision_plan import (BOOTSTRAP_SEED, REPETITIONS as BOOTSTRAP_REPETITIONS,
+                                COMMON_INDEX, GEOMETRIES, INSTALLED_PP_SHA256, SCORES,
+                                STAGE, setting_key)
 from rev4.decision_review import combine_panels, prepare_review, render_panels
 from rev4.paired_eda import mode_result
 from rev4.stage_a import detector_for, forward
