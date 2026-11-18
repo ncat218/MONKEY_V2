@@ -6,6 +6,14 @@
 
 [Pilot chưng cất đặc trưng Clean → LR2, có đối chứng train tiếp](docs/lr2-feature-distillation-pilot.md)
 
+[Workflow nghiên cứu hiện tại](docs/research/next-workflow-20261119.md) ·
+[Đề xuất S1b/CRAFT](docs/research/s1b-craft-monkey-feasibility-20261119.md) ·
+[PR/quad audit v1 và lưới exploratory](docs/research/pr-quad-audit-v1.md)
+
+PR/quad audit v1 là job chẩn đoán trên remaining-validation, không huấn luyện
+và không dùng TEST. Trên UIT-HPC chạy `python submit_decision_audit.py --plan-only`
+rồi `python submit_decision_audit.py` để kiểm tra đầu vào và submit Slurm.
+
 [Rev.4 TASK 2A trên H200](rev4/README.md) dùng lệnh `python submit_s2a.py`.
 Hướng dẫn bên dưới mô tả pilot S1 v2.0 và lệnh `python run_all.py`.
 
