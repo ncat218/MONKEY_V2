@@ -109,4 +109,3 @@ def lock_record(path, identity):
     else:
         save_json(path, identity)
     return identity
-

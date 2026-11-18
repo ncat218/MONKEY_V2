@@ -44,4 +44,3 @@ class CleanControlAuditHook(Rev4B1AuditHook):
         self.batches += 1
         self.images += len(data_batch['data_samples'])
         self.peak_mib = max(self.peak_mib, torch.cuda.max_memory_allocated()/1024**2)
-
