@@ -66,6 +66,8 @@ Code, task, checkpoint và runtime inference được fingerprint. Nếu thay
   px và response cutoff 0,30/0,50, recovery ratio B_up ở LR4 và G1–G3.
   Đọc thêm ảnh và P-map của các GT mất để đánh giá G4 và chọn SAT hoặc PRC.
 
+Đối chứng 100% Clean và EDA trước/sau fine-tune: [thiết kế, lệnh và artifacts](docs/bclean-and-paired-eda.md).
+
 Repo chứa mã. Ảnh, checkpoint, manifest FULL_R1, raw predictions và
 kết quả ở runtime riêng. Evaluator lấy nguyên bytes từ CS431 tại commit
 `1844bcf`, được kiểm SHA-256 trước khi chạy.
