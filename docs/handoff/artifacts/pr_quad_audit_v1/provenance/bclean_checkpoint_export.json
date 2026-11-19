@@ -1,0 +1,13 @@
+{
+  "export_type": "plain state_dict; no optimizer/runner state",
+  "exported_bytes": 88619140,
+  "exported_state_dict_sha256": "94f0e4ecbb6881b4430c841845994c6568c145af7bb54fc41514eb0c78f3a6aa",
+  "model": "B-Clean",
+  "optimizer_updates": 10000,
+  "parent_job": "48833",
+  "source_checkpoint_sha256": "861bbde2aaf0b83cc98fab148d374276aa84012a7599a43dc1e7a227628aacfc",
+  "tensor_elements": 22124294,
+  "tensor_equality_verified": true,
+  "tensor_keys": 377,
+  "torch_version": "2.9.0+cu128"
+}

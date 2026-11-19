@@ -2,3 +2,5 @@
 *.sh text eol=lf
 lowres/evaluate_shared.py -text
 docs/handoff/weights/*.pth filter=lfs diff=lfs merge=lfs -text
+docs/handoff/artifacts/pr_quad_audit_v1/** -text whitespace=cr-at-eol
+docs/handoff/artifacts/pr_quad_audit_v1/review/review_cards.zip filter=lfs diff=lfs merge=lfs -text

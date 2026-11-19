@@ -1,0 +1,161 @@
+{
+  "conditions": [
+    "clean",
+    "lr2"
+  ],
+  "date": "2026-11-19",
+  "frozen_policy_sha256": "b20bc96ac675fbc6b7db4c03e6dd1fc66e8661ff2474772bb44498a5e3763958",
+  "historical_common": {
+    "epsilon_ratio": 0.01,
+    "mask_thr": 0.3,
+    "max_candidates": 3000,
+    "min_text_score": 0.4,
+    "min_text_width": 5,
+    "text_repr_type": "quad",
+    "unclip_ratio": 1.5
+  },
+  "human_review": "PENDING",
+  "models": {
+    "B-Clean": {
+      "selected_metrics": {
+        "clean": {
+          "fn": 16571,
+          "fp": 12620,
+          "gt": 78221,
+          "hmean": 0.8085723091854601,
+          "precision": 0.8300794398815134,
+          "pred": 74270,
+          "recall": 0.7881515194129454,
+          "tiny_gt": 5158,
+          "tiny_recall": 0.6116711903838697,
+          "tiny_tp": 3155,
+          "tp": 61650
+        },
+        "lr2": {
+          "fn": 26789,
+          "fp": 6578,
+          "gt": 78221,
+          "hmean": 0.7550704318400364,
+          "precision": 0.8866057576279952,
+          "pred": 58010,
+          "recall": 0.6575216374119482,
+          "tiny_gt": 5158,
+          "tiny_recall": 0.1595579682047305,
+          "tiny_tp": 823,
+          "tp": 51432
+        }
+      },
+      "selected_postprocessor": {
+        "epsilon_ratio": 0.01,
+        "mask_thr": 0.4,
+        "max_candidates": 3000,
+        "min_text_score": 0.6,
+        "min_text_width": 5,
+        "text_repr_type": "quad",
+        "type": "DBPostprocessor",
+        "unclip_ratio": 1.5
+      },
+      "source_checkpoint_sha256": "861bbde2aaf0b83cc98fab148d374276aa84012a7599a43dc1e7a227628aacfc",
+      "source_url": null,
+      "state_dict_path": "../../weights/bclean-inference.pth"
+    },
+    "B0": {
+      "selected_metrics": {
+        "clean": {
+          "fn": 26398,
+          "fp": 9839,
+          "gt": 78221,
+          "hmean": 0.740947792083384,
+          "precision": 0.8404365735785411,
+          "pred": 61662,
+          "recall": 0.6625202950614285,
+          "tiny_gt": 5158,
+          "tiny_recall": 0.38057386583947267,
+          "tiny_tp": 1963,
+          "tp": 51823
+        },
+        "lr2": {
+          "fn": 40925,
+          "fp": 4069,
+          "gt": 78221,
+          "hmean": 0.6237519442075159,
+          "precision": 0.9016318143357911,
+          "pred": 41365,
+          "recall": 0.4768029045908388,
+          "tiny_gt": 5158,
+          "tiny_recall": 0.010081426909654904,
+          "tiny_tp": 52,
+          "tp": 37296
+        }
+      },
+      "selected_postprocessor": {
+        "epsilon_ratio": 0.005,
+        "mask_thr": 0.3,
+        "max_candidates": 3000,
+        "min_text_score": 0.45,
+        "min_text_width": 5,
+        "text_repr_type": "quad",
+        "type": "DBPostprocessor",
+        "unclip_ratio": 1.5
+      },
+      "source_checkpoint_sha256": "4b13e26ad5c2e1b13fef45ac608298254d083062d2b9cafba706064bd8e2cf82",
+      "source_url": "https://huggingface.co/HB16888/MonkeyOCRv2_det/blob/main/dbnet_mkv2vitae_icdar2015.pth",
+      "state_dict_path": null
+    },
+    "B1": {
+      "selected_metrics": {
+        "clean": {
+          "fn": 16969,
+          "fp": 14753,
+          "gt": 78221,
+          "hmean": 0.7943148366682661,
+          "precision": 0.8058943490559831,
+          "pred": 76005,
+          "recall": 0.7830633717288197,
+          "tiny_gt": 5158,
+          "tiny_recall": 0.6116711903838697,
+          "tiny_tp": 3155,
+          "tp": 61252
+        },
+        "lr2": {
+          "fn": 21861,
+          "fp": 11997,
+          "gt": 78221,
+          "hmean": 0.7690103562608304,
+          "precision": 0.8244949310238893,
+          "pred": 68357,
+          "recall": 0.7205226218023293,
+          "tiny_gt": 5158,
+          "tiny_recall": 0.4579294300116324,
+          "tiny_tp": 2362,
+          "tp": 56360
+        }
+      },
+      "selected_postprocessor": {
+        "epsilon_ratio": 0.01,
+        "mask_thr": 0.4,
+        "max_candidates": 3000,
+        "min_text_score": 0.6,
+        "min_text_width": 5,
+        "text_repr_type": "quad",
+        "type": "DBPostprocessor",
+        "unclip_ratio": 1.5
+      },
+      "source_checkpoint_sha256": "6df7a3fea16e1d3170af92212d060aab8040bb128fcfb63fb81eb7c8572ec58f",
+      "source_url": null,
+      "state_dict_path": "../../weights/b1-inference.pth"
+    }
+  },
+  "no_test": true,
+  "precision": "fp32",
+  "review_setting": "historical_common .30/.40",
+  "selection": "max mean micro Hmean Clean/LR2 on 72-setting exploratory grid",
+  "sources": 2262,
+  "tf32": {
+    "cudnn": true,
+    "matmul": false
+  },
+  "tie_break": "base mask=.30 score=.30, then declared grid order; full cohort has unique optima",
+  "training": false,
+  "validation_role": "repeatedly used development; not fresh holdout"
+}

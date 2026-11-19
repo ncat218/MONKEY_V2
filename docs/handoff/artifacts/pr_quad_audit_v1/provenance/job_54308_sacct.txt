@@ -1,0 +1,2 @@
+JobID|State|Elapsed|ExitCode|Start|End|NodeList
+54308|FAILED|01:06:37|1:0|2026-11-19T01:17:09|2026-11-19T02:23:46|h200node02

@@ -1,0 +1,42 @@
+Loading B0; checkpoint 4b13e26ad5c2e1b13fef45ac608298254d083062d2b9cafba706064bd8e2cf82
+Loads checkpoint by local backend from path: /datastore/dungmt/textvqa/Tuan/monkeyocr_workspace/environment_and_models__phase1_verified_stack/upstream_MonkeyOCRv2/detection/mmocr/mmocr/model_weight/dbnet_mkv2vitae_icdar2015.pth
+11/19 01:17:32 - mmengine - WARNING - Failed to search registry with scope "mmocr" in the "function" registry tree. As a workaround, the current "function" registry in "mmengine" is used to build instance. This may cause unexpected failure when running the built modules. Please check whether "mmocr" is a correct scope, or whether the registry is initialized.
+Loads checkpoint by local backend from path: /datastore/dungmt/textvqa/Tuan/monkeyocr_workspace/environment_and_models__phase1_verified_stack/upstream_MonkeyOCRv2/detection/mmocr/mmocr/model_weight/dbnet_mkv2vitae_icdar2015.pth
+B0: 500/4,524 paired-condition tasks; base `.30/.40` reproduces EDA
+B0: 1,000/4,524 paired-condition tasks; base `.30/.40` reproduces EDA
+B0: 1,500/4,524 paired-condition tasks; base `.30/.40` reproduces EDA
+B0: 2,000/4,524 paired-condition tasks; base `.30/.40` reproduces EDA
+B0: 2,500/4,524 paired-condition tasks; base `.30/.40` reproduces EDA
+B0: 3,000/4,524 paired-condition tasks; base `.30/.40` reproduces EDA
+B0: 3,500/4,524 paired-condition tasks; base `.30/.40` reproduces EDA
+B0: 4,000/4,524 paired-condition tasks; base `.30/.40` reproduces EDA
+B0: 4,500/4,524 paired-condition tasks; base `.30/.40` reproduces EDA
+B0: 4,524/4,524 paired-condition tasks; base `.30/.40` reproduces EDA
+Loading B-Clean; checkpoint 861bbde2aaf0b83cc98fab148d374276aa84012a7599a43dc1e7a227628aacfc
+Loads checkpoint by local backend from path: /datastore/dungmt/textvqa/Tuan/MONKEY_V2/.runtime/bclean/v1/weights/iter_20000.pth
+Loads checkpoint by local backend from path: /datastore/dungmt/textvqa/Tuan/MONKEY_V2/.runtime/bclean/v1/weights/iter_20000.pth
+B-Clean: 500/4,524 paired-condition tasks; base `.30/.40` reproduces EDA
+B-Clean: 1,000/4,524 paired-condition tasks; base `.30/.40` reproduces EDA
+B-Clean: 1,500/4,524 paired-condition tasks; base `.30/.40` reproduces EDA
+B-Clean: 2,000/4,524 paired-condition tasks; base `.30/.40` reproduces EDA
+B-Clean: 2,500/4,524 paired-condition tasks; base `.30/.40` reproduces EDA
+B-Clean: 3,000/4,524 paired-condition tasks; base `.30/.40` reproduces EDA
+B-Clean: 3,500/4,524 paired-condition tasks; base `.30/.40` reproduces EDA
+B-Clean: 4,000/4,524 paired-condition tasks; base `.30/.40` reproduces EDA
+B-Clean: 4,500/4,524 paired-condition tasks; base `.30/.40` reproduces EDA
+B-Clean: 4,524/4,524 paired-condition tasks; base `.30/.40` reproduces EDA
+Loading B1; checkpoint 6df7a3fea16e1d3170af92212d060aab8040bb128fcfb63fb81eb7c8572ec58f
+Loads checkpoint by local backend from path: /datastore/dungmt/textvqa/Tuan/MONKEY_V2/.runtime/rev4_b1/run/weights/iter_20000.pth
+Loads checkpoint by local backend from path: /datastore/dungmt/textvqa/Tuan/MONKEY_V2/.runtime/rev4_b1/run/weights/iter_20000.pth
+B1: 500/4,524 paired-condition tasks; base `.30/.40` reproduces EDA
+B1: 1,000/4,524 paired-condition tasks; base `.30/.40` reproduces EDA
+B1: 1,500/4,524 paired-condition tasks; base `.30/.40` reproduces EDA
+B1: 2,000/4,524 paired-condition tasks; base `.30/.40` reproduces EDA
+B1: 2,500/4,524 paired-condition tasks; base `.30/.40` reproduces EDA
+B1: 3,000/4,524 paired-condition tasks; base `.30/.40` reproduces EDA
+B1: 3,500/4,524 paired-condition tasks; base `.30/.40` reproduces EDA
+B1: 4,000/4,524 paired-condition tasks; base `.30/.40` reproduces EDA
+B1: 4,500/4,524 paired-condition tasks; base `.30/.40` reproduces EDA
+B1: 4,524/4,524 paired-condition tasks; base `.30/.40` reproduces EDA
+FP/GT diagnosis preparation: 500/4524 tasks
+FP/GT diagnosis preparation: 1000/4524 tasks

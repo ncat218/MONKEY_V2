@@ -1,0 +1,450 @@
+{"phase": "validate_original_counts"}
+{"model": "B0", "phase": "original_counts_pass", "tasks": 4524}
+{"model": "B-Clean", "phase": "original_counts_pass", "tasks": 4524}
+{"model": "B1", "phase": "original_counts_pass", "tasks": 4524}
+{"first_sample": "clean::000bb81adefe7332", "offset": 0, "phase": "review_chunk_start"}
+{"completed": 64, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::00a4e8944cc8ad7b", "offset": 64, "phase": "review_chunk_start"}
+{"completed": 128, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::013876297354531e", "offset": 128, "phase": "review_chunk_start"}
+{"completed": 192, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::0245497d0c801eb1", "offset": 192, "phase": "review_chunk_start"}
+{"completed": 256, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::0322f8a71414a329", "offset": 256, "phase": "review_chunk_start"}
+{"completed": 320, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::0431ba997afecda0", "offset": 320, "phase": "review_chunk_start"}
+{"completed": 384, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::065eb26a527cc930", "offset": 384, "phase": "review_chunk_start"}
+{"completed": 448, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::082286cbacee3a60", "offset": 448, "phase": "review_chunk_start"}
+{"completed": 512, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::0aedf408c1823ee1", "offset": 512, "phase": "review_chunk_start"}
+{"completed": 576, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::0d5cea999b2fa16f", "offset": 576, "phase": "review_chunk_start"}
+{"completed": 640, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::104268cf101d9a9f", "offset": 640, "phase": "review_chunk_start"}
+{"completed": 704, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::132a53f9f69f0f1a", "offset": 704, "phase": "review_chunk_start"}
+{"completed": 768, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::15a0ce6d590f1db7", "offset": 768, "phase": "review_chunk_start"}
+{"completed": 832, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::18950ff3ca7e943f", "offset": 832, "phase": "review_chunk_start"}
+{"completed": 896, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::1b4cb69a10751a5e", "offset": 896, "phase": "review_chunk_start"}
+{"completed": 960, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::1de7cd100f4c8d4f", "offset": 960, "phase": "review_chunk_start"}
+{"completed": 1024, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::2068c28c5819b743", "offset": 1024, "phase": "review_chunk_start"}
+{"completed": 1088, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::24785a342ef69b68", "offset": 1088, "phase": "review_chunk_start"}
+{"completed": 1152, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::27895ac0ac03a6b1", "offset": 1152, "phase": "review_chunk_start"}
+{"completed": 1216, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::2acf8a1031a12e36", "offset": 1216, "phase": "review_chunk_start"}
+{"completed": 1280, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::2eb52a1076217390", "offset": 1280, "phase": "review_chunk_start"}
+{"completed": 1344, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::31be88afe9504181", "offset": 1344, "phase": "review_chunk_start"}
+{"completed": 1408, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::368c7d8d7c3cc65c", "offset": 1408, "phase": "review_chunk_start"}
+{"completed": 1472, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::39fa80444f061ffd", "offset": 1472, "phase": "review_chunk_start"}
+{"completed": 1536, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::3d60c8ca046a66db", "offset": 1536, "phase": "review_chunk_start"}
+{"completed": 1600, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::409a756f882e82a5", "offset": 1600, "phase": "review_chunk_start"}
+{"completed": 1664, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::442c3830b2903922", "offset": 1664, "phase": "review_chunk_start"}
+{"completed": 1728, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::4771b84eec43074f", "offset": 1728, "phase": "review_chunk_start"}
+{"completed": 1792, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::4af9c0432dbc1e0f", "offset": 1792, "phase": "review_chunk_start"}
+{"completed": 1856, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::4f47c1e09b69ede4", "offset": 1856, "phase": "review_chunk_start"}
+{"completed": 1920, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::5318ac1be0228a39", "offset": 1920, "phase": "review_chunk_start"}
+{"completed": 1984, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::5601b80ce7692a2e", "offset": 1984, "phase": "review_chunk_start"}
+{"completed": 2048, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::5a8191e9fe47fc52", "offset": 2048, "phase": "review_chunk_start"}
+{"completed": 2112, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::5d5659e5227afd04", "offset": 2112, "phase": "review_chunk_start"}
+{"completed": 2176, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::61c590bda2dbc0f0", "offset": 2176, "phase": "review_chunk_start"}
+{"completed": 2240, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::6567921245db5dbb", "offset": 2240, "phase": "review_chunk_start"}
+{"completed": 2304, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::69da81928dd40c4b", "offset": 2304, "phase": "review_chunk_start"}
+{"completed": 2368, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::6d1b0a17db413538", "offset": 2368, "phase": "review_chunk_start"}
+{"completed": 2432, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::73d99ca4adc78751", "offset": 2432, "phase": "review_chunk_start"}
+{"completed": 2496, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::78b2a06be9555b7d", "offset": 2496, "phase": "review_chunk_start"}
+{"completed": 2560, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::7c9b1a1aa41d01dc", "offset": 2560, "phase": "review_chunk_start"}
+{"completed": 2624, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::81d1ed25e860fb4e", "offset": 2624, "phase": "review_chunk_start"}
+{"completed": 2688, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::868a5825eb519b05", "offset": 2688, "phase": "review_chunk_start"}
+{"completed": 2752, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::8aa036e8bb3f39d8", "offset": 2752, "phase": "review_chunk_start"}
+{"completed": 2816, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::8ed692bddf6bf465", "offset": 2816, "phase": "review_chunk_start"}
+{"completed": 2880, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::9337b5b38646c47f", "offset": 2880, "phase": "review_chunk_start"}
+{"completed": 2944, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::96ab8f1a1b335d43", "offset": 2944, "phase": "review_chunk_start"}
+{"completed": 3008, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::9ac12b271d70b1cd", "offset": 3008, "phase": "review_chunk_start"}
+{"completed": 3072, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::9e2017066c804253", "offset": 3072, "phase": "review_chunk_start"}
+{"completed": 3136, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::a2dcb8b3f96e0fb2", "offset": 3136, "phase": "review_chunk_start"}
+{"completed": 3200, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::a5def03c04ea5407", "offset": 3200, "phase": "review_chunk_start"}
+{"completed": 3264, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::aa4fc8eff2e96bfa", "offset": 3264, "phase": "review_chunk_start"}
+{"completed": 3328, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::ae589341d44ddca9", "offset": 3328, "phase": "review_chunk_start"}
+{"completed": 3392, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::b22a347dc8b3e767", "offset": 3392, "phase": "review_chunk_start"}
+{"completed": 3456, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::b68b40a93c901955", "offset": 3456, "phase": "review_chunk_start"}
+{"completed": 3520, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::bb777b4707808666", "offset": 3520, "phase": "review_chunk_start"}
+{"completed": 3584, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::be9cac8674725812", "offset": 3584, "phase": "review_chunk_start"}
+{"completed": 3648, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::c2c50dd0b4caa1be", "offset": 3648, "phase": "review_chunk_start"}
+{"completed": 3712, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::c70cac9fd5744ba9", "offset": 3712, "phase": "review_chunk_start"}
+{"completed": 3776, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::cb5d4555845c9ef2", "offset": 3776, "phase": "review_chunk_start"}
+{"completed": 3840, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::cf12b0d2b6c33fe8", "offset": 3840, "phase": "review_chunk_start"}
+{"completed": 3904, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::d331bbaae7057246", "offset": 3904, "phase": "review_chunk_start"}
+{"completed": 3968, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::d7c8a839850ae455", "offset": 3968, "phase": "review_chunk_start"}
+{"completed": 4032, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::db10689401dfcba3", "offset": 4032, "phase": "review_chunk_start"}
+{"completed": 4096, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::dfa2cd122cbadd23", "offset": 4096, "phase": "review_chunk_start"}
+{"completed": 4160, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::e491630dc578a33d", "offset": 4160, "phase": "review_chunk_start"}
+{"completed": 4224, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::e867e9589ad17b49", "offset": 4224, "phase": "review_chunk_start"}
+{"completed": 4288, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::ec3cf27e4a9ddf58", "offset": 4288, "phase": "review_chunk_start"}
+{"completed": 4352, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::f169c0e04423355e", "offset": 4352, "phase": "review_chunk_start"}
+{"completed": 4416, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::f8467c4093c141c9", "offset": 4416, "phase": "review_chunk_start"}
+{"completed": 4480, "phase": "review_chunk_complete", "total": 4524}
+{"first_sample": "clean::fc0442b3a766bae3", "offset": 4480, "phase": "review_chunk_start"}
+{"completed": 4524, "phase": "review_chunk_complete", "total": 4524}
+Loads checkpoint by local backend from path: /datastore/dungmt/textvqa/Tuan/MONKEY_V2/.runtime/bclean/v1/weights/iter_20000.pth
+11/19 19:18:33 - mmengine - WARNING - Failed to search registry with scope "mmocr" in the "function" registry tree. As a workaround, the current "function" registry in "mmengine" is used to build instance. This may cause unexpected failure when running the built modules. Please check whether "mmocr" is a correct scope, or whether the registry is initialized.
+Loads checkpoint by local backend from path: /datastore/dungmt/textvqa/Tuan/MONKEY_V2/.runtime/bclean/v1/weights/iter_20000.pth
+{"model": "B-Clean", "number": 1, "phase": "render_sample_start", "sample_id": "lr2::00763053203c207f", "total": 149}
+{"model": "B-Clean", "number": 2, "phase": "render_sample_start", "sample_id": "lr2::00ef7a8de38d6ac8", "total": 149}
+{"model": "B-Clean", "number": 3, "phase": "render_sample_start", "sample_id": "clean::02748cc67037e249", "total": 149}
+{"model": "B-Clean", "number": 4, "phase": "render_sample_start", "sample_id": "lr2::02853972cad856a9", "total": 149}
+{"model": "B-Clean", "number": 5, "phase": "render_sample_start", "sample_id": "lr2::038dc16c44629f3c", "total": 149}
+{"model": "B-Clean", "number": 6, "phase": "render_sample_start", "sample_id": "clean::03b2dbb7dff0e32d", "total": 149}
+{"model": "B-Clean", "number": 7, "phase": "render_sample_start", "sample_id": "clean::0434ea33f3f9999f", "total": 149}
+{"model": "B-Clean", "number": 8, "phase": "render_sample_start", "sample_id": "clean::057a84d8b36af342", "total": 149}
+{"model": "B-Clean", "number": 9, "phase": "render_sample_start", "sample_id": "lr2::061d8e57615d98c4", "total": 149}
+{"model": "B-Clean", "number": 10, "phase": "render_sample_start", "sample_id": "clean::07759da518969fdd", "total": 149}
+{"model": "B-Clean", "number": 11, "phase": "render_sample_start", "sample_id": "clean::07d05ffee742c36d", "total": 149}
+{"model": "B-Clean", "number": 12, "phase": "render_sample_start", "sample_id": "lr2::0878ad2f5ce3ece6", "total": 149}
+{"model": "B-Clean", "number": 13, "phase": "render_sample_start", "sample_id": "clean::09b9d93bdc065bb7", "total": 149}
+{"model": "B-Clean", "number": 14, "phase": "render_sample_start", "sample_id": "clean::0b597eb1e1b7883d", "total": 149}
+{"model": "B-Clean", "number": 15, "phase": "render_sample_start", "sample_id": "lr2::0bbd8467e4a69626", "total": 149}
+{"model": "B-Clean", "number": 16, "phase": "render_sample_start", "sample_id": "clean::0cfde019eaefbadf", "total": 149}
+{"model": "B-Clean", "number": 17, "phase": "render_sample_start", "sample_id": "clean::132a53f9f69f0f1a", "total": 149}
+{"model": "B-Clean", "number": 18, "phase": "render_sample_start", "sample_id": "lr2::14b891c2bb8581ac", "total": 149}
+{"model": "B-Clean", "number": 19, "phase": "render_sample_start", "sample_id": "clean::14f625e7b3f9e25b", "total": 149}
+{"model": "B-Clean", "number": 20, "phase": "render_sample_start", "sample_id": "clean::150c84364cca325c", "total": 149}
+{"model": "B-Clean", "number": 21, "phase": "render_sample_start", "sample_id": "lr2::15db54ec083e4390", "total": 149}
+{"model": "B-Clean", "number": 22, "phase": "render_sample_start", "sample_id": "lr2::164e080755911770", "total": 149}
+{"model": "B-Clean", "number": 23, "phase": "render_sample_start", "sample_id": "clean::16505f9e43a2d81b", "total": 149}
+{"model": "B-Clean", "number": 24, "phase": "render_sample_start", "sample_id": "clean::171e532e7edaf8f9", "total": 149}
+{"model": "B-Clean", "number": 25, "phase": "render_sample_start", "sample_id": "lr2::17f22d6d1632458b", "total": 149}
+{"model": "B-Clean", "number": 26, "phase": "render_sample_start", "sample_id": "lr2::1ab0e5fe4e0e8b21", "total": 149}
+{"model": "B-Clean", "number": 27, "phase": "render_sample_start", "sample_id": "lr2::1d066611264ad99e", "total": 149}
+{"model": "B-Clean", "number": 28, "phase": "render_sample_start", "sample_id": "lr2::1d1b01333ac1742f", "total": 149}
+{"model": "B-Clean", "number": 29, "phase": "render_sample_start", "sample_id": "clean::1da914ac26666957", "total": 149}
+{"model": "B-Clean", "number": 30, "phase": "render_sample_start", "sample_id": "clean::1edbd648b1acb1bc", "total": 149}
+{"model": "B-Clean", "number": 31, "phase": "render_sample_start", "sample_id": "lr2::22252f4197bf7868", "total": 149}
+{"model": "B-Clean", "number": 32, "phase": "render_sample_start", "sample_id": "clean::250972da15f9e0d2", "total": 149}
+{"model": "B-Clean", "number": 33, "phase": "render_sample_start", "sample_id": "lr2::251ad43344e9a932", "total": 149}
+{"model": "B-Clean", "number": 34, "phase": "render_sample_start", "sample_id": "clean::25383d64fbc77400", "total": 149}
+{"model": "B-Clean", "number": 35, "phase": "render_sample_start", "sample_id": "lr2::25383d64fbc77400", "total": 149}
+{"model": "B-Clean", "number": 36, "phase": "render_sample_start", "sample_id": "lr2::27e0a45879e9c53b", "total": 149}
+{"model": "B-Clean", "number": 37, "phase": "render_sample_start", "sample_id": "clean::288d826fe847ff67", "total": 149}
+{"model": "B-Clean", "number": 38, "phase": "render_sample_start", "sample_id": "clean::2a67e6a03aa704f1", "total": 149}
+{"model": "B-Clean", "number": 39, "phase": "render_sample_start", "sample_id": "clean::342f4c0ac57f578c", "total": 149}
+{"model": "B-Clean", "number": 40, "phase": "render_sample_start", "sample_id": "lr2::35cf406f47c83f66", "total": 149}
+{"model": "B-Clean", "number": 41, "phase": "render_sample_start", "sample_id": "clean::37da5237c72f53c5", "total": 149}
+{"model": "B-Clean", "number": 42, "phase": "render_sample_start", "sample_id": "clean::39afd5154644d237", "total": 149}
+{"model": "B-Clean", "number": 43, "phase": "render_sample_start", "sample_id": "lr2::39afd5154644d237", "total": 149}
+{"model": "B-Clean", "number": 44, "phase": "render_sample_start", "sample_id": "lr2::3c0e63a377f190f8", "total": 149}
+{"model": "B-Clean", "number": 45, "phase": "render_sample_start", "sample_id": "lr2::3c66a30c10f8d9aa", "total": 149}
+{"model": "B-Clean", "number": 46, "phase": "render_sample_start", "sample_id": "clean::3d8182867c6589ba", "total": 149}
+{"model": "B-Clean", "number": 47, "phase": "render_sample_start", "sample_id": "lr2::3f842cd939fdf14e", "total": 149}
+{"model": "B-Clean", "number": 48, "phase": "render_sample_start", "sample_id": "lr2::3f881b19dca7117e", "total": 149}
+{"model": "B-Clean", "number": 49, "phase": "render_sample_start", "sample_id": "clean::3f9f8afc0fffa5f2", "total": 149}
+{"model": "B-Clean", "number": 50, "phase": "render_sample_start", "sample_id": "lr2::41ee3eb636805b6f", "total": 149}
+{"model": "B-Clean", "number": 51, "phase": "render_sample_start", "sample_id": "clean::43c427ba34b6c147", "total": 149}
+{"model": "B-Clean", "number": 52, "phase": "render_sample_start", "sample_id": "clean::448e0716ec980766", "total": 149}
+{"model": "B-Clean", "number": 53, "phase": "render_sample_start", "sample_id": "clean::459b300fe8d78eae", "total": 149}
+{"model": "B-Clean", "number": 54, "phase": "render_sample_start", "sample_id": "clean::46bde8888333a6e8", "total": 149}
+{"model": "B-Clean", "number": 55, "phase": "render_sample_start", "sample_id": "lr2::46c90568c530e950", "total": 149}
+{"model": "B-Clean", "number": 56, "phase": "render_sample_start", "sample_id": "lr2::46fbde6f07658047", "total": 149}
+{"model": "B-Clean", "number": 57, "phase": "render_sample_start", "sample_id": "clean::478c66a97e599671", "total": 149}
+{"model": "B-Clean", "number": 58, "phase": "render_sample_start", "sample_id": "lr2::49d47b340c239a07", "total": 149}
+{"model": "B-Clean", "number": 59, "phase": "render_sample_start", "sample_id": "clean::4a0fc9bf90573ba0", "total": 149}
+{"model": "B-Clean", "number": 60, "phase": "render_sample_start", "sample_id": "lr2::4acf7781a7f19dfb", "total": 149}
+{"model": "B-Clean", "number": 61, "phase": "render_sample_start", "sample_id": "clean::4b05bc21b87d63b8", "total": 149}
+{"model": "B-Clean", "number": 62, "phase": "render_sample_start", "sample_id": "lr2::4b05bc21b87d63b8", "total": 149}
+{"model": "B-Clean", "number": 63, "phase": "render_sample_start", "sample_id": "clean::4bc7a819d2ec8695", "total": 149}
+{"model": "B-Clean", "number": 64, "phase": "render_sample_start", "sample_id": "lr2::4bc7a819d2ec8695", "total": 149}
+{"model": "B-Clean", "number": 65, "phase": "render_sample_start", "sample_id": "clean::4c1585f044724f7e", "total": 149}
+{"model": "B-Clean", "number": 66, "phase": "render_sample_start", "sample_id": "clean::4de553816e4fe58b", "total": 149}
+{"model": "B-Clean", "number": 67, "phase": "render_sample_start", "sample_id": "clean::4e9007e57e97f160", "total": 149}
+{"model": "B-Clean", "number": 68, "phase": "render_sample_start", "sample_id": "lr2::4fd83d5f1ec14bf6", "total": 149}
+{"model": "B-Clean", "number": 69, "phase": "render_sample_start", "sample_id": "clean::50784f7311e9055e", "total": 149}
+{"model": "B-Clean", "number": 70, "phase": "render_sample_start", "sample_id": "clean::51034a7bccb64b34", "total": 149}
+{"model": "B-Clean", "number": 71, "phase": "render_sample_start", "sample_id": "lr2::51034a7bccb64b34", "total": 149}
+{"model": "B-Clean", "number": 72, "phase": "render_sample_start", "sample_id": "clean::52e63ad32ec1a412", "total": 149}
+{"model": "B-Clean", "number": 73, "phase": "render_sample_start", "sample_id": "clean::541ddc3fae2e1357", "total": 149}
+{"model": "B-Clean", "number": 74, "phase": "render_sample_start", "sample_id": "lr2::54a6ec25c242fddf", "total": 149}
+{"model": "B-Clean", "number": 75, "phase": "render_sample_start", "sample_id": "lr2::5bd7db325de3069e", "total": 149}
+{"model": "B-Clean", "number": 76, "phase": "render_sample_start", "sample_id": "lr2::5e6f1d52ee57fb8b", "total": 149}
+{"model": "B-Clean", "number": 77, "phase": "render_sample_start", "sample_id": "lr2::60e13f4762a9bcb2", "total": 149}
+{"model": "B-Clean", "number": 78, "phase": "render_sample_start", "sample_id": "lr2::639d1b89d2f946a5", "total": 149}
+{"model": "B-Clean", "number": 79, "phase": "render_sample_start", "sample_id": "clean::644ae4a368af12db", "total": 149}
+{"model": "B-Clean", "number": 80, "phase": "render_sample_start", "sample_id": "lr2::652a185acc34b5d0", "total": 149}
+{"model": "B-Clean", "number": 81, "phase": "render_sample_start", "sample_id": "lr2::673a93de54743c8f", "total": 149}
+{"model": "B-Clean", "number": 82, "phase": "render_sample_start", "sample_id": "clean::693bdd62acb6958a", "total": 149}
+{"model": "B-Clean", "number": 83, "phase": "render_sample_start", "sample_id": "lr2::69eddefbe18eea44", "total": 149}
+{"model": "B-Clean", "number": 84, "phase": "render_sample_start", "sample_id": "clean::6ab799c1d10def05", "total": 149}
+{"model": "B-Clean", "number": 85, "phase": "render_sample_start", "sample_id": "lr2::6c270d38b9bfde71", "total": 149}
+{"model": "B-Clean", "number": 86, "phase": "render_sample_start", "sample_id": "clean::6cb1e0235a5ccd1f", "total": 149}
+{"model": "B-Clean", "number": 87, "phase": "render_sample_start", "sample_id": "clean::6e340fcbb1e0a877", "total": 149}
+{"model": "B-Clean", "number": 88, "phase": "render_sample_start", "sample_id": "lr2::6e340fcbb1e0a877", "total": 149}
+{"model": "B-Clean", "number": 89, "phase": "render_sample_start", "sample_id": "lr2::74109a4f7e7c7f4b", "total": 149}
+{"model": "B-Clean", "number": 90, "phase": "render_sample_start", "sample_id": "lr2::741180763dde33c2", "total": 149}
+{"model": "B-Clean", "number": 91, "phase": "render_sample_start", "sample_id": "lr2::760f1498febf3f4d", "total": 149}
+{"model": "B-Clean", "number": 92, "phase": "render_sample_start", "sample_id": "lr2::76ef8868888054e1", "total": 149}
+{"model": "B-Clean", "number": 93, "phase": "render_sample_start", "sample_id": "lr2::788d41371e5fc36c", "total": 149}
+{"model": "B-Clean", "number": 94, "phase": "render_sample_start", "sample_id": "clean::7ab0406b11838409", "total": 149}
+{"model": "B-Clean", "number": 95, "phase": "render_sample_start", "sample_id": "clean::7ab65fdc58987f37", "total": 149}
+{"model": "B-Clean", "number": 96, "phase": "render_sample_start", "sample_id": "lr2::7af2dc039a9151d8", "total": 149}
+{"model": "B-Clean", "number": 97, "phase": "render_sample_start", "sample_id": "clean::7e1ac54b6a25a362", "total": 149}
+{"model": "B-Clean", "number": 98, "phase": "render_sample_start", "sample_id": "lr2::7e1ac54b6a25a362", "total": 149}
+{"model": "B-Clean", "number": 99, "phase": "render_sample_start", "sample_id": "clean::7f499a5b2269ae77", "total": 149}
+{"model": "B-Clean", "number": 100, "phase": "render_sample_start", "sample_id": "clean::81d1ed25e860fb4e", "total": 149}
+{"model": "B-Clean", "number": 101, "phase": "render_sample_start", "sample_id": "lr2::83b93410192e9815", "total": 149}
+{"model": "B-Clean", "number": 102, "phase": "render_sample_start", "sample_id": "clean::84fd9f9452b63372", "total": 149}
+{"model": "B-Clean", "number": 103, "phase": "render_sample_start", "sample_id": "lr2::85f63c79bff5ac4a", "total": 149}
+{"model": "B-Clean", "number": 104, "phase": "render_sample_start", "sample_id": "lr2::8604553dc2247ff5", "total": 149}
+{"model": "B-Clean", "number": 105, "phase": "render_sample_start", "sample_id": "clean::86b4a63d44ecc8ff", "total": 149}
+{"model": "B-Clean", "number": 106, "phase": "render_sample_start", "sample_id": "clean::89cf9370a6725092", "total": 149}
+{"model": "B-Clean", "number": 107, "phase": "render_sample_start", "sample_id": "lr2::8abc6f99f10af2b2", "total": 149}
+{"model": "B-Clean", "number": 108, "phase": "render_sample_start", "sample_id": "lr2::8d4cf1ef8a4e4bd4", "total": 149}
+{"model": "B-Clean", "number": 109, "phase": "render_sample_start", "sample_id": "clean::8e086d4587f96fec", "total": 149}
+{"model": "B-Clean", "number": 110, "phase": "render_sample_start", "sample_id": "clean::8ecbab6e8466f298", "total": 149}
+{"model": "B-Clean", "number": 111, "phase": "render_sample_start", "sample_id": "clean::8ed79455beba6b98", "total": 149}
+{"model": "B-Clean", "number": 112, "phase": "render_sample_start", "sample_id": "clean::903c56c9ed40503d", "total": 149}
+{"model": "B-Clean", "number": 113, "phase": "render_sample_start", "sample_id": "lr2::93f32372daa6e7c6", "total": 149}
+{"model": "B-Clean", "number": 114, "phase": "render_sample_start", "sample_id": "lr2::984dfd2249a7d9fd", "total": 149}
+{"model": "B-Clean", "number": 115, "phase": "render_sample_start", "sample_id": "clean::9b515b303ddf71aa", "total": 149}
+{"model": "B-Clean", "number": 116, "phase": "render_sample_start", "sample_id": "clean::9cb2f3fc482e8eb7", "total": 149}
+{"model": "B-Clean", "number": 117, "phase": "render_sample_start", "sample_id": "lr2::9e2017066c804253", "total": 149}
+{"model": "B-Clean", "number": 118, "phase": "render_sample_start", "sample_id": "lr2::a02793f1e29f2ff5", "total": 149}
+{"model": "B-Clean", "number": 119, "phase": "render_sample_start", "sample_id": "lr2::a84f8638c16a6c2e", "total": 149}
+{"model": "B-Clean", "number": 120, "phase": "render_sample_start", "sample_id": "clean::aa39b1a6d273b4de", "total": 149}
+{"model": "B-Clean", "number": 121, "phase": "render_sample_start", "sample_id": "lr2::abbc4bd5a7b96200", "total": 149}
+{"model": "B-Clean", "number": 122, "phase": "render_sample_start", "sample_id": "clean::b0aadea963985895", "total": 149}
+{"model": "B-Clean", "number": 123, "phase": "render_sample_start", "sample_id": "lr2::b683dc0fa3fd8dfb", "total": 149}
+{"model": "B-Clean", "number": 124, "phase": "render_sample_start", "sample_id": "lr2::b81c007d8b5e6a7a", "total": 149}
+{"model": "B-Clean", "number": 125, "phase": "render_sample_start", "sample_id": "clean::bb7a7d7eb3c81846", "total": 149}
+{"model": "B-Clean", "number": 126, "phase": "render_sample_start", "sample_id": "clean::bdbf26933c859932", "total": 149}
+{"model": "B-Clean", "number": 127, "phase": "render_sample_start", "sample_id": "lr2::be2f12f410bbff21", "total": 149}
+{"model": "B-Clean", "number": 128, "phase": "render_sample_start", "sample_id": "lr2::be78f84a6f5add74", "total": 149}
+{"model": "B-Clean", "number": 129, "phase": "render_sample_start", "sample_id": "clean::c1309467624becbc", "total": 149}
+{"model": "B-Clean", "number": 130, "phase": "render_sample_start", "sample_id": "lr2::c3034ee4c10494bd", "total": 149}
+{"model": "B-Clean", "number": 131, "phase": "render_sample_start", "sample_id": "lr2::cb5d4555845c9ef2", "total": 149}
+{"model": "B-Clean", "number": 132, "phase": "render_sample_start", "sample_id": "clean::cc24aeccfb171422", "total": 149}
+{"model": "B-Clean", "number": 133, "phase": "render_sample_start", "sample_id": "clean::cc67d7fee48ce4ec", "total": 149}
+{"model": "B-Clean", "number": 134, "phase": "render_sample_start", "sample_id": "clean::d709940b064b2ea7", "total": 149}
+{"model": "B-Clean", "number": 135, "phase": "render_sample_start", "sample_id": "clean::d7c8a839850ae455", "total": 149}
+{"model": "B-Clean", "number": 136, "phase": "render_sample_start", "sample_id": "lr2::dcb1fdd0a40431e8", "total": 149}
+{"model": "B-Clean", "number": 137, "phase": "render_sample_start", "sample_id": "lr2::e18dadc2e8acbf6a", "total": 149}
+{"model": "B-Clean", "number": 138, "phase": "render_sample_start", "sample_id": "clean::e4b76a9ac5490737", "total": 149}
+{"model": "B-Clean", "number": 139, "phase": "render_sample_start", "sample_id": "lr2::e512297b7273ff8c", "total": 149}
+{"model": "B-Clean", "number": 140, "phase": "render_sample_start", "sample_id": "lr2::e5d6e954b692ef59", "total": 149}
+{"model": "B-Clean", "number": 141, "phase": "render_sample_start", "sample_id": "lr2::e89823046628ccac", "total": 149}
+{"model": "B-Clean", "number": 142, "phase": "render_sample_start", "sample_id": "lr2::e8efd6d4c5d4bc0a", "total": 149}
+{"model": "B-Clean", "number": 143, "phase": "render_sample_start", "sample_id": "clean::e95f89c301017195", "total": 149}
+{"model": "B-Clean", "number": 144, "phase": "render_sample_start", "sample_id": "lr2::f16c52e599cf8404", "total": 149}
+{"model": "B-Clean", "number": 145, "phase": "render_sample_start", "sample_id": "lr2::f25f2bebd345e48c", "total": 149}
+{"model": "B-Clean", "number": 146, "phase": "render_sample_start", "sample_id": "clean::f953a81e05866a22", "total": 149}
+{"model": "B-Clean", "number": 147, "phase": "render_sample_start", "sample_id": "clean::fcccc16da71d6cf7", "total": 149}
+{"model": "B-Clean", "number": 148, "phase": "render_sample_start", "sample_id": "clean::fd3ca0b2923a5224", "total": 149}
+{"model": "B-Clean", "number": 149, "phase": "render_sample_start", "sample_id": "lr2::fd3ca0b2923a5224", "total": 149}
+Loads checkpoint by local backend from path: /datastore/dungmt/textvqa/Tuan/MONKEY_V2/.runtime/rev4_b1/run/weights/iter_20000.pth
+Loads checkpoint by local backend from path: /datastore/dungmt/textvqa/Tuan/MONKEY_V2/.runtime/rev4_b1/run/weights/iter_20000.pth
+{"model": "B1", "number": 1, "phase": "render_sample_start", "sample_id": "lr2::00763053203c207f", "total": 149}
+{"model": "B1", "number": 2, "phase": "render_sample_start", "sample_id": "lr2::00ef7a8de38d6ac8", "total": 149}
+{"model": "B1", "number": 3, "phase": "render_sample_start", "sample_id": "clean::02748cc67037e249", "total": 149}
+{"model": "B1", "number": 4, "phase": "render_sample_start", "sample_id": "lr2::02853972cad856a9", "total": 149}
+{"model": "B1", "number": 5, "phase": "render_sample_start", "sample_id": "lr2::038dc16c44629f3c", "total": 149}
+{"model": "B1", "number": 6, "phase": "render_sample_start", "sample_id": "clean::03b2dbb7dff0e32d", "total": 149}
+{"model": "B1", "number": 7, "phase": "render_sample_start", "sample_id": "clean::0434ea33f3f9999f", "total": 149}
+{"model": "B1", "number": 8, "phase": "render_sample_start", "sample_id": "clean::057a84d8b36af342", "total": 149}
+{"model": "B1", "number": 9, "phase": "render_sample_start", "sample_id": "lr2::061d8e57615d98c4", "total": 149}
+{"model": "B1", "number": 10, "phase": "render_sample_start", "sample_id": "clean::07759da518969fdd", "total": 149}
+{"model": "B1", "number": 11, "phase": "render_sample_start", "sample_id": "clean::07d05ffee742c36d", "total": 149}
+{"model": "B1", "number": 12, "phase": "render_sample_start", "sample_id": "lr2::0878ad2f5ce3ece6", "total": 149}
+{"model": "B1", "number": 13, "phase": "render_sample_start", "sample_id": "clean::09b9d93bdc065bb7", "total": 149}
+{"model": "B1", "number": 14, "phase": "render_sample_start", "sample_id": "clean::0b597eb1e1b7883d", "total": 149}
+{"model": "B1", "number": 15, "phase": "render_sample_start", "sample_id": "lr2::0bbd8467e4a69626", "total": 149}
+{"model": "B1", "number": 16, "phase": "render_sample_start", "sample_id": "clean::0cfde019eaefbadf", "total": 149}
+{"model": "B1", "number": 17, "phase": "render_sample_start", "sample_id": "clean::132a53f9f69f0f1a", "total": 149}
+{"model": "B1", "number": 18, "phase": "render_sample_start", "sample_id": "lr2::14b891c2bb8581ac", "total": 149}
+{"model": "B1", "number": 19, "phase": "render_sample_start", "sample_id": "clean::14f625e7b3f9e25b", "total": 149}
+{"model": "B1", "number": 20, "phase": "render_sample_start", "sample_id": "clean::150c84364cca325c", "total": 149}
+{"model": "B1", "number": 21, "phase": "render_sample_start", "sample_id": "lr2::15db54ec083e4390", "total": 149}
+{"model": "B1", "number": 22, "phase": "render_sample_start", "sample_id": "lr2::164e080755911770", "total": 149}
+{"model": "B1", "number": 23, "phase": "render_sample_start", "sample_id": "clean::16505f9e43a2d81b", "total": 149}
+{"model": "B1", "number": 24, "phase": "render_sample_start", "sample_id": "clean::171e532e7edaf8f9", "total": 149}
+{"model": "B1", "number": 25, "phase": "render_sample_start", "sample_id": "lr2::17f22d6d1632458b", "total": 149}
+{"model": "B1", "number": 26, "phase": "render_sample_start", "sample_id": "lr2::1ab0e5fe4e0e8b21", "total": 149}
+{"model": "B1", "number": 27, "phase": "render_sample_start", "sample_id": "lr2::1d066611264ad99e", "total": 149}
+{"model": "B1", "number": 28, "phase": "render_sample_start", "sample_id": "lr2::1d1b01333ac1742f", "total": 149}
+{"model": "B1", "number": 29, "phase": "render_sample_start", "sample_id": "clean::1da914ac26666957", "total": 149}
+{"model": "B1", "number": 30, "phase": "render_sample_start", "sample_id": "clean::1edbd648b1acb1bc", "total": 149}
+{"model": "B1", "number": 31, "phase": "render_sample_start", "sample_id": "lr2::22252f4197bf7868", "total": 149}
+{"model": "B1", "number": 32, "phase": "render_sample_start", "sample_id": "clean::250972da15f9e0d2", "total": 149}
+{"model": "B1", "number": 33, "phase": "render_sample_start", "sample_id": "lr2::251ad43344e9a932", "total": 149}
+{"model": "B1", "number": 34, "phase": "render_sample_start", "sample_id": "clean::25383d64fbc77400", "total": 149}
+{"model": "B1", "number": 35, "phase": "render_sample_start", "sample_id": "lr2::25383d64fbc77400", "total": 149}
+{"model": "B1", "number": 36, "phase": "render_sample_start", "sample_id": "lr2::27e0a45879e9c53b", "total": 149}
+{"model": "B1", "number": 37, "phase": "render_sample_start", "sample_id": "clean::288d826fe847ff67", "total": 149}
+{"model": "B1", "number": 38, "phase": "render_sample_start", "sample_id": "clean::2a67e6a03aa704f1", "total": 149}
+{"model": "B1", "number": 39, "phase": "render_sample_start", "sample_id": "clean::342f4c0ac57f578c", "total": 149}
+{"model": "B1", "number": 40, "phase": "render_sample_start", "sample_id": "lr2::35cf406f47c83f66", "total": 149}
+{"model": "B1", "number": 41, "phase": "render_sample_start", "sample_id": "clean::37da5237c72f53c5", "total": 149}
+{"model": "B1", "number": 42, "phase": "render_sample_start", "sample_id": "clean::39afd5154644d237", "total": 149}
+{"model": "B1", "number": 43, "phase": "render_sample_start", "sample_id": "lr2::39afd5154644d237", "total": 149}
+{"model": "B1", "number": 44, "phase": "render_sample_start", "sample_id": "lr2::3c0e63a377f190f8", "total": 149}
+{"model": "B1", "number": 45, "phase": "render_sample_start", "sample_id": "lr2::3c66a30c10f8d9aa", "total": 149}
+{"model": "B1", "number": 46, "phase": "render_sample_start", "sample_id": "clean::3d8182867c6589ba", "total": 149}
+{"model": "B1", "number": 47, "phase": "render_sample_start", "sample_id": "lr2::3f842cd939fdf14e", "total": 149}
+{"model": "B1", "number": 48, "phase": "render_sample_start", "sample_id": "lr2::3f881b19dca7117e", "total": 149}
+{"model": "B1", "number": 49, "phase": "render_sample_start", "sample_id": "clean::3f9f8afc0fffa5f2", "total": 149}
+{"model": "B1", "number": 50, "phase": "render_sample_start", "sample_id": "lr2::41ee3eb636805b6f", "total": 149}
+{"model": "B1", "number": 51, "phase": "render_sample_start", "sample_id": "clean::43c427ba34b6c147", "total": 149}
+{"model": "B1", "number": 52, "phase": "render_sample_start", "sample_id": "clean::448e0716ec980766", "total": 149}
+{"model": "B1", "number": 53, "phase": "render_sample_start", "sample_id": "clean::459b300fe8d78eae", "total": 149}
+{"model": "B1", "number": 54, "phase": "render_sample_start", "sample_id": "clean::46bde8888333a6e8", "total": 149}
+{"model": "B1", "number": 55, "phase": "render_sample_start", "sample_id": "lr2::46c90568c530e950", "total": 149}
+{"model": "B1", "number": 56, "phase": "render_sample_start", "sample_id": "lr2::46fbde6f07658047", "total": 149}
+{"model": "B1", "number": 57, "phase": "render_sample_start", "sample_id": "clean::478c66a97e599671", "total": 149}
+{"model": "B1", "number": 58, "phase": "render_sample_start", "sample_id": "lr2::49d47b340c239a07", "total": 149}
+{"model": "B1", "number": 59, "phase": "render_sample_start", "sample_id": "clean::4a0fc9bf90573ba0", "total": 149}
+{"model": "B1", "number": 60, "phase": "render_sample_start", "sample_id": "lr2::4acf7781a7f19dfb", "total": 149}
+{"model": "B1", "number": 61, "phase": "render_sample_start", "sample_id": "clean::4b05bc21b87d63b8", "total": 149}
+{"model": "B1", "number": 62, "phase": "render_sample_start", "sample_id": "lr2::4b05bc21b87d63b8", "total": 149}
+{"model": "B1", "number": 63, "phase": "render_sample_start", "sample_id": "clean::4bc7a819d2ec8695", "total": 149}
+{"model": "B1", "number": 64, "phase": "render_sample_start", "sample_id": "lr2::4bc7a819d2ec8695", "total": 149}
+{"model": "B1", "number": 65, "phase": "render_sample_start", "sample_id": "clean::4c1585f044724f7e", "total": 149}
+{"model": "B1", "number": 66, "phase": "render_sample_start", "sample_id": "clean::4de553816e4fe58b", "total": 149}
+{"model": "B1", "number": 67, "phase": "render_sample_start", "sample_id": "clean::4e9007e57e97f160", "total": 149}
+{"model": "B1", "number": 68, "phase": "render_sample_start", "sample_id": "lr2::4fd83d5f1ec14bf6", "total": 149}
+{"model": "B1", "number": 69, "phase": "render_sample_start", "sample_id": "clean::50784f7311e9055e", "total": 149}
+{"model": "B1", "number": 70, "phase": "render_sample_start", "sample_id": "clean::51034a7bccb64b34", "total": 149}
+{"model": "B1", "number": 71, "phase": "render_sample_start", "sample_id": "lr2::51034a7bccb64b34", "total": 149}
+{"model": "B1", "number": 72, "phase": "render_sample_start", "sample_id": "clean::52e63ad32ec1a412", "total": 149}
+{"model": "B1", "number": 73, "phase": "render_sample_start", "sample_id": "clean::541ddc3fae2e1357", "total": 149}
+{"model": "B1", "number": 74, "phase": "render_sample_start", "sample_id": "lr2::54a6ec25c242fddf", "total": 149}
+{"model": "B1", "number": 75, "phase": "render_sample_start", "sample_id": "lr2::5bd7db325de3069e", "total": 149}
+{"model": "B1", "number": 76, "phase": "render_sample_start", "sample_id": "lr2::5e6f1d52ee57fb8b", "total": 149}
+{"model": "B1", "number": 77, "phase": "render_sample_start", "sample_id": "lr2::60e13f4762a9bcb2", "total": 149}
+{"model": "B1", "number": 78, "phase": "render_sample_start", "sample_id": "lr2::639d1b89d2f946a5", "total": 149}
+{"model": "B1", "number": 79, "phase": "render_sample_start", "sample_id": "clean::644ae4a368af12db", "total": 149}
+{"model": "B1", "number": 80, "phase": "render_sample_start", "sample_id": "lr2::652a185acc34b5d0", "total": 149}
+{"model": "B1", "number": 81, "phase": "render_sample_start", "sample_id": "lr2::673a93de54743c8f", "total": 149}
+{"model": "B1", "number": 82, "phase": "render_sample_start", "sample_id": "clean::693bdd62acb6958a", "total": 149}
+{"model": "B1", "number": 83, "phase": "render_sample_start", "sample_id": "lr2::69eddefbe18eea44", "total": 149}
+{"model": "B1", "number": 84, "phase": "render_sample_start", "sample_id": "clean::6ab799c1d10def05", "total": 149}
+{"model": "B1", "number": 85, "phase": "render_sample_start", "sample_id": "lr2::6c270d38b9bfde71", "total": 149}
+{"model": "B1", "number": 86, "phase": "render_sample_start", "sample_id": "clean::6cb1e0235a5ccd1f", "total": 149}
+{"model": "B1", "number": 87, "phase": "render_sample_start", "sample_id": "clean::6e340fcbb1e0a877", "total": 149}
+{"model": "B1", "number": 88, "phase": "render_sample_start", "sample_id": "lr2::6e340fcbb1e0a877", "total": 149}
+{"model": "B1", "number": 89, "phase": "render_sample_start", "sample_id": "lr2::74109a4f7e7c7f4b", "total": 149}
+{"model": "B1", "number": 90, "phase": "render_sample_start", "sample_id": "lr2::741180763dde33c2", "total": 149}
+{"model": "B1", "number": 91, "phase": "render_sample_start", "sample_id": "lr2::760f1498febf3f4d", "total": 149}
+{"model": "B1", "number": 92, "phase": "render_sample_start", "sample_id": "lr2::76ef8868888054e1", "total": 149}
+{"model": "B1", "number": 93, "phase": "render_sample_start", "sample_id": "lr2::788d41371e5fc36c", "total": 149}
+{"model": "B1", "number": 94, "phase": "render_sample_start", "sample_id": "clean::7ab0406b11838409", "total": 149}
+{"model": "B1", "number": 95, "phase": "render_sample_start", "sample_id": "clean::7ab65fdc58987f37", "total": 149}
+{"model": "B1", "number": 96, "phase": "render_sample_start", "sample_id": "lr2::7af2dc039a9151d8", "total": 149}
+{"model": "B1", "number": 97, "phase": "render_sample_start", "sample_id": "clean::7e1ac54b6a25a362", "total": 149}
+{"model": "B1", "number": 98, "phase": "render_sample_start", "sample_id": "lr2::7e1ac54b6a25a362", "total": 149}
+{"model": "B1", "number": 99, "phase": "render_sample_start", "sample_id": "clean::7f499a5b2269ae77", "total": 149}
+{"model": "B1", "number": 100, "phase": "render_sample_start", "sample_id": "clean::81d1ed25e860fb4e", "total": 149}
+{"model": "B1", "number": 101, "phase": "render_sample_start", "sample_id": "lr2::83b93410192e9815", "total": 149}
+{"model": "B1", "number": 102, "phase": "render_sample_start", "sample_id": "clean::84fd9f9452b63372", "total": 149}
+{"model": "B1", "number": 103, "phase": "render_sample_start", "sample_id": "lr2::85f63c79bff5ac4a", "total": 149}
+{"model": "B1", "number": 104, "phase": "render_sample_start", "sample_id": "lr2::8604553dc2247ff5", "total": 149}
+{"model": "B1", "number": 105, "phase": "render_sample_start", "sample_id": "clean::86b4a63d44ecc8ff", "total": 149}
+{"model": "B1", "number": 106, "phase": "render_sample_start", "sample_id": "clean::89cf9370a6725092", "total": 149}
+{"model": "B1", "number": 107, "phase": "render_sample_start", "sample_id": "lr2::8abc6f99f10af2b2", "total": 149}
+{"model": "B1", "number": 108, "phase": "render_sample_start", "sample_id": "lr2::8d4cf1ef8a4e4bd4", "total": 149}
+{"model": "B1", "number": 109, "phase": "render_sample_start", "sample_id": "clean::8e086d4587f96fec", "total": 149}
+{"model": "B1", "number": 110, "phase": "render_sample_start", "sample_id": "clean::8ecbab6e8466f298", "total": 149}
+{"model": "B1", "number": 111, "phase": "render_sample_start", "sample_id": "clean::8ed79455beba6b98", "total": 149}
+{"model": "B1", "number": 112, "phase": "render_sample_start", "sample_id": "clean::903c56c9ed40503d", "total": 149}
+{"model": "B1", "number": 113, "phase": "render_sample_start", "sample_id": "lr2::93f32372daa6e7c6", "total": 149}
+{"model": "B1", "number": 114, "phase": "render_sample_start", "sample_id": "lr2::984dfd2249a7d9fd", "total": 149}
+{"model": "B1", "number": 115, "phase": "render_sample_start", "sample_id": "clean::9b515b303ddf71aa", "total": 149}
+{"model": "B1", "number": 116, "phase": "render_sample_start", "sample_id": "clean::9cb2f3fc482e8eb7", "total": 149}
+{"model": "B1", "number": 117, "phase": "render_sample_start", "sample_id": "lr2::9e2017066c804253", "total": 149}
+{"model": "B1", "number": 118, "phase": "render_sample_start", "sample_id": "lr2::a02793f1e29f2ff5", "total": 149}
+{"model": "B1", "number": 119, "phase": "render_sample_start", "sample_id": "lr2::a84f8638c16a6c2e", "total": 149}
+{"model": "B1", "number": 120, "phase": "render_sample_start", "sample_id": "clean::aa39b1a6d273b4de", "total": 149}
+{"model": "B1", "number": 121, "phase": "render_sample_start", "sample_id": "lr2::abbc4bd5a7b96200", "total": 149}
+{"model": "B1", "number": 122, "phase": "render_sample_start", "sample_id": "clean::b0aadea963985895", "total": 149}
+{"model": "B1", "number": 123, "phase": "render_sample_start", "sample_id": "lr2::b683dc0fa3fd8dfb", "total": 149}
+{"model": "B1", "number": 124, "phase": "render_sample_start", "sample_id": "lr2::b81c007d8b5e6a7a", "total": 149}
+{"model": "B1", "number": 125, "phase": "render_sample_start", "sample_id": "clean::bb7a7d7eb3c81846", "total": 149}
+{"model": "B1", "number": 126, "phase": "render_sample_start", "sample_id": "clean::bdbf26933c859932", "total": 149}
+{"model": "B1", "number": 127, "phase": "render_sample_start", "sample_id": "lr2::be2f12f410bbff21", "total": 149}
+{"model": "B1", "number": 128, "phase": "render_sample_start", "sample_id": "lr2::be78f84a6f5add74", "total": 149}
+{"model": "B1", "number": 129, "phase": "render_sample_start", "sample_id": "clean::c1309467624becbc", "total": 149}
+{"model": "B1", "number": 130, "phase": "render_sample_start", "sample_id": "lr2::c3034ee4c10494bd", "total": 149}
+{"model": "B1", "number": 131, "phase": "render_sample_start", "sample_id": "lr2::cb5d4555845c9ef2", "total": 149}
+{"model": "B1", "number": 132, "phase": "render_sample_start", "sample_id": "clean::cc24aeccfb171422", "total": 149}
+{"model": "B1", "number": 133, "phase": "render_sample_start", "sample_id": "clean::cc67d7fee48ce4ec", "total": 149}
+{"model": "B1", "number": 134, "phase": "render_sample_start", "sample_id": "clean::d709940b064b2ea7", "total": 149}
+{"model": "B1", "number": 135, "phase": "render_sample_start", "sample_id": "clean::d7c8a839850ae455", "total": 149}
+{"model": "B1", "number": 136, "phase": "render_sample_start", "sample_id": "lr2::dcb1fdd0a40431e8", "total": 149}
+{"model": "B1", "number": 137, "phase": "render_sample_start", "sample_id": "lr2::e18dadc2e8acbf6a", "total": 149}
+{"model": "B1", "number": 138, "phase": "render_sample_start", "sample_id": "clean::e4b76a9ac5490737", "total": 149}
+{"model": "B1", "number": 139, "phase": "render_sample_start", "sample_id": "lr2::e512297b7273ff8c", "total": 149}
+{"model": "B1", "number": 140, "phase": "render_sample_start", "sample_id": "lr2::e5d6e954b692ef59", "total": 149}
+{"model": "B1", "number": 141, "phase": "render_sample_start", "sample_id": "lr2::e89823046628ccac", "total": 149}
+{"model": "B1", "number": 142, "phase": "render_sample_start", "sample_id": "lr2::e8efd6d4c5d4bc0a", "total": 149}
+{"model": "B1", "number": 143, "phase": "render_sample_start", "sample_id": "clean::e95f89c301017195", "total": 149}
+{"model": "B1", "number": 144, "phase": "render_sample_start", "sample_id": "lr2::f16c52e599cf8404", "total": 149}
+{"model": "B1", "number": 145, "phase": "render_sample_start", "sample_id": "lr2::f25f2bebd345e48c", "total": 149}
+{"model": "B1", "number": 146, "phase": "render_sample_start", "sample_id": "clean::f953a81e05866a22", "total": 149}
+{"model": "B1", "number": 147, "phase": "render_sample_start", "sample_id": "clean::fcccc16da71d6cf7", "total": 149}
+{"model": "B1", "number": 148, "phase": "render_sample_start", "sample_id": "clean::fd3ca0b2923a5224", "total": 149}
+{"model": "B1", "number": 149, "phase": "render_sample_start", "sample_id": "lr2::fd3ca0b2923a5224", "total": 149}
+{"phase": "complete", "report": "/datastore/dungmt/textvqa/Tuan/MONKEY_V2/.runtime/rev4_decision_audit/recovery_v1/results/decision_audit_report.md"}

@@ -1,6 +1,13 @@
 # Handoff CS431 · MonkeyOCRv2-AS + DBNet
 
-Cập nhật 15/11/2026 · [Repo MONKEY_V2](https://github.com/ncat218/MONKEY_V2).
+Cập nhật artifacts 19/11/2026 · [Repo MONKEY_V2](https://github.com/ncat218/MONKEY_V2).
+
+**Đọc cập nhật mới trước:** [Baseline B-Clean/B1, calibration mở rộng và artifacts cho Mix A](docs/handoff/artifacts/pr_quad_audit_v1/README.md).
+Đã có counts 72 settings theo source, manifest remaining-validation, checkpoint B-Clean,
+endpoint reference counts và 160 thẻ review. Job phục hồi `63985` COMPLETED; human review PENDING.
+B-Clean/B1 sau calibration mở rộng đạt Clean/LR2 Hmean **80,86/75,51%** và **79,43/76,90%**.
+Phần bên dưới giữ mô tả và kết quả lịch sử ngày 15/11; các số `.30/.40` không thay thế
+baseline mở rộng mới. Các extension chưa thay protocol và benchmark cuối chưa chạy.
 
 **Đề bài cho người review.** Đọc kết quả và đề xuất **một hướng nghiên cứu độc lập** để cải thiện phát hiện chữ ở LR2 so với B1-cal. Bạn tự chọn giả thuyết và phương pháp dựa trên bằng chứng hoặc tài liệu bạn tìm được. PRC và EDSR là các thử nghiệm đã chạy để tham khảo. Mục 5 ghi phần đề xuất cần gửi lại cho nhóm.
 

@@ -2,6 +2,8 @@
 
 [Bàn giao cho nhóm · protocol, checkpoint và đề bài nghiên cứu](handoff.md)
 
+[Baseline và artifacts mới 19/11 · B-Clean/B1, PR/quad, dữ liệu đối chiếu cho Mix A](docs/handoff/artifacts/pr_quad_audit_v1/README.md)
+
 [Đề xuất nghiên cứu phục hồi ảnh trước DBNet](docs/lr2-restoration-proposal.md)
 
 [Pilot chưng cất đặc trưng Clean → LR2, có đối chứng train tiếp](docs/lr2-feature-distillation-pilot.md)
