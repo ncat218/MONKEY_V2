@@ -57,3 +57,28 @@ unreviewed labels blank.
 Slurm launcher: `python submit_decision_audit.py --plan-only`, then
 `python submit_decision_audit.py`. Results use the new versioned directory
 `.runtime/rev4_decision_audit/v1/` and never overwrite historical results.
+
+## Recovery after job 54308
+
+Job 54308 completed all three sweeps and reproduced the historical base counts,
+then exited with status 1 during review preparation. Its stderr contains no
+exception traceback; the original cause is not established. Six cached tasks
+around the last written sample passed the same review functions on CPU.
+
+`python submit_decision_recovery.py --plan-only` verifies the original counts
+and tables against pinned SHA-256 values. `python submit_decision_recovery.py`
+submits a recovery allocation capped at two hours, using the existing GPU MIG,
+8 CPUs and 40 GB RAM. It writes to a new directory
+`.runtime/rev4_decision_audit/recovery_v1/`.
+
+The recovery revalidates every reused base count against the historical EDA
+cache. It checkpoints review preparation in chunks of 64 tasks, atomically
+marks completed chunks with hashes, and resumes completed chunks on retry.
+Chunk population counts and minimum hash ranks are merged so that the global
+stratified sample and its inclusion probabilities remain the same as a full
+pass. Only sampled review images receive new forward passes. Progress is saved
+before each chunk/image; Python exceptions and native tracebacks are enabled.
+The full three-model postprocessing sweep is not repeated.
+
+Human review remains PENDING when automatic preparation completes. Tables and
+paired image/P-map cards do not establish visual root causes until reviewed.
