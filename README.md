@@ -6,6 +6,8 @@
 
 [Flow chính · chẩn đoán FP/FN ở ngưỡng cố định .40/.60](docs/fixed-postprocess-diagnostics.md)
 
+[Hai nhánh độc lập · pilot latent A0/A1/A2 và sàng lọc CRAFT](docs/latent-and-craft-trials.md)
+
 [Đề xuất nghiên cứu phục hồi ảnh trước DBNet](docs/lr2-restoration-proposal.md)
 
 [Pilot chưng cất đặc trưng Clean → LR2, có đối chứng train tiếp](docs/lr2-feature-distillation-pilot.md)

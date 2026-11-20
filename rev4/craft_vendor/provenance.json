@@ -1,0 +1,36 @@
+{
+  "commit": "e332dd8b718e291f51b66ff8f9ef2c98ee4474c8",
+  "files": {
+    "craft.py": {
+      "upstream_url": "https://raw.githubusercontent.com/clovaai/CRAFT-pytorch/e332dd8b718e291f51b66ff8f9ef2c98ee4474c8/craft.py",
+      "upstream_sha256": "f2cc0dbc0741bf550a998e2a4d26c62c6f22c9d642521957a2c97a16bdcda316",
+      "vendored_sha256": "aaeefa35265c0e677a60374666615529227d0bcfff22766ec7730b2209390f37"
+    },
+    "vgg16_bn.py": {
+      "upstream_url": "https://raw.githubusercontent.com/clovaai/CRAFT-pytorch/e332dd8b718e291f51b66ff8f9ef2c98ee4474c8/basenet/vgg16_bn.py",
+      "upstream_sha256": "b19361dde2219799eca17c7bbcbfe02e61d1e0f3d4879c60f3a9294b158e5e97",
+      "vendored_sha256": "f3dc448919c2b8aabeecdcca51434c476782c319abdc0db0a3fc4a10f051c9f1"
+    },
+    "craft_utils.py": {
+      "upstream_url": "https://raw.githubusercontent.com/clovaai/CRAFT-pytorch/e332dd8b718e291f51b66ff8f9ef2c98ee4474c8/craft_utils.py",
+      "upstream_sha256": "22d624eb7f6757b6bc67194932eefcbb710f7cec4b2ea0c07de65d0de93e855b",
+      "vendored_sha256": "7ba8e1e623c83d128de92ca575fbe7b796dbe7df8e359b932ba86946751124c2"
+    },
+    "imgproc_reference.py": {
+      "upstream_url": "https://raw.githubusercontent.com/clovaai/CRAFT-pytorch/e332dd8b718e291f51b66ff8f9ef2c98ee4474c8/imgproc.py",
+      "upstream_sha256": "a3cb8aa880fa11c19b01a63e160d8c229c76e89591e959f3fd65a5a08df43d12",
+      "vendored_sha256": "cfb85237a31206278daa3bddeb1da3ac8db5fa66afdf9c9a7aa04cfbd44eb2e4"
+    },
+    "UPSTREAM_README.md": {
+      "upstream_url": "https://raw.githubusercontent.com/clovaai/CRAFT-pytorch/e332dd8b718e291f51b66ff8f9ef2c98ee4474c8/README.md",
+      "upstream_sha256": "1b1c64e8f6d0089e514770a99b295d6a1d2b240e8b81532a24fc576cf9e16677",
+      "vendored_sha256": "d6bb0d82ecb752db6b91e2902d715381c2afca4f513cbe41654efcd4d81e5069"
+    }
+  },
+  "patches": [
+    "relative VGG import",
+    "modern torchvision weights=None, no implicit ImageNet download",
+    "reference decoder disabled; audited project decoder used",
+    "canonical LF and trailing-whitespace normalization"
+  ]
+}
