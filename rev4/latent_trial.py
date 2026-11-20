@@ -5,7 +5,8 @@ import time
 
 import numpy as np
 
-from lowres.common import read_json,save_json,sha256
+from lowres.common import read_json,sha256
+from rev4.durable_io import save_json,write_text
 from lowres.evaluate_shared import evaluate_image,rates,bootstrap_paired
 from rev4 import require,b1_training,calibration
 from rev4.latent_plan import ARMS,PAIRS,RECIPE
@@ -296,6 +297,6 @@ def report(a):
             lines.append(f'- {label}, {c}: {delta:+.3f} pp; 95% CI {value["delta_pp_95ci"]["hmean"]}.')
     lines+=['','One seed and short pilot; source CIs do not quantify training-seed or selection uncertainty. '
              'No automatic winner or final TEST decision. See JSON for four GT height bins and training cost.','']
-    (output/'latent_report.md').write_text('\n'.join(lines),encoding='utf-8')
+    write_text(output/'latent_report.md','\n'.join(lines))
     save_json(output/'complete.json',dict(no_test=True,report_sha256=sha256(output/'latent_report.md'),identity=a.trial_identity))
     print('Latent pilot complete:',output/'latent_report.md',flush=True)

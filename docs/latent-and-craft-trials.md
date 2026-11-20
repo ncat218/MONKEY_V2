@@ -87,18 +87,19 @@ auxiliary head is trained by this job.
 ## Launch and outputs
 
 ```bash
-python submit_module_trials.py --kind latent --plan-only
-python submit_module_trials.py --kind latent
+python submit_latent_recovery.py --plan-only
+python submit_latent_recovery.py
 python submit_module_trials.py --kind craft --plan-only
 python submit_module_trials.py --kind craft
 ```
 
-Both jobs wait for successful job 73827; if it has already completed, its
+The original jobs waited for successful job 73827; if it had already completed, its
 accounting state and complete receipt are checked instead of adding a stale
 Slurm dependency. Full runtime, checkpoint and manifest audits happen in the
 allocation. Any FAIL stops the phase. Historical source helpers stay unchanged.
 
-Latent output: `.runtime/latent_refinement/pilot_v2/results/latent_report.md`.
+Current latent recovery: [v3 evidence and reuse policy](latent-recovery-v3.md).
+Latent output: `.runtime/latent_refinement/pilot_v3/results/latent_report.md`.
 CRAFT output: `.runtime/craft_screen/run_v1/results/craft_report.md`.
 Latent requests one MIG 35 GB, 8 CPUs, 40 GB RAM, limit 6 h; CRAFT uses the same
 resource profile with limit 3 h. These limits are not runtime estimates.
