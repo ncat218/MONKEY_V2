@@ -98,7 +98,7 @@ accounting state and complete receipt are checked instead of adding a stale
 Slurm dependency. Full runtime, checkpoint and manifest audits happen in the
 allocation. Any FAIL stops the phase. Historical source helpers stay unchanged.
 
-Latent output: `.runtime/latent_refinement/pilot_v1/results/latent_report.md`.
+Latent output: `.runtime/latent_refinement/pilot_v2/results/latent_report.md`.
 CRAFT output: `.runtime/craft_screen/run_v1/results/craft_report.md`.
 Latent requests one MIG 35 GB, 8 CPUs, 40 GB RAM, limit 6 h; CRAFT uses the same
 resource profile with limit 3 h. These limits are not runtime estimates.
@@ -106,3 +106,16 @@ resource profile with limit 3 h. These limits are not runtime estimates.
 The primary metrics use development already examined repeatedly. Source-paired
 CIs do not quantify one-seed training variance or selection uncertainty. A short
 pilot does not automatically select a final method or authorize TEST evaluation.
+
+## Latent recovery · 20/11/2026
+
+Job 74219 failed during configuration in the probe (33 seconds), before any
+training arm or TRAIN draw. MMEngine's ConfigDict inherits a `freeze` method;
+attribute assignment `backbone.freeze=True` collides with that method. Both
+training and inference now set the dictionary key `backbone['freeze']=True`.
+An integration check loads the real inference config through installed MMEngine
+and checks all three training/inference variants before the GPU probe.
+
+Recovery uses `pilot_v2`, preserving the original logs/identities in `pilot_v1`.
+Architecture, initialization, data, seed, losses, optimizer and update budgets
+are unchanged. CRAFT job 74220 completed separately; it is not resubmitted.

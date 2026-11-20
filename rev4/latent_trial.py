@@ -18,7 +18,7 @@ def configuration(a,arm):
     cfg.resume=False
     cfg.model.type='LatentPilotDBNet'
     cfg.model.adapter_kind=arm
-    cfg.model.backbone.freeze=True
+    cfg.model.backbone['freeze']=True
     cfg.custom_imports['imports']+=['rev4.latent_plugins']
     cfg.custom_hooks=[dict(type='LatentAuditHook')]
     total=RECIPE['optimizer_updates']*RECIPE['accumulation']
@@ -157,17 +157,22 @@ def train(a,arm):
         peak_gpu_mib=torch.cuda.max_memory_allocated()/1024**2))
 
 
-def evaluate(a,arm):
+def inference_configuration(a,arm):
     from mmengine.config import Config
-    from shapely.geometry import shape
-    from lowres.inference import unpack
-    trained=read_json(a.output/arm/'trained.json')
-    require(trained['identity']==a.trial_identity and sha256(trained['checkpoint'])==trained['checkpoint_sha256'],'Checkpoint mismatch')
     cfg=Config.fromfile(str(a.model_config))
     imports=list(cfg.get('custom_imports',{}).get('imports',[]))
     cfg.custom_imports=dict(imports=imports+['rev4.latent_plugins'],allow_failed_imports=False)
     cfg.model.type='LatentPilotDBNet';cfg.model.adapter_kind=arm
-    cfg.model.backbone.freeze=True
+    cfg.model.backbone['freeze']=True
+    return cfg
+
+
+def evaluate(a,arm):
+    from shapely.geometry import shape
+    from lowres.inference import unpack
+    trained=read_json(a.output/arm/'trained.json')
+    require(trained['identity']==a.trial_identity and sha256(trained['checkpoint'])==trained['checkpoint_sha256'],'Checkpoint mismatch')
+    cfg=inference_configuration(a,arm)
     config_path=a.output/arm/'inference_config.py';cfg.dump(str(config_path))
     options=copy.copy(a);options.model_config=config_path;options.checkpoint=Path(trained['checkpoint'])
     detector,native,_,_=detector_for(options)

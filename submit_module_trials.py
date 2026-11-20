@@ -23,11 +23,11 @@ def light(kind):
     stack=REPO.parent/'monkeyocr_workspace/environment_and_models__phase1_verified_stack'
     files=['submit_module_trials.py']
     if kind=='latent':
-        files+=['rev4/latent_plan.py','rev4/latent_modules.py','rev4/latent_plugins.py','rev4/latent_trial.py','tests/test_latent_modules.py']
+        files+=['rev4/latent_plan.py','rev4/latent_modules.py','rev4/latent_plugins.py','rev4/latent_trial.py','tests/test_latent_modules.py','tests/test_latent_config.py']
     else:
         files+=['rev4/craft_screen.py','rev4/craft_core.py','tests/test_craft_core.py']
         files += [str(p.relative_to(REPO)).replace('\\','/') for p in sorted((REPO/'rev4/craft_vendor').glob('*')) if p.is_file()]
-    return SimpleNamespace(kind=kind,output=REPO/'.runtime'/('latent_refinement/pilot_v1' if kind=='latent' else 'craft_screen/run_v1'),
+    return SimpleNamespace(kind=kind,output=REPO/'.runtime'/('latent_refinement/pilot_v2' if kind=='latent' else 'craft_screen/run_v1'),
         python=stack/'python311_venv/bin/python',cuda=stack/'cuda_toolkit_12_8_1__private_nvidia_conda_environment',
         s1=REPO/'.runtime/MONKEY_V2__FULL_R1_LowRes_pilot_FROZEN_v2_0',
         craft_weight=REPO/'.runtime/craft_screen/assets/craft_mlt_25k.pth',
@@ -130,7 +130,8 @@ def main():
             faulthandler.enable(all_threads=True)
             try:
                 test='tests.test_latent_modules' if a.kind=='latent' else 'tests.test_craft_core'
-                subprocess.run([str(a.python),'-m','unittest',test,'-v'],cwd=REPO,check=True)
+                tests=[test]+(['tests.test_latent_config'] if a.kind=='latent' else [])
+                subprocess.run([str(a.python),'-m','unittest',*tests,'-v'],cwd=REPO,check=True)
                 if a.kind=='latent':
                     child(ctx,'probe')
                     for arm in ARMS:
