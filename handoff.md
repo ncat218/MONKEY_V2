@@ -20,7 +20,7 @@ baseline mở rộng mới. Các extension chưa thay protocol và benchmark cu�
 | Dữ liệu | Quy tắc |
 |---|---|
 | TextVQA FULL_R1 + polygon từ TextOCR | Split detection nội bộ từ official TextVQA train. Giữ mọi biến thể cùng source ID hoặc cùng clean SHA-256 trong một fold. |
-| TRAIN · 15.222 nguồn | Train B1 và M với 50% Clean, 50% LR2. |
+| TRAIN · 15.222 nguồn | Train B1 và M với 50% Clean, 50% LR2; B-Clean dùng 100% Clean trên cùng nguồn. [CSV source IDs, đường dẫn và SHA ảnh](docs/handoff/data/README.md). |
 | Validation · 3.262 nguồn | S1 dùng 500 nguồn, S2 dùng 500 nguồn khác. 2.262 nguồn còn lại dùng chọn checkpoint, calibration và chẩn đoán. |
 | TEST · 3.263 nguồn | Chấm TextVQA sau khi khóa checkpoint và ngưỡng. ICDAR2015 test dùng xác nhận ngoài miền. |
 

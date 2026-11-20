@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "source_manifest": "manifest__train__textvqa_clean_degraded_same_textocr_word_gt.jsonl",
+  "source_manifest_sha256": "ca1b91636cbe025823041ce336ffb59affa826a073f666dd7ba386bcab6c983d",
+  "source_manifest_bytes": 386129047,
+  "source_count": 15222,
+  "unique_source_ids": 15222,
+  "unique_clean_relpaths": 15222,
+  "unique_clean_sha256": 15222,
+  "output_file": "train_ids.csv",
+  "output_sha256": "8ac5cbd98db0ffcb67536c6629ed4839ecf8c8e82b927796d0f9208102805f60",
+  "output_bytes": 1765795,
+  "columns": [
+    "source_image_id",
+    "clean_relpath",
+    "clean_sha256"
+  ],
+  "row_order": "unchanged from locked TRAIN manifest",
+  "encoding": "UTF-8 without BOM",
+  "line_endings": "LF",
+  "images_included": false,
+  "test_read": false,
+  "training_membership_only": true
+}
