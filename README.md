@@ -8,6 +8,8 @@
 
 [Hai nhánh độc lập · pilot latent A0/A1/A2 và sàng lọc CRAFT](docs/latent-and-craft-trials.md)
 
+[Latent mở rộng · 10.000 updates mỗi nhánh, thiết kế và lệnh chạy](docs/latent-10k-extension.md)
+
 [Đề xuất nghiên cứu phục hồi ảnh trước DBNet](docs/lr2-restoration-proposal.md)
 
 [Pilot chưng cất đặc trưng Clean → LR2, có đối chứng train tiếp](docs/lr2-feature-distillation-pilot.md)

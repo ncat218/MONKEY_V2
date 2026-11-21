@@ -14,6 +14,7 @@ from rev4.stage_a import detector_for,forward
 
 
 def configuration(a,arm):
+    recipe=getattr(a,'latent_recipe',RECIPE)
     cfg=b1_training.configuration(a,a.calibration_prepared,a.output/arm/'weights',None)
     cfg.load_from=None
     cfg.resume=False
@@ -21,14 +22,16 @@ def configuration(a,arm):
     cfg.model.adapter_kind=arm
     cfg.model.backbone['freeze']=True
     cfg.custom_imports['imports']+=['rev4.latent_plugins']
-    cfg.custom_hooks=[dict(type='LatentAuditHook')]
-    total=RECIPE['optimizer_updates']*RECIPE['accumulation']
-    warmup=RECIPE['warmup_updates']*RECIPE['accumulation']
+    cfg.custom_imports['imports']+=list(getattr(a,'latent_extra_imports',()))
+    cfg.custom_hooks=[dict(type=getattr(a,'latent_audit_hook','LatentAuditHook'))]
+    total=recipe['optimizer_updates']*recipe['accumulation']
+    warmup=recipe['warmup_updates']*recipe['accumulation']
     cfg.train_cfg.max_iters=total
-    cfg.default_hooks.checkpoint.update(interval=total,max_keep_ckpts=1)
-    cfg.optim_wrapper.optimizer.lr=RECIPE['learning_rate']
+    checkpoint=recipe.get('checkpoint_every_updates',recipe['optimizer_updates'])*recipe['accumulation']
+    cfg.default_hooks.checkpoint.update(interval=checkpoint,max_keep_ckpts=recipe.get('max_keep_checkpoints',1))
+    cfg.optim_wrapper.optimizer.lr=recipe['learning_rate']
     cfg.param_scheduler=[dict(type='LinearLR',start_factor=.1,begin=0,end=warmup,by_epoch=False),
-        dict(type='PolyLR',power=.9,eta_min=RECIPE['learning_rate']*.01,begin=warmup,end=total,by_epoch=False)]
+        dict(type='PolyLR',power=.9,eta_min=recipe['learning_rate']*.01,begin=warmup,end=total,by_epoch=False)]
     return cfg
 
 
@@ -63,6 +66,7 @@ def probe(a):
     import torch
     import hashlib
     from rev4.latent_modules import frozen_digest
+    recipe=getattr(a,'latent_recipe',RECIPE)
 
     require(b1_training.environment_identity(a,a.calibration_prepared)==a.b1_identity,'Historical runtime changed')
     rows,tasks=calibration.validation_cohort(a,a.calibration_prepared)
@@ -91,7 +95,7 @@ def probe(a):
             errors.append(error)
         model.train()
         frozen_before=frozen_digest(model)
-        optimizer=torch.optim.AdamW([p for p in model.parameters() if p.requires_grad],lr=RECIPE['learning_rate'])
+        optimizer=torch.optim.AdamW([p for p in model.parameters() if p.requires_grad],lr=recipe['learning_rate'])
         loader=iter(runner.train_dataloader)
         draws=[];output_grad=False;body_grad=False
         try:
@@ -114,7 +118,7 @@ def probe(a):
                     adapter=model.feature_adapter
                     output_grad|=adapter.project_out.weight.grad is not None and bool(adapter.project_out.weight.grad.abs().sum()>0)
                     body_grad|=adapter.project_in.weight.grad is not None and bool(adapter.project_in.weight.grad.abs().sum()>0)
-                torch.nn.utils.clip_grad_norm_([p for p in model.parameters() if p.requires_grad],RECIPE['clip_grad'],error_if_nonfinite=True)
+                torch.nn.utils.clip_grad_norm_([p for p in model.parameters() if p.requires_grad],recipe['clip_grad'],error_if_nonfinite=True)
                 optimizer.step()
         finally:
             if hasattr(loader,'_shutdown_workers'):loader._shutdown_workers()
@@ -136,6 +140,7 @@ def probe(a):
 def train(a,arm):
     import torch
     from rev4.latent_plugins import LatentAuditHook
+    recipe=getattr(a,'latent_recipe',RECIPE)
     receipt=a.output/arm/'trained.json'
     if receipt.is_file():
         prior=read_json(receipt)
@@ -148,14 +153,16 @@ def train(a,arm):
     torch.cuda.reset_peak_memory_stats()
     start=time.perf_counter()
     runner.train()
-    require(runner.iter==2*RECIPE['optimizer_updates'],'Latent training ended early')
+    require(runner.iter==recipe['accumulation']*recipe['optimizer_updates'],'Latent training ended early')
     audit=next(h for h in runner.hooks if isinstance(h,LatentAuditHook))
     require(audit.batches==runner.iter,'Missing training audit iterations')
     checkpoint=a.output/arm/'weights'/f'iter_{runner.iter}.pth'
     save_json(receipt,dict(identity=a.trial_identity,arm=arm,checkpoint=str(checkpoint),checkpoint_sha256=sha256(checkpoint),
-        optimizer_updates=RECIPE['optimizer_updates'],micro_iterations=runner.iter,draws=audit.draws,
+        optimizer_updates=recipe['optimizer_updates'],micro_iterations=runner.iter,draws=audit.draws,
         frozen_digest=audit.start_digest,seconds=time.perf_counter()-start,
-        peak_gpu_mib=torch.cuda.max_memory_allocated()/1024**2))
+        peak_gpu_mib=getattr(audit,'peak_gpu_mib',None),
+        peak_gpu_mib_valid=hasattr(audit,'peak_gpu_mib'),
+        full_stream=getattr(audit,'stream_receipt',None),module_updates=getattr(audit,'module_updates',None)))
 
 
 def inference_configuration(a,arm):
@@ -247,6 +254,7 @@ def latency(a,arm,config_path,checkpoint,rows,tasks):
 
 
 def report(a):
+    recipe=getattr(a,'latent_recipe',RECIPE)
     rows,tasks=calibration.validation_cohort(a,a.calibration_prepared)
     sources=sorted(rows);position={s:i for i,s in enumerate(sources)}
     matrices={arm:np.zeros((len(rows),2,len(PAIRS),4),dtype=np.int64) for arm in ARMS}
@@ -279,11 +287,12 @@ def report(a):
     summary=dict(identity=a.trial_identity,scores=scores,comparisons=comparisons,height_bins=bins,training=training,
         latency={arm:read_json(a.output/arm/'latency.json') for arm in ARMS},
         precision='fp32',primary_pair=list(PAIRS[1]),no_test=True,seed=42,checkpoint_selection='final only',
-        limitations=['1000-update screening','one training seed','development already used','short within-phase timing only'])
+        optimizer_updates=recipe['optimizer_updates'],
+        limitations=[f'{recipe["optimizer_updates"]}-update run','one training seed','development already used','short within-phase timing only'])
     output=a.output/'results';output.mkdir(parents=True,exist_ok=True)
     save_json(output/'latent_summary.json',summary)
-    lines=['# Latent refinement pilot','',
-        'Same B1 init, 1000 optimizer updates per arm; frozen backbone/FPNC including buffers. DB detection loss only.',
+    lines=[f'# Latent refinement · {recipe["optimizer_updates"]} updates','',
+        f'Same B1 init, {recipe["optimizer_updates"]} optimizer updates per arm; frozen backbone/FPNC including buffers. DB detection loss only.',
         'Primary fixed mask=.40 / score=.60; no threshold or checkpoint search. Development data only; no TEST.','',
         '| Model | Clean H | LR2 H | LR2 P | LR2 R | LR2 FP |','|---|---:|---:|---:|---:|---:|']
     for name,value in scores.items():
@@ -295,7 +304,7 @@ def report(a):
         for c,value in conditions.items():
             delta=100*(scores[newer][c]['hmean']-scores[older][c]['hmean'])
             lines.append(f'- {label}, {c}: {delta:+.3f} pp; 95% CI {value["delta_pp_95ci"]["hmean"]}.')
-    lines+=['','One seed and short pilot; source CIs do not quantify training-seed or selection uncertainty. '
+    lines+=['','One seed; source CIs do not quantify training-seed or selection uncertainty. '
              'No automatic winner or final TEST decision. See JSON for four GT height bins and training cost.','']
     write_text(output/'latent_report.md','\n'.join(lines))
     save_json(output/'complete.json',dict(no_test=True,report_sha256=sha256(output/'latent_report.md'),identity=a.trial_identity))
