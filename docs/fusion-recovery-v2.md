@@ -1,4 +1,6 @@
-# Fusion recovery v2 · job106090
+# Fusion recovery v2 · job111683 (parent106090)
+
+**Job111683 submitted and RUNNING on h200node02 at the startup check.** Source fix commit `727dcc2`. [Audit PASS and submission receipt](handoff/artifacts/fusion_recovery_111683/). Full 20/20 CPU/MMOCR tests passed on HPC; the worker runs them again before its GPU probe. This is a startup status, not a completed recovery report.
 
 Job106090 FAILED after 03:30:42, exit1:0, during ASF evaluation: `TemporaryDirectory.cleanup → os.rmdir → ENOTEMPTY`. Nearest and ASF each completed 10,000 optimizer updates. Their final checkpoint SHA256 and full/partial prediction caches were checked before recovery. The error alone does not establish the underlying filesystem cause; the failed directory was empty when inspected later.
 

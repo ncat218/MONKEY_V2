@@ -14,7 +14,7 @@
 | EDSR | +0,60 pp LR2 tại operating point cũ, có CI và chi phí | Nếu chọn nhánh SR: đo Clean, calibration mới, transfer và policy áp dụng mọi ảnh hay router; chưa chọn làm final |
 | CRAFT | Screen độc lập + 200 TRAIN teacher maps; chưa có auxiliary head | Review 32 cards, đánh giá độ tin cậy ký tự trước khi cân nhắc head |
 | Residual/gated latent sau FPNC | Pilot 1k và full 10k hoàn thành; chưa có lợi ích | Dừng lặp lại cùng cấu hình; chỉ mở lại khi có giả thuyết và bằng chứng mới |
-| ASF/DySample fusion | Job106090 FAILED ở cleanup ASF; Nearest/ASF đã train10k | [Recovery v2](../fusion-recovery-v2.md): giữ checkpoint/cache, hoàn thành phần thiếu |
+| ASF/DySample fusion | Job106090 FAILED ở cleanup ASF; Nearest/ASF đã train10k | [Recovery v2 · job111683](../fusion-recovery-v2.md) RUNNING; giữ checkpoint/cache, hoàn thành phần thiếu |
 | Multi-seed / final benchmark | Chưa hoàn tất | Chỉ sau khi khóa method; không dùng TEST chọn hướng |
 
 ## Hành động ngay

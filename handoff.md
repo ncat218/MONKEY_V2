@@ -1,6 +1,6 @@
 # Bàn giao MONKEY_V2 · CS431
 
-Cập nhật **22/11/2026**, snapshot kết quả đã xác minh; job fusion **106090 đã FAILED ở cleanup đánh giá; recovery v2 được chuẩn bị**. Điểm bắt đầu cho người nhận: [workflow hiện tại](docs/research/current-workflow.md), [bảng kết quả/báo cáo gốc](docs/handoff/results/README.md), [checkpoint tải được](docs/handoff/checkpoints.md), [artifacts mới](docs/handoff/artifacts/research_20261122/README.md).
+Cập nhật **22/11/2026**, snapshot kết quả đã xác minh; job fusion **106090 đã FAILED ở cleanup đánh giá; recovery v2 job111683 đã submit và RUNNING ở lần kiểm tra khởi động**. Điểm bắt đầu cho người nhận: [workflow hiện tại](docs/research/current-workflow.md), [bảng kết quả/báo cáo gốc](docs/handoff/results/README.md), [checkpoint tải được](docs/handoff/checkpoints.md), [artifacts mới](docs/handoff/artifacts/research_20261122/README.md).
 
 ## 1. Câu hỏi và phạm vi báo cáo
 
