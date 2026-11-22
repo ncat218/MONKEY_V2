@@ -1,7 +1,19 @@
 {
+  "corruption_probe.json": {
+    "sha256": "41b7b6c68514971023231f42b99b23f80cbe15ccd6babbcc92d78e2315d0ddda",
+    "bytes": 304
+  },
+  "preflight.json": {
+    "sha256": "b93f6490b4b8ec74fc4d5e13335fee53f245f9cbb2a39f24f4eb035acfaed70f",
+    "bytes": 6039
+  },
   "pre_submit_audit.json": {
     "sha256": "cea43154c69cd05780b7260e6af8ffb0ae206f46f66172ea8ded2b64e493d6a7",
     "bytes": 5195
+  },
+  "recovery_import.json": {
+    "sha256": "fd20a770fa7aeda7332b9aa82001cbfa8b689cc23dcaea846315240900b15f86",
+    "bytes": 5540
   },
   "submission.json": {
     "sha256": "ad64000dbbabc39dde90af724824fbc5d31a3f7f35e9b032ee16b9ede074705e",
