@@ -1,0 +1,7 @@
+JobID|JobName|State|Elapsed|ExitCode
+74219|monkey_v2_latent|FAILED|00:00:33|1:0
+74220|monkey_v2_craft|COMPLETED|00:08:59|0:0
+77412|monkey_v2_latent|FAILED|00:42:14|1:0
+81918|monkey_v2_latent_recovery|COMPLETED|00:35:47|0:0
+88935|monkey_v2_latent_10k|COMPLETED|03:16:12|0:0
+106090|monkey_v2_fusion_study|RUNNING|00:12:41|0:0

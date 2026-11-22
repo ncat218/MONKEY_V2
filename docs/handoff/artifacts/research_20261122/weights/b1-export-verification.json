@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "checkpoint": "b1-inference.pth",
+  "download_sha256": "9c3814e494a73a0a6089ba5a6585f079ea8f5a6defdc9347213bb98a64337147",
+  "source_checkpoint_sha256": "6df7a3fea16e1d3170af92212d060aab8040bb128fcfb63fb81eb7c8572ec58f",
+  "tensor_keys": 377,
+  "tensor_values_shapes_dtypes_verified": true,
+  "verification": "local exported state_dict vs per-tensor reference computed from original HPC runner checkpoint",
+  "verified_date": "2026-11-22"
+}

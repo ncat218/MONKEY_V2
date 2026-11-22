@@ -1,0 +1,12 @@
+{
+  "model": "B0",
+  "source_checkpoint_sha256": "4b13e26ad5c2e1b13fef45ac608298254d083062d2b9cafba706064bd8e2cf82",
+  "download_sha256": "45460883fbfbcc278cad449b94635f4e03d858ce8dfc11ebae07b7b4288dc49e",
+  "download_bytes": 46720456,
+  "container": "plain state_dict, no optimizer/runner state",
+  "tensor_keys": 377,
+  "tensor_elements": 22124294,
+  "tensor_equality_verified": true,
+  "torch_version": "2.9.0+cu128",
+  "export_date": "2026-11-22"
+}

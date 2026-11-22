@@ -1,0 +1,35 @@
+END probe  0
+START evaluate B1
+Loads checkpoint by local backend from path: /datastore/dungmt/textvqa/Tuan/MONKEY_V2/.runtime/rev4_b1/run/weights/iter_20000.pth
+11/22 16:24:34 - mmengine - WARNING - Failed to search registry with scope "mmocr" in the "function" registry tree. As a workaround, the current "function" registry in "mmengine" is used to build instance. This may cause unexpected failure when running the built modules. Please check whether "mmocr" is a correct scope, or whether the registry is initialized.
+Loads checkpoint by local backend from path: /datastore/dungmt/textvqa/Tuan/MONKEY_V2/.runtime/rev4_b1/run/weights/iter_20000.pth
+Evaluation B1 100 / 7524
+Evaluation B1 200 / 7524
+Evaluation B1 300 / 7524
+Evaluation B1 400 / 7524
+Evaluation B1 500 / 7524
+Evaluation B1 600 / 7524
+Evaluation B1 700 / 7524
+Evaluation B1 800 / 7524
+Evaluation B1 900 / 7524
+Evaluation B1 1000 / 7524
+Evaluation B1 1100 / 7524
+Evaluation B1 1200 / 7524
+Evaluation B1 1300 / 7524
+Evaluation B1 1400 / 7524
+Evaluation B1 1500 / 7524
+Evaluation B1 1600 / 7524
+Evaluation B1 1700 / 7524
+Evaluation B1 1800 / 7524
+Evaluation B1 1900 / 7524
+Evaluation B1 2000 / 7524
+Evaluation B1 2100 / 7524
+Evaluation B1 2200 / 7524
+Evaluation B1 2300 / 7524
+Evaluation B1 2400 / 7524
+Evaluation B1 2500 / 7524
+Evaluation B1 2600 / 7524
+Evaluation B1 2700 / 7524
+Evaluation B1 2800 / 7524
+Evaluation B1 2900 / 7524
+Evaluation B1 3000 / 7524

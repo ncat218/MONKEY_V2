@@ -1,0 +1,18 @@
+{
+  "snapshot_at": "2026-11-22T16:33:46.112389+07:00",
+  "timezone": "Asia/Bangkok",
+  "no_test": true,
+  "completed": [
+    "74220",
+    "81918",
+    "88935",
+    "73827",
+    "48499"
+  ],
+  "active_run_snapshot": "106090",
+  "checkpoint_weights": "Published separately with tensor-equality metadata; no intermediate optimizer checkpoints",
+  "dataset_images": "Not included; use TextVQA/TextOCR official distribution",
+  "fixed_review_cards": 127,
+  "craft_train_qc_sources": 200,
+  "craft_train_review_cards": 32
+}

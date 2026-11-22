@@ -1,0 +1,15 @@
+{
+  "train_sources": 15222,
+  "validation_sources": 3262,
+  "test_sources_historical": 3263,
+  "validation_roles": {
+    "S1": 500,
+    "S2": 500,
+    "remaining_validation": 2262
+  },
+  "train_validation_disjoint": true,
+  "train_manifest_sha256": "ca1b91636cbe025823041ce336ffb59affa826a073f666dd7ba386bcab6c983d",
+  "validation_manifest_sha256": "5cbf2230b0f83ab30816aca8afc5cb466e0b3301030ccd25d7d6d62d3136dfff",
+  "test_manifest_read": false,
+  "test_manifest_historical_target_sha256": "054f44643c7d3fa0006c8eb3e502c602953957c34cf957cc5d954dd04f4e079f"
+}

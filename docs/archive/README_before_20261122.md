@@ -1,0 +1,91 @@
+# MONKEY_V2 · Low Resolution pilot
+
+[Bàn giao cho nhóm · protocol, checkpoint và đề bài nghiên cứu](handoff.md)
+
+[Baseline và artifacts mới 19/11 · B-Clean/B1, PR/quad, dữ liệu đối chiếu cho Mix A](docs/handoff/artifacts/pr_quad_audit_v1/README.md)
+
+[Flow chính · chẩn đoán FP/FN ở ngưỡng cố định .40/.60](docs/fixed-postprocess-diagnostics.md)
+
+[Hai nhánh độc lập · pilot latent A0/A1/A2 và sàng lọc CRAFT](docs/latent-and-craft-trials.md)
+
+[Latent mở rộng · 10.000 updates mỗi nhánh, thiết kế và lệnh chạy](docs/latent-10k-extension.md)
+
+[Đợt tiếp · ASF/DySample, pilot và full chung job, ngưỡng và generalization](docs/fusion_research_and_generalization.md)
+
+[Đề xuất nghiên cứu phục hồi ảnh trước DBNet](docs/lr2-restoration-proposal.md)
+
+[Pilot chưng cất đặc trưng Clean → LR2, có đối chứng train tiếp](docs/lr2-feature-distillation-pilot.md)
+
+[Workflow nghiên cứu hiện tại](docs/research/next-workflow-20261119.md) ·
+[Đề xuất S1b/CRAFT](docs/research/s1b-craft-monkey-feasibility-20261119.md) ·
+[PR/quad audit v1 và lưới exploratory](docs/research/pr-quad-audit-v1.md)
+
+PR/quad audit v1 là job chẩn đoán trên remaining-validation, không huấn luyện
+và không dùng TEST. Trên UIT-HPC chạy `python submit_decision_audit.py --plan-only`
+rồi `python submit_decision_audit.py` để kiểm tra đầu vào và submit Slurm.
+
+[Rev.4 TASK 2A trên H200](rev4/README.md) dùng lệnh `python submit_s2a.py`.
+Hướng dẫn bên dưới mô tả pilot S1 v2.0 và lệnh `python run_all.py`.
+
+Pilot Phase 1 trên TextVQA FULL_R1, theo FROZEN v2.0. B0 là checkpoint gốc
+của MonkeyOCRv2-AS + DBNet, suy luận FP32 như job E0 10326. Bộ sinh dùng
+Pillow 11.3.0 và bicubic độc lập từ ảnh clean cho LR2/LR4/LR8. Ở B_up,
+ảnh LR4 được bicubic upsample về canvas gốc trước khi đưa qua Monkey.
+
+## Chạy trên UIT-HPC
+
+Chạy từ tài khoản có quyền đọc dữ liệu và môi trường đã dùng cho job 10326.
+Launcher tìm stack, checkpoint, fold validation, evaluator policy và E0
+validation trong layout HPC cũ. Có thể chỉ đường dẫn qua
+`--legacy-root`, `--clean-root` và `--runtime-root`.
+
+```bash
+cd "/datastore/$USER/textvqa/Tuan"
+git clone https://github.com/ncat218/MONKEY_V2.git
+cd MONKEY_V2
+python run_all.py --plan-only
+python run_all.py
+```
+
+Lệnh cuối submit một job vào Slurm `normal` với `gpu:2g.35gb:1`,
+`qos=mig2-35`, RAM 40 GB và 8 giờ. Job ID và thư mục logs xuất trên
+terminal. Runtime mặc định nằm trong checkout MONKEY_V2, tại
+`/datastore/$USER/textvqa/Tuan/MONKEY_V2/.runtime/MONKEY_V2__FULL_R1_LowRes_pilot_FROZEN_v2_0/`
+nếu clone theo hướng dẫn trên.
+Lần chạy đầu cài riêng Pillow 11.3.0 cho bước sinh ảnh. Inference dùng
+stack E0 đã có. Dung lượng đầu ra chủ yếu là 2.500 P-map float16 nén.
+
+Khi job gián đoạn, chạy lại cùng lệnh để dùng các sample hoàn chỉnh.
+Code, task, checkpoint và runtime inference được fingerprint. Nếu thay
+đổi các đầu vào đã khóa, dùng một runtime root mới. Chờ Slurm
+`COMPLETED` và `results/pilot_summary.json` trước khi đọc kết quả.
+
+## Kết quả để review
+
+- `frozen_v2_0/split_lock.json` khóa 500 nguồn validation theo seed
+  20261107 và 2.762 nguồn còn lại cho calibration. Pilot dùng 500 nguồn.
+- `frozen_v2_0/preflight.json` ghi hash, số GT, các bin native height và
+  round-trip tọa độ. `results/clean_identity.json` chỉ xuất sau khi
+  matching theo từng ảnh clean khớp E0. Hmean clean tham chiếu là 70,76%.
+- `results/pmap_equivalence.json` xác minh kết quả decode từ P-map trùng
+  native predict. Mỗi sample có polygon/score sau và trước score cutoff,
+  kích thước ảnh, resize factor, P-map float16 và bitmap vùng hợp lệ.
+  Bitmap vượt `mask_thr=0.30` lấy từ FP32 trước khi lưu. Để giải bitmap,
+  dùng `np.unpackbits(array, count=p.size).reshape(p.shape)`.
+- Polygon do DBPostprocessor trả về đã ở tọa độ ảnh đưa vào loader. Với
+  Native LR, nhân thêm `clean_width / lr_width` và
+  `clean_height / lr_height`. Để đọc P-map trong hệ clean, giới hạn vùng
+  theo `img_shape`, chia theo `scale_factor` rồi nhân theo `lr_to_clean`
+  trên từng trục. Bitmap hợp lệ loại phần padding, vùng ngoài ROI và
+  ignored GT. Metric detection dùng postprocessor và evaluator đã khóa.
+- `results/pilot_report.md` tóm tắt điểm và cổng. `results/pilot_summary.json`
+  có P/R/Hmean, TP/FP/FN, paired bootstrap CI,
+  clean-TP survival, native-height bins, taxonomy lỗi, độ nhạy theo 4/6/8
+  px và response cutoff 0,30/0,50, recovery ratio B_up ở LR4 và G1–G3.
+  Đọc thêm ảnh và P-map của các GT mất để đánh giá G4 và chọn SAT hoặc PRC.
+
+Đối chứng 100% Clean và EDA trước/sau fine-tune: [thiết kế, lệnh và artifacts](docs/bclean-and-paired-eda.md).
+
+Repo chứa mã. Ảnh, checkpoint, manifest FULL_R1, raw predictions và
+kết quả ở runtime riêng. Evaluator lấy nguyên bytes từ CS431 tại commit
+`1844bcf`, được kiểm SHA-256 trước khi chạy.

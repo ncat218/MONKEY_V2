@@ -1,0 +1,12 @@
+{
+  "model": "latent10k-gated",
+  "source_checkpoint_sha256": "1ce9afdeca618504a0f835698908e4460441a47ca154cf5487744805ae8508b6",
+  "download_sha256": "52ba9896b63c8d3973447474d98f32892315b5d848ee4f246c6a89c371a7e872",
+  "download_bytes": 88849291,
+  "container": "plain state_dict, no optimizer/runner state",
+  "tensor_keys": 382,
+  "tensor_elements": 22175110,
+  "tensor_equality_verified": true,
+  "torch_version": "2.9.0+cu128",
+  "export_date": "2026-11-22"
+}

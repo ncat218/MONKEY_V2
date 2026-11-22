@@ -1,118 +1,115 @@
-# Handoff CS431 · MonkeyOCRv2-AS + DBNet
+# Bàn giao MONKEY_V2 · CS431
 
-Cập nhật artifacts 19/11/2026 · [Repo MONKEY_V2](https://github.com/ncat218/MONKEY_V2).
+Cập nhật **22/11/2026**, snapshot kết quả đã xác minh; job fusion **106090 đang chạy khi lấy snapshot**. Điểm bắt đầu cho người nhận: [workflow hiện tại](docs/research/current-workflow.md), [bảng kết quả/báo cáo gốc](docs/handoff/results/README.md), [checkpoint tải được](docs/handoff/checkpoints.md), [artifacts mới](docs/handoff/artifacts/research_20261122/README.md).
 
-**Đọc cập nhật mới trước:** [Baseline B-Clean/B1, calibration mở rộng và artifacts cho Mix A](docs/handoff/artifacts/pr_quad_audit_v1/README.md).
-Đã có counts 72 settings theo source, manifest remaining-validation, checkpoint B-Clean,
-endpoint reference counts và 160 thẻ review. Job phục hồi `63985` COMPLETED; human review PENDING.
-B-Clean/B1 sau calibration mở rộng đạt Clean/LR2 Hmean **80,86/75,51%** và **79,43/76,90%**.
-Phần bên dưới giữ mô tả và kết quả lịch sử ngày 15/11; các số `.30/.40` không thay thế
-baseline mở rộng mới. Các extension chưa thay protocol và benchmark cuối chưa chạy.
+## 1. Câu hỏi và phạm vi báo cáo
 
-**Đề bài cho người review.** Đọc kết quả và đề xuất **một hướng nghiên cứu độc lập** để cải thiện phát hiện chữ ở LR2 so với B1-cal. Bạn tự chọn giả thuyết và phương pháp dựa trên bằng chứng hoặc tài liệu bạn tìm được. PRC và EDSR là các thử nghiệm đã chạy để tham khảo. Mục 5 ghi phần đề xuất cần gửi lại cho nhóm.
+- **RQ1:** Native LR2 làm detector gốc suy giảm thế nào, đặc biệt với chữ nhỏ?
+- **RQ2:** Lợi ích fine-tune đến từ thích nghi miền TextOCR hay từ trộn độ phân giải? Đối chứng B-Clean là bắt buộc để phân biệt.
+- **RQ3:** Sau khi có baseline fine-tune và hậu xử lý mạnh, module bổ sung có tăng chất lượng, giữ Clean và kiểm soát FP/latency không?
 
-## 1. Mục tiêu, dữ liệu và các giai đoạn
+Pipeline là **MonkeyOCRv2-AS backbone → FPNC → DBHead → DBPostprocessor quad**. Backbone trích xuất đặc trưng đa tỉ lệ; FPNC hợp nhất thành tensor 256 kênh; DBHead dự đoán bản đồ, hậu xử lý tạo các tứ giác. Không có LLM sinh văn bản hoặc decoder tái tạo ảnh trong tác vụ này. Sự nhạy cảm LR là vấn đề thực nghiệm nhóm khảo sát, không mặc định là một trong bốn limitations mà tác giả tự nêu cho document parsing. Chỉ nói đã tái lập nhánh detection và thích nghi checkpoint; chưa tuyên bố reproduce toàn bộ paper.
 
-Đo khả năng **phát hiện vùng chữ** khi ảnh giảm độ phân giải. Nhánh chính dùng **LR2** với MonkeyOCRv2-AS + DBNet, FP32. Rev.4 kế thừa các điều khoản còn áp dụng từ FROZEN v2.0. [Protocol Rev.4](https://github.com/ncat218/MONKEY_V2/blob/main/docs/handoff/protocol/CS431_Pilot_Protocol_v2.1_FINAL.md) · [FROZEN v2.0](https://github.com/ncat218/MONKEY_V2/blob/main/docs/handoff/protocol/CS431_LowRes_Pilot_Protocol_FROZEN_v2.0.md).
-
-**Tình trạng đóng góp thực nghiệm.** Kết quả đã đo là mức tăng của baseline fine-tune B1 và kết quả của hai hướng thử nghiệm dùng PRC và EDSR. Hiệu quả của một phương pháp vượt B1-cal trên benchmark cuối vẫn là câu hỏi mở.
-
-| Dữ liệu | Quy tắc |
+| Tên | Ý nghĩa |
 |---|---|
-| TextVQA FULL_R1 + polygon từ TextOCR | Split detection nội bộ từ official TextVQA train. Giữ mọi biến thể cùng source ID hoặc cùng clean SHA-256 trong một fold. |
-| TRAIN · 15.222 nguồn | Train B1 và M với 50% Clean, 50% LR2; B-Clean dùng 100% Clean trên cùng nguồn. [CSV source IDs, đường dẫn và SHA ảnh](docs/handoff/data/README.md). |
-| Validation · 3.262 nguồn | S1 dùng 500 nguồn, S2 dùng 500 nguồn khác. 2.262 nguồn còn lại dùng chọn checkpoint, calibration và chẩn đoán. |
-| TEST · 3.263 nguồn | Chấm TextVQA sau khi khóa checkpoint và ngưỡng. ICDAR2015 test dùng xác nhận ngoài miền. |
+| B0 | Detector gốc, AS + FPNC + DBNet, checkpoint detection ICDAR2015 |
+| B-Clean | Từ cùng B0, fine-tune 100% Clean trên đúng TRAIN của nhóm |
+| B1 | Từ cùng B0, fine-tune 50% Clean / 50% native LR2 |
+| `-cal` | Cùng trọng số, đổi ngưỡng hậu xử lý đã chọn trên development; không phải train thêm |
+| M / PRC | B1 recipe thêm probability-map consistency; một seed |
+| A0/A1/A2 | Từ B1, train tiếp DBHead / thêm residual adapter / thêm gated adapter sau FPNC |
 
-| Giai đoạn | Việc thực hiện | Trạng thái |
-|---|---|---|
-| 1. Audit và pilot | Khóa nguồn, GT, hash, EXIF và phép đổi tọa độ. S1 đo LR ban đầu, S2 xác nhận LR2 qua G1–G3 và khảo sát Blur/JPEG. G4 xem B_up, P-map và lỗi hình học để chọn cải tiến. | Pilot đã xong. Có bằng chứng định lượng G4, báo cáo vẫn ghi chờ review ảnh. |
-| 2. Huấn luyện | Train B1 rồi một nhánh M dùng PRC trên cùng TRAIN và cùng ngân sách. | Đã xong. |
-| 3. Chọn checkpoint và ngưỡng | Chọn checkpoint và calibration trên 2.262 nguồn remaining validation. Chẩn đoán lỗi và thử thêm phục hồi ảnh trên tập này. | Đã xong. |
-| 4. Benchmark cuối | Khóa checkpoint và ngưỡng. Chấm TextVQA TEST, sau đó chấm ICDAR2015 test để đánh giá ngoài miền. | Còn chờ. |
-| 5. Hoàn thiện báo cáo | Tổng hợp bảng kết quả test, chênh lệch có CI, lỗi theo kích thước chữ, ví dụ và chi phí suy luận. | Còn chờ benchmark cuối. |
+## 2. Dữ liệu, split và suy thoái
 
-| Nhánh | Câu hỏi kiểm tra |
-|---|---|
-| B0 / B_up | B0 là checkpoint Monkey gốc. B_up phóng LR2 bằng bicubic trước B0 để đo lợi ích của nội suy. |
-| B1 | Baseline fine-tune từ B0 với Clean + LR2. Đo lợi ích của việc học trực tiếp trên LR2. |
-| M (PRC) | Phương án thử nghiệm với cùng recipe B1 và thêm loss khớp P-map với teacher B0 đóng băng, tại kernel chữ mà teacher phát hiện khớp GT TRAIN trên ảnh Clean cùng nguồn. |
-| B0-cal / B1-cal / M-cal | Chọn cặp ngưỡng DBNet trên cùng 2.262 nguồn, tối đa hóa trung bình Hmean Clean và LR2. |
+Ảnh từ **TextVQA**, nhãn phát hiện dày đặc cấp từ từ **TextOCR**, không chỉ chữ liên quan câu trả lời VQA. FULL_R1 là split nội bộ của nhóm, không đồng nhất với tên official train/val/test của dataset.
 
-B1 và M dùng seed 42, AdamW `2e-5`, batch hiệu dụng 4 và **10.000 optimizer updates**. Chọn giữa mốc 5.000 và 10.000 theo trung bình Hmean native Clean/LR2, hòa thì lấy mốc sớm. Calibration dùng cùng lưới 15 cặp ngưỡng, ưu tiên native nếu hòa. Cả ba mô hình chọn `mask=0.30`, `score=0.40`. Native dùng `0.30/0.30`.
+| Split nội bộ | Nguồn | Vai trò / khả năng truy cập |
+|---|---:|---|
+| TRAIN | 15.222 | Huấn luyện; [CSV IDs, đường dẫn tương đối và SHA256 ảnh](docs/handoff/data/train_ids.csv) |
+| S1 | 500 | Pilot; [IDs](docs/handoff/artifacts/research_20261122/data/S1_source_ids.txt) |
+| S2 | 500 | Pilot; [IDs](docs/handoff/artifacts/research_20261122/data/S2_source_ids.txt) |
+| Remaining-validation | 2.262 | Checkpoint selection, calibration, EDA và thử nghiệm tiếp theo |
+| TEST | 3.263, số lịch sử | Không đọc trong các extension/snapshot này; chưa audit khả năng tái lập cuối ở lần bàn giao này |
 
-## 2. Checkpoint và bằng chứng tái lập
+[Validation IDs và hash ảnh](docs/handoff/artifacts/research_20261122/data/validation_ids.csv) có đủ 3.262 nguồn và role. TRAIN/VAL disjoint đã kiểm lại. Manifest TRAIN SHA256 `ca1b91636cbe025823041ce336ffb59affa826a073f666dd7ba386bcab6c983d`; VAL `5cbf2230b0f83ab30816aca8afc5cb466e0b3301030ccd25d7d6d62d3136dfff`. CSV TRAIN SHA `8ac5cbd98db0ffcb67536c6629ed4839ecf8c8e82b927796d0f9208102805f60`. Đây là các file khác nhau nên hash khác nhau. Xem [receipt](docs/handoff/artifacts/research_20261122/data/split_receipt.json). Không phát hành ảnh hoặc manifest đầy đủ chứa dữ liệu của dự án cũ.
 
-Hậu tố `-cal` chỉ cặp ngưỡng hậu xử lý và dùng cùng weights với bản native. B1 và M xuất dưới dạng `state_dict` cho suy luận. [Tệp tải, SHA-256 và cách load](https://github.com/ncat218/MONKEY_V2/blob/main/docs/handoff/checkpoints.md).
+**Native LR2:** RGB, Pillow 11.3.0, `resize((floor(W/2), floor(H/2)), BICUBIC)`. Không upscale lại về W×H trước detector. Detector vẫn resize giữ tỉ lệ theo `(4068,1024)`, pad bội 32 như config gốc. Đổi tọa độ GT/prediction bằng tỉ lệ thật từng trục; kích thước lẻ không được giả định scale chính xác 2. Blur sigma 1,88/3,75; JPEG quality 30/10 và LR4/LR8 là các stress conditions riêng.
 
-| Checkpoint | Bằng chứng tái lập |
-|---|---|
-| **B0 / E0** | Với 500 ảnh Clean S1, B0 khớp số đếm và matching của E0 lịch sử. [Tải B0 từ upstream](https://huggingface.co/HB16888/MonkeyOCRv2_det/blob/main/dbnet_mkv2vitae_icdar2015.pth). |
-| **B1 / B1-cal** | Job `12396` tái lập điểm native của `12187`. Job `12434` tái lập số đếm từng ảnh Clean/LR2 và `13127` tái lập riêng nhánh LR2 gốc. Đây là đối chứng chính cho hướng mới. [Tải B1](https://github.com/ncat218/MONKEY_V2/blob/main/docs/handoff/weights/b1-inference.pth). |
-| **M / M-cal (PRC)** | Job `12518` đối chiếu kết quả native giữa bước chọn checkpoint và bước calibration. [Tải M](https://github.com/ncat218/MONKEY_V2/blob/main/docs/handoff/weights/m-prc-inference.pth). |
+**Giới hạn độc lập:** S1/S2 đã bị xem trong pilot, remaining-validation được dùng lặp lại; không gọi chúng là fresh holdout. Protocol v2.0 cũng ghi nhận TEST từng được xem ở lịch sử trước; cần công khai lịch sử đó và khóa đánh giá cuối, không tuyên bố toàn bộ TEST còn nguyên vẹn chưa từng bị xem. AS pretraining có TextOCR TRAIN; B0 detection đã học ICDAR2015. Cần phân biệt upstream pretraining exposure với fine-tune split của nhóm.
 
-Các file để thiết lập benchmark gồm [config inference](https://github.com/ncat218/MONKEY_V2/blob/main/docs/handoff/inference_config.py), [policy chấm TextVQA](https://github.com/ncat218/MONKEY_V2/blob/main/docs/handoff/textvqa_evaluation_protocol.json) và [mã chấm](https://github.com/ncat218/MONKEY_V2/blob/main/lowres/evaluate_shared.py). Tải dữ liệu từ nguồn phát hành. [TextVQA](https://textvqa.org/download/) · [TextOCR](https://textvqa.org/textocr/dataset/) · [ICDAR2015](https://rrc.cvc.uab.es/?ch=4&com=downloads).
+## 3. Huấn luyện và metric đã dùng
 
-## 3. Cách chạy và chấm benchmark cuối
+B-Clean/B1 cùng B0 init, source TRAIN, full detector trainable, seed 42, **10.000 optimizer updates**, microbatch 2, accumulation 2, LR 2e-5, weight decay 1e-4, clip 5, warmup 100. Hai candidate checkpoint tại 5k/10k được chọn bằng mean Clean/LR2 Hmean theo protocol. B-Clean chỉ đổi phân bố resolution, không thêm nguồn hay tăng số updates. Tên runner `iter_20000` ứng với 20.000 microbatches / 10.000 optimizer updates.
 
-| | TextVQA FULL_R1 | ICDAR2015 Incidental Scene Text |
-|---|---|---|
-| Vai trò | Benchmark chính trên 3.263 nguồn TEST nội bộ đã khóa, dùng GT polygon TextOCR. | Xác nhận ngoài miền trên 500 ảnh test chính thức, 2.077 vùng chữ hợp lệ và 3.153 vùng ignore theo audit lịch sử. |
-| Đầu vào | Clean, LR2 chính, LR4/LR8 để đo mức suy thoái nặng và B_up ở LR2. | Clean, LR2 cùng điều kiện đã chọn, kèm LR4 để kiểm tra mức nặng. Dùng checkpoint và ngưỡng đã chốt từ TextVQA validation. |
-| Cách matching | Evaluator FULL_R1 ghép một-một theo số cặp tối đa ở polygon IoU **≥0,50**. Loại prediction có dưới 50% diện tích trong ROI hoặc trên 50% diện tích sau cắt ROI chồng vùng ignore. | Đề xuất tái sử dụng evaluator ICDAR2015 lịch sử, MMOCR `HmeanIOUMetric` với `strategy=vanilla`, IoU **>0,50** và ignore overlap **>0,50**. Chốt evaluator trước job. Job `11339` kiểm chứng pipeline cũ với E0/A′. |
-| Phép so sánh | B0, B_up, B1 và M. Báo cả native và calibrated cho B0/B1/M. Endpoint chính là `Hmean(M-cal) − Hmean(B1-cal)` trên LR2. | So B0/B1/M ở các ngưỡng đã khóa. Báo kết quả riêng cho từng điều kiện và kiểm tra Clean retention. |
+Metric chính là **micro Precision / Recall / Hmean**, TP/FP/FN từ matching polygon một-một maximum cardinality, IoU ≥0,5, xử lý ROI và ignore theo [evaluator đã khóa](docs/handoff/textvqa_evaluation_protocol.json). FN là GT chưa có prediction khớp đủ IoU, có thể là bỏ sót hoặc định vị không đạt. FP là prediction không được ghép, chưa đủ bằng chứng để gọi tất cả là nền giả.
 
-1. **Chuẩn bị ảnh ghép cặp.** Với mỗi ảnh nguồn, tạo từng mức LR trực tiếp từ Clean bằng bicubic Pillow 11.3.0, kích thước mỗi cạnh là `max(1, size // scale)`. Đưa polygon về hệ Clean bằng tỷ lệ kích thước thực trên từng trục trước khi matching. Kiểm hash danh sách nguồn, ảnh, GT, checkpoint và evaluator. [Mã sinh LR](https://github.com/ncat218/MONKEY_V2/blob/b0b63b4b326aae6a0ba8d69919ac80ea3be10c8c/lowres/generate_lr_only.py) · [Evaluator TextVQA](https://github.com/ncat218/MONKEY_V2/blob/b0b63b4b326aae6a0ba8d69919ac80ea3be10c8c/lowres/evaluate_shared.py).
-2. **Báo metric theo từng bộ và từng điều kiện.** Cộng TP/FP/FN toàn tập để tính micro-Precision, Recall và Hmean (`2TP / (2TP + FP + FN)`). Báo thêm recall chữ theo chiều cao native LR (`<4`, `4–<8`, `8–<16`, `≥16` px), tỷ lệ từ tìm được trên Clean vẫn tìm được trên LR, latency và VRAM. Tính CI 95% chênh Hmean bằng ít nhất 2.000 bootstrap ghép cặp theo ảnh nguồn, tính lại micro-Hmean mỗi lần.
-3. **Kết luận theo tiêu chí đã khóa.** Trên TextVQA TEST LR2, mục tiêu là M-cal hơn B1-cal **≥1,00 điểm Hmean** theo ước lượng, cận dưới CI 95% **>0** và Clean giảm tối đa **1,00 điểm**. Với ICDAR2015, báo thêm tiêu chí phụ kế thừa cho LR4 là Hmean tăng và Clean giảm tối đa 1,00 điểm. Tập test chỉ dùng ở bước này.
+Paired bootstrap theo **source_image_id**, 2.000 lần, seed 20261107, giữ cặp Clean/LR2 và các model cùng nguồn. CI này mô tả biến thiên nguồn, **không đo biến thiên seed huấn luyện** và không sửa được selection bias. Báo thêm recall theo chiều cao chữ, FP, Clean retention và latency. Runtime FP32, matmul TF32 off / cuDNN TF32 on theo chính sách đã audit. Đường thực tế là **quad**, không phải poly.
 
-## 4. Kết quả đã có
+## 4. Baseline và vai trò calibration
 
-Báo cáo gốc theo từng job ở [thư mục kết quả](https://github.com/ncat218/MONKEY_V2/tree/main/docs/handoff/results). Đọc nhanh [B0/B1 calibration](https://github.com/ncat218/MONKEY_V2/blob/main/docs/handoff/results/calibration_report.md), [chẩn đoán B1-cal](https://github.com/ncat218/MONKEY_V2/blob/main/docs/handoff/results/b1_cal_diagnostics.md), [PRC](https://github.com/ncat218/MONKEY_V2/blob/main/docs/handoff/results/prc_report.md) và [phục hồi ảnh](https://github.com/ncat218/MONKEY_V2/blob/main/docs/handoff/results/restoration_report.md).
+Bảng chính dưới đây trên 2.262 remaining-validation. Grid mở rộng dùng cùng 72 combinations và quy tắc maximize mean Clean/LR2 Hmean cho từng model. B-Clean/B1 chọn mask `.40`, score `.60`, unclip 1,5, min width 5, epsilon `.01`; B0 chọn `.30/.45`, epsilon `.005`. Đây là lựa chọn exploratory trên validation đã xem.
 
-| Mốc | Kết quả |
-|---|---|
-| **S1 · 11492** | B0 đạt 70,76% Clean và 27,43% LR4. LR4 trượt G3 vì chỉ 22,59% từ bị mất cao ít nhất 6 px, dưới mốc 30%. |
-| **Audit và S2-A · 11907** | B0 đạt 66,65% Clean, 57,26% LR2, 25,64% LR4 và 6,69% LR8. LR2 giảm 9,39 điểm, CI 95% `[3,86; 13,68]`, đạt G1. Có 29,84% Clean TP chuyển thành FN, đạt G2. Trong số từ mất, 57,88% cao ít nhất 6 px, đạt G3. Chọn LR2 để train. B_up tăng 0,80 điểm. |
-| **S2-B · 12117** | Hmean Gaussian Blur `σ=1.88/3.75` là 34,11%/10,06%. JPEG `quality=30/10` là 60,83%/47,46%. Kết quả mô tả, G3 chưa đánh giá, `τ=N/A`. |
-| **Khôi phục TRAIN · 12181** | Dựng lại từ metadata job `8323` và mã lịch sử `816c6d6`. Manifest 15.222 nguồn khớp SHA-256 gốc, cả 3.262 dòng validation tái lập chính xác. |
-| **B1 · 12187 và calibration · 12396** | B1 chốt checkpoint 10.000 updates. B1 native tái lập đúng theo từng điều kiện khi calibration. B1-cal tăng **13,35 điểm Hmean LR2** so với B0-cal, CI 95% mô tả `[+10,25; +16,33]` tại ngưỡng cố định trên validation. |
-| **Chẩn đoán B1-cal · 12434** | Trong 6.454 Clean TP → LR2 FN, có 3.280 lỗi hình học (50,82%) và 2.791 ca phản hồi yếu (43,24%) tại `c0=0.30`. Ở `c0=0.50`, phản hồi yếu chiếm 54,20%. Có ảnh review P-map. |
-| **PRC · 12518** | M chốt checkpoint 10.000 updates. Chênh lệch M-cal so với B1-cal là +0,02 điểm Clean và −0,02 điểm LR2, CI mô tả LR2 `[−0,064; +0,022]`. PRC có mask hợp lệ ở **608/20.000 microbatch (3,04%)**. |
+| Model | Clean H | LR2 H | LR2 P | LR2 R | LR2 FP | LR2 recall <4 px |
+|---|---:|---:|---:|---:|---:|---:|
+| B0 | 74,09% | 62,38% | 90,16% | 47,68% | 4.069 | 1,01% |
+| B-Clean | 80,86% | 75,51% | 88,66% | 65,75% | 6.578 | 15,96% |
+| B1 | 79,43% | 76,90% | 82,45% | 72,05% | 11.997 | 45,79% |
 
-**Điểm trên cùng 2.262 nguồn validation**
+B1 phát hiện thêm chữ nhỏ nhưng đánh đổi FP và Clean. B1 − B-Clean: LR2 **+1,394 pp**, CI **[−1,255; +3,719]**; Clean **−1,426 pp**, CI **[−2,114; −0,903]**. Chưa có bằng chứng B1 hơn toàn diện. B-Clean tăng rất mạnh so với B0, nên không thể quy toàn bộ lợi ích B1 cho mixed-resolution training.
 
-| Mô hình | Clean Hmean | LR2 Hmean |
+| Model, common historical mask/score `.30/.40` | Clean H | LR2 H |
 |---|---:|---:|
-| B0 native | 71,03% | 59,78% |
 | B0-cal | 73,30% | 61,95% |
-| B1 native | 71,89% | 69,88% |
+| B-Clean-cal | 78,79% | 74,36% |
 | B1-cal | 77,55% | 75,29% |
-| M native | 71,93% | 69,88% |
-| M-cal | 77,57% | 75,27% |
 
-**Phục hồi ảnh trước B1-cal · job 13127, thí nghiệm mở rộng trên validation.** Giữ checkpoint và ngưỡng B1-cal. So bicubic và EDSR baseline ×2 của torchSR `v1.0.3` ở cùng kích thước đầu ra. Job đã tái lập số đếm LR2 gốc từng ảnh. [Thiết kế và checkpoint EDSR](https://github.com/ncat218/MONKEY_V2/blob/b0b63b4b326aae6a0ba8d69919ac80ea3be10c8c/docs/lr2-restoration-proposal.md).
+Chỉ đổi hậu xử lý B1 từ common sang grid mới: LR2 **+1,610 pp**, CI [1,006; 2,301], FP **16.487 → 11.997**; Clean +1,882 pp. Đây là cải thiện calibration, không phải kiến trúc mới. Không thay các báo cáo frozen bằng bảng exploratory. [Artifacts PR/quad](docs/handoff/artifacts/pr_quad_audit_v1/README.md) và [chẩn đoán ở ngưỡng mới](docs/handoff/artifacts/research_20261122/fixed_diagnostics/results/fixed_diagnostics_report.md).
 
-| Đầu vào | Hmean | Recall chữ <4 px | FP | Latency trung vị |
-|---|---:|---:|---:|---:|
-| LR2 gốc | 75,29% | 45,02% | 16.487 | 136,9 ms |
-| Bicubic ×2 | 75,24% | 45,35% | 16.972 | 161,6 ms |
-| EDSR ×2 | **75,89%** | **48,86%** | 17.439 | 204,6 ms |
+## 5. Những gì đã thử
 
-**Đánh giá.** Mức tăng **13,35 điểm Hmean LR2** đến từ baseline B1-cal so với B0-cal trên validation. Thử nghiệm PRC cho **−0,02 điểm** so với B1-cal và có tín hiệu loss ở 3,04% microbatch. EDSR là model pretrained có sẵn dùng làm tiền xử lý. Trên validation, EDSR tăng **0,60 điểm** so với LR2 gốc, CI 95% `[+0,24; +0,96]`, và **0,66 điểm** so với bicubic, CI `[+0,27; +1,04]`. Đổi lại, EDSR tăng 952 FP và thêm 67,7 ms latency trung vị so với LR2 gốc. Latency gồm phục hồi và suy luận detector, bỏ thời gian ghi PNG tạm và chấm metric.
+| Thử nghiệm | Thiết kế / điểm so sánh | Kết quả và đánh giá |
+|---|---|---|
+| PRC | Thêm consistency, common `.30/.40` | M 77,57/75,27 vs B1 77,55/75,29 (Clean/LR2). Mask active 608/20.000 microbatches; chưa chứng minh lợi ích, cần chẩn đoán mask |
+| Feature distillation, job 48499 | FPNC fused feature, Clean teacher, thêm 1k updates; có continued-training control | KD LR2 75,24; control 75,24; Δ −0,00048 pp, CI [−0,03483; 0,03482]. Không có tín hiệu vượt control |
+| Bicubic x2 / EDSR x2 trước B1 | Common `.30/.40`, native LR2 baseline 75,29 | Bicubic 75,24; EDSR 75,89, Δ +0,60 pp, CI [0,24;0,96]. FP 16.487→17.439; median 136,9→204,6 ms. Chưa đo Clean, chưa kiểm ở calibration mới; SR pretrain bicubic trùng suy thoái tổng hợp |
+| CRAFT độc lập, job 74220 | Default CRAFT `.7/.4/.4`, canvas1280, mag1,5; B1 `.40/.60` | Clean/LR2 70,35/47,00; B1 79,43/76,90. CRAFT-only LR2 TP 1.172, tiny recall 0/5.158. Khác resize policy, chưa phải so sánh kiến trúc công bằng hay kết quả fusion |
+| Latent adapter pilot, job 81918 | Thêm 1k updates, A0/A1/A2 từ B1; freeze backbone+FPNC | LR2 76,71/76,71/76,72; không vượt B1 76,90 |
+| Latent adapter full, job 88935 | Thêm 10k updates mỗi nhánh; cùng stream, detection loss; freeze backbone+FPNC | Xem bảng dưới: chưa vượt control hoặc B1 |
 
-## 5. Việc cần giải quyết và đề bài nghiên cứu độc lập
+| Job 88935, fixed `.40/.60` | Clean H | LR2 H | LR2 FP |
+|---|---:|---:|---:|
+| B1 — trước train tiếp | 79,43% | 76,90% | 11.997 |
+| A0 — chỉ DBHead | 79,47% | 76,87% | 12.037 |
+| A1 — residual adapter sau FPNC | 79,48% | 76,86% | 12.046 |
+| A2 — gated residual adapter | 79,47% | 76,86% | 12.042 |
 
-1. **Khôi phục manifest TEST.** Chưa thấy file manifest của 3.263 nguồn trong các thư mục HPC đã kiểm tra. Dựng lại từ audit `8323` theo split lịch sử như TRAIN rồi kiểm SHA-256 gốc `054f44643c7d3fa0006c8eb3e502c602953957c34cf957cc5d954dd04f4e079f` trước khi chấm.
-2. **Hoàn thành benchmark Rev.4.** Dùng checkpoint và ngưỡng đã khóa ở Mục 1–2. Xác nhận evaluator ICDAR2015 và kiểm lại hash 500 ảnh cùng GT, rồi chạy benchmark như Mục 3. Ghi rõ TextOCR official train từng được dùng trong pretraining Monkey khi diễn giải TextVQA TEST.
-3. **Ghi giới hạn của PRC và VRAM.** Nguyên nhân cụ thể của tỷ lệ mask PRC thấp vẫn chưa được xác định. Báo cáo G4 vẫn ghi chờ review định tính. Số peak VRAM 322 MiB trong summary B1 được đọc sau khi bộ đếm bị reset. Dùng log B1 ghi 4.965 MiB khi đối chiếu tài nguyên và nêu rõ nguồn đo.
+A2 − A0 LR2 **−0,007 pp**, CI [−0,01845; 0,00367]; A2 − B1 **−0,037 pp**, CI [−0,11291; 0,05007]. Adapter có cập nhật trọng số và đủ Adam steps; stream source/augmentation giống nhau giữa ba nhánh. Chưa thấy lợi ích trong cấu hình này, không phủ định mọi latent method. Đây là feature refinement theo detection loss, không phải tái tạo RGB và không dùng trực tiếp checkpoint S1b của hệ Qwen khác.
 
-### Phần gửi lại cho nhóm
+CRAFT đã chạy screen và tạo teacher maps trên 200 TRAIN sources, có 32 cards chờ review; **chưa train character/affinity auxiliary head**. Word GT không đủ chứng minh pseudo character labels đúng. Không tự hợp detector rồi gọi số craft-only là mức tăng khả thi.
 
-**Câu hỏi mở.** Cách nào có thể giúp B1-cal phát hiện thêm chữ trên LR2 mà vẫn giữ chất lượng Clean và chi phí hợp lý? Dữ kiện để bắt đầu là 3.280 lỗi hình học, 2.791 ca phản hồi yếu và recall 45,02% ở nhóm chữ LR2 dưới 4 px. Người review có thể dùng dữ kiện này hoặc đưa ra giả thuyết khác có căn cứ. Nếu muốn nghiên cứu mức suy thoái nặng hơn hoặc loại suy thoái khác, ghi rõ câu hỏi và đề xuất protocol riêng.
+Latency ngắn của B1 ở job latent: mean của image-median khoảng Clean **128,49 ms**, LR2 **127,86 ms**, batch1 FP32 H200 MIG35GB. Chỉ 8 ảnh cố định, 2 warmups/5 repeats, model + CPU quad decode, không IO/preprocess/load; không phải trung bình toàn dataset. Không so trực tiếp với đo EDSR có scope khác.
 
-Gửi lại một bản đề xuất ngắn gồm:
+## 6. Đang chạy và bước tiếp theo
 
-1. **Một giả thuyết và một phương pháp tự chọn.** Nêu nhóm lỗi muốn xử lý, bằng chứng hoặc bài báo liên quan, và lý do kỳ vọng có tác động.
-2. **Một thí nghiệm có đối chứng.** Nêu thay đổi duy nhất cần đo, checkpoint đối chứng B1-cal, dữ liệu cần dùng, ngân sách chạy và điều kiện để quyết định tiếp tục. Nếu cần train hoặc chỉnh ngưỡng, dùng TRAIN và remaining validation theo vai trò ở Mục 1.
-3. **Cách đọc kết quả.** Ghi chỉ số chính, CI, ảnh hưởng lên Clean, FP và latency. Chốt thiết kế trước khi dùng test. Với hướng ngoài Rev.4, ghi rõ đây là đề xuất nghiên cứu bổ sung.
+**Fusion job 106090:** nearest control, ASF, bilinear control, DySample; cùng B1 init, freeze backbone, train **FPNC + DBHead** 10k updates. Đây là chế độ trainable khác A0 cũ nên phải có control mới. 1k pilot nằm trong cùng run 10k, giữ optimizer/scheduler; lỗi probe thì dừng toàn job, metric pilot âm không tự đổi mục tiêu. Probe kỹ thuật và frozen-corruption check đã PASS tại snapshot, chưa có metric kết thúc. [Thiết kế và nguồn nghiên cứu](docs/fusion_research_and_generalization.md), [identity/probe snapshot](docs/handoff/artifacts/research_20261122/fusion_snapshot/).
+
+Sau run: so ASF với nearest, DySample với bilinear và với B1; Clean/LR2 đủ 2.262 nguồn, fixed `.40/.60` chính, `.30/.40` phụ; transfer LR4/LR8/blur/JPEG trên 500 nguồn đã chọn bằng hash. Không chọn threshold riêng theo corruption để làm đẹp kết quả.
+
+Việc còn thiếu quyết định chất lượng báo cáo:
+
+1. **Review bằng mắt:** 127 paired cards ở `.40/.60` và 32 CRAFT TRAIN cards vẫn PENDING. Nhãn proxy geometry/weak response chưa phải nguyên nhân thật; không suy diễn FP đều do nền.
+2. **Tổng quát hóa:** chưa chứng minh threshold/module tốt trên nhiều corruption hay ICDAR2015. S1/S2 chỉ là confirmation trên phần development đã xem, không fresh holdout.
+3. **Độ ổn định:** một seed; cần thêm seed matched baseline/method nếu có tín hiệu đáng kể và ngân sách cho phép. CI theo nguồn không thay thế seed.
+4. **Chọn cải tiến:** hiện có adaptation + calibration mạnh, EDSR có lợi ích nhỏ với chi phí rõ; PRC/KD/adapter chưa vượt control. Chưa có module kiến trúc mới được chứng minh tốt hơn baseline mạnh.
+5. **Benchmark cuối:** nhóm khóa method/checkpoint/postprocessing/deployment trước, audit lại manifest và lịch sử TEST, rồi đánh giá internal TextVQA/TextOCR TEST và ICDAR2015 theo evaluator đã công bố. Không dùng hai bộ này chọn hướng. ICDAR evaluator và ignore/matching cần ghi riêng, không tự sửa protocol cho giống nhau.
+
+Nhánh Mix A/B, QRoute/DualAgree của cộng tác viên được theo dõi riêng. Không gộp kết quả chưa xác minh vào bảng Monkey; hệ dùng hai checkpoint cần báo đủ chi phí và thống nhất ràng buộc triển khai. Repo này chưa chứng minh ưu thế của các nhánh đó.
+
+## 7. Tái lập và bàn giao
+
+- [Weights B0/B-Clean/B1/M/A0/A1/A2 + SHA256 + config](docs/handoff/checkpoints.md), tải qua Git LFS; file inference không có optimizer.
+- [Artifacts gốc PR/quad](docs/handoff/artifacts/pr_quad_audit_v1/README.md) giữ nguyên; [snapshot mới](docs/handoff/artifacts/research_20261122/README.md) có per-source counts, CI, review ZIP và provenance. Không chứa toàn bộ P-map cache/ảnh dataset.
+- [Protocol v2.0 và v2.1](docs/handoff/protocol/) được giữ nguyên. Các thử nghiệm sau đó là extension exploratory, không thay endpoint của protocol đã khóa.
+- [Trang cũ đã lưu](docs/archive/README.md); dùng workflow hiện tại để quyết định bước tiếp, dùng raw report cho chi tiết thực nghiệm.
+
+Đóng góp báo cáo có thể bảo vệ bằng bằng chứng là benchmark degradation có kiểm soát, clean-only control tách domain/resolution adaptation, calibration đối xứng và phân tích đánh đổi tiny recall/FP/Clean; các kết quả âm có đối chứng được trình bày đầy đủ. Nếu fusion không vượt control, báo đúng kết quả và giới hạn thay vì coi một module thêm vào là cải tiến đã thành công.

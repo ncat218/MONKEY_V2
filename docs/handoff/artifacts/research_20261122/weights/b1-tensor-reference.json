@@ -1,0 +1,2979 @@
+{
+  "source_checkpoint_sha256": "6df7a3fea16e1d3170af92212d060aab8040bb128fcfb63fb81eb7c8572ec58f",
+  "tensor_keys": 377,
+  "tensors": {
+    "backbone.vitae.stem.prm_convs.0.0.weight": {
+      "shape": [
+        64,
+        3,
+        7,
+        7
+      ],
+      "dtype": "torch.float32",
+      "sha256": "c9bbfd3fb6e02549f73fc611689c3885a7d0542166f20f3c84c9c55b092d1918"
+    },
+    "backbone.vitae.stem.prm_convs.0.0.bias": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "64cb047e67e60230196ff0a81f257be84c8e040308e5a86e3d6c6fa6ebad2596"
+    },
+    "backbone.vitae.stem.prm_convs.1.0.weight": {
+      "shape": [
+        64,
+        3,
+        7,
+        7
+      ],
+      "dtype": "torch.float32",
+      "sha256": "c8f969a1db51a75316d4d3455318f15102543b30788785591d49c162c2954906"
+    },
+    "backbone.vitae.stem.prm_convs.1.0.bias": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "417444de43127712ba84098ca1eb3d64e04137312e620e9a44dda251dc7c3b28"
+    },
+    "backbone.vitae.stem.prm_convs.2.0.weight": {
+      "shape": [
+        64,
+        3,
+        7,
+        7
+      ],
+      "dtype": "torch.float32",
+      "sha256": "a068c9b03ce310eca4bf831affb7f9e711f8a526ef90c1c0d426006b2b138708"
+    },
+    "backbone.vitae.stem.prm_convs.2.0.bias": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "7a1263fea96f0614eb928c9807183e1b4508fb3fced8559c6e40a3cbc6153f82"
+    },
+    "backbone.vitae.stem.prm_convs.3.0.weight": {
+      "shape": [
+        64,
+        3,
+        7,
+        7
+      ],
+      "dtype": "torch.float32",
+      "sha256": "f57826ff4543d32a6e163d0e4422c533838b93b0c44b79e94b7ae26979f7c2b8"
+    },
+    "backbone.vitae.stem.prm_convs.3.0.bias": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "04c6abb5ee76219d51efee69b5be0cd14adafa45041bf1403432818c8bc0b019"
+    },
+    "backbone.vitae.stem.prm_proj.weight": {
+      "shape": [
+        64,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "16fc857bbd61bf0b42635dd683766e80ef153461e286f657724d568beb369541"
+    },
+    "backbone.vitae.stem.pcm.0.weight": {
+      "shape": [
+        64,
+        3,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "de4b91c226c6180c2c6343f09c103bf67b82c690d534776254125bbe96be5e5d"
+    },
+    "backbone.vitae.stem.pcm.0.bias": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "49aa8ba31d7177437ef8572ba8a55fba03b1dfb634d81649145f02b3d1809833"
+    },
+    "backbone.vitae.stem.pcm.1.weight": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "deeb5701aa027bd7761f65a59d22af5ca783f0636cd132b25dd7e52024257d82"
+    },
+    "backbone.vitae.stem.pcm.1.bias": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "0ed05f5761691fa9fee604777c51b47d33ff67898626d3d6cd529a378e5b4aef"
+    },
+    "backbone.vitae.stem.pcm.3.weight": {
+      "shape": [
+        64,
+        64,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "830366d45a6c45bfd355eb3d44c47f7b0e3f516be005183072808008eb9c977b"
+    },
+    "backbone.vitae.stem.pcm.3.bias": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "374bbf555a0d5f1d2a6b8470646ca9d85e89bd7a4c6f29a92c91831d99c2aaf9"
+    },
+    "backbone.vitae.stem.pcm.4.weight": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "4afee9f9c7fee981835f5e2cfa34b799c4814e3846bf49a932b3321030636da9"
+    },
+    "backbone.vitae.stem.pcm.4.bias": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "aead0ad4b9ff756f9fd8a69818742d53053995b81c9c66da7f1af82736ee13ac"
+    },
+    "backbone.vitae.stem.pcm.6.weight": {
+      "shape": [
+        64,
+        64,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "8e51cf8b0f61f6559a0ca601f972fd39bb2957664b7d9be44ad67e646d1b5e59"
+    },
+    "backbone.vitae.stem.pcm.6.bias": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "60e277aaa5a63554a48d67e48920f77704ff100eb8ca47d994a61ed184debc34"
+    },
+    "backbone.vitae.stem.norm_attn.weight": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "5288c8dd1f31cfc922b6157291c05a15e9b991472b63ecc6c193b77d4417aff9"
+    },
+    "backbone.vitae.stem.qkv.weight": {
+      "shape": [
+        192,
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "839d94e32d3cc948e987363661a11842bd8cf6a61bbe60b4ea11b5fa9d9d8ce0"
+    },
+    "backbone.vitae.stem.attn_proj.weight": {
+      "shape": [
+        64,
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "97cb47931c46d9d8eeccaa5647150cf927f30db0d944ae625c78c7bedf758491"
+    },
+    "backbone.vitae.stem.norm_ffn.weight": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "fb55ecedd443e2df6a713eecb7ed53c4e10115e86c17dcc93fc3578e8534ee60"
+    },
+    "backbone.vitae.stem.mlp.fc1.weight": {
+      "shape": [
+        64,
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "f65ff091e06c41fdcfe3cedc18c2f4cf1e8a89dcf2fe2d9f80974702944579fe"
+    },
+    "backbone.vitae.stem.mlp.fc2.weight": {
+      "shape": [
+        64,
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "f84979a60f7540bcf0baba0ff910842466ee5c415128a0fe99145a4dc8821caa"
+    },
+    "backbone.vitae.stage1.0.norm1.weight": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "d3e6de6e6dc7e6ca4d13f5fb84ee9f8c09fc6f1d3cd22d75a64c4a5e8d2902e8"
+    },
+    "backbone.vitae.stage1.0.norm2.weight": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "0fb756676844584533da9e2903017f4afe6b2303815b2d9c904c99d1421f1083"
+    },
+    "backbone.vitae.stage1.0.qkv.weight": {
+      "shape": [
+        192,
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "56c2ff93263f0108e701a940978121cff26f935b3d7f72f1aadd32c84bbf76e0"
+    },
+    "backbone.vitae.stage1.0.proj.weight": {
+      "shape": [
+        64,
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "1296af915123f9ec04c96e506ad710e3bfdbc06b107d3087fbb8738876d4b332"
+    },
+    "backbone.vitae.stage1.0.mlp.gate_proj.weight": {
+      "shape": [
+        171,
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "87ac16e92f8c3ea2014f9073198bcbb87f41d4d19646ca41f91454420cc11db3"
+    },
+    "backbone.vitae.stage1.0.mlp.up_proj.weight": {
+      "shape": [
+        171,
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "b66dfd0531b15425554e1aae4c7b2879ece968000c153c28fc16f6569f21db7b"
+    },
+    "backbone.vitae.stage1.0.mlp.down_proj.weight": {
+      "shape": [
+        64,
+        171
+      ],
+      "dtype": "torch.float32",
+      "sha256": "50ced6678050981aa5e6d35798a6f5851c16eb088520a8435dba54a3a337fcae"
+    },
+    "backbone.vitae.stage1.0.pcm.0.weight": {
+      "shape": [
+        256,
+        64,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "fb5e21b835db7dff78306884646baff8a2d68b7e1cecda64fb25e7e0441c847a"
+    },
+    "backbone.vitae.stage1.0.pcm.0.bias": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "eebcc7a3baba534401b9d2474c3cb99bd23c3f98aac3b8838404d6f951cb28d7"
+    },
+    "backbone.vitae.stage1.0.pcm.1.weight": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "ece3e2758b026301897186e4ed2cd1216ad391856e9609c2fe726613777db9b3"
+    },
+    "backbone.vitae.stage1.0.pcm.1.bias": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "7b9acaa3b66e998036e8c450f5d66d3fb47699d510327aad18859219d53574ad"
+    },
+    "backbone.vitae.stage1.0.pcm.3.weight": {
+      "shape": [
+        64,
+        256,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "889c291ac83a5142482a8a6f7fc5e4f9ef9ffe1e50ea8704dd4b6e4056af168f"
+    },
+    "backbone.vitae.stage1.0.pcm.3.bias": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "998a7b6cb9d2af75374db29b55b9b7b830794a623634f1ee8da18c5ea0746dce"
+    },
+    "backbone.vitae.stage1.0.pcm.4.weight": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "d66023f405fe29b00bfee29c344844d295c6c844d0eeeab74d0fa865d99ce7f6"
+    },
+    "backbone.vitae.stage1.0.pcm.4.bias": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "fc757db8d6c2c3816e61cfa1ef76abf97e9aece54305d208c25b04b711557b54"
+    },
+    "backbone.vitae.stage1.0.pcm.6.weight": {
+      "shape": [
+        64,
+        64,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "38beae6a7fdf6257d65c69087091ec2b6dd20aafa23775e0d3670cea46393627"
+    },
+    "backbone.vitae.stage1.0.pcm.6.bias": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "0bea25e48b62ba393b2d583fee2b06a3ad346163720a424f404fb6266dba8729"
+    },
+    "backbone.vitae.stage1.1.norm1.weight": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "5765bb0fecbe7a2ce34a298a01a3b2f68aa82b559897ca8592c101d9ec16625a"
+    },
+    "backbone.vitae.stage1.1.norm2.weight": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "84ab7a2e02566a5207c82360d887c82a6cea25c24d72c477a39ee4213582e9f6"
+    },
+    "backbone.vitae.stage1.1.qkv.weight": {
+      "shape": [
+        192,
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "b377ba6a83ad2bfe9d711abdbc8961cdc9f832db07546e1a35bd5b8f85674e77"
+    },
+    "backbone.vitae.stage1.1.proj.weight": {
+      "shape": [
+        64,
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "5458c50a60a00bf8668fe0deebb0f36181cdbb4b9dd35eb7ce1e76bea81b4c26"
+    },
+    "backbone.vitae.stage1.1.mlp.gate_proj.weight": {
+      "shape": [
+        171,
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "72f26c47c535fd538e5898f2b6c7fca9e672a85c9ca24a543feceb1cd4d42d3a"
+    },
+    "backbone.vitae.stage1.1.mlp.up_proj.weight": {
+      "shape": [
+        171,
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "81b311eaa552fa089d420b8a795ae6aa5c53009323e37068861784c4eabdb44b"
+    },
+    "backbone.vitae.stage1.1.mlp.down_proj.weight": {
+      "shape": [
+        64,
+        171
+      ],
+      "dtype": "torch.float32",
+      "sha256": "18a08cf2591ad1f33c02c163bc14c74f93238c780806ab4a7a089ab872671875"
+    },
+    "backbone.vitae.stage1.1.pcm.0.weight": {
+      "shape": [
+        256,
+        64,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "ed96d1a7bdccbb9a965f91de642120373492d48aff1014edbdd6ac359797f382"
+    },
+    "backbone.vitae.stage1.1.pcm.0.bias": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "15ac22acb5c1e8adfac8d73d74ec562f2b95feccf2672334bd8a9ba66c8e9a1c"
+    },
+    "backbone.vitae.stage1.1.pcm.1.weight": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "d9f7aa70ae73d046da735b6b0e22dc4101fdf8a0df3c5daa75732c981b603b56"
+    },
+    "backbone.vitae.stage1.1.pcm.1.bias": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "9b87851e2ad8400afe87910baf78357f7691ff02f34b93deac8d80b1710fb7c1"
+    },
+    "backbone.vitae.stage1.1.pcm.3.weight": {
+      "shape": [
+        64,
+        256,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "fc5b25dc00b9422f7c556e0634529b256bbffc9cb28278c8d43548f4771f3dda"
+    },
+    "backbone.vitae.stage1.1.pcm.3.bias": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "e4dd8c0ab7a9fa00224ec560c100e81e1e5b3d409c0ad602bc98a6b5a4458db2"
+    },
+    "backbone.vitae.stage1.1.pcm.4.weight": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "6f5f2e551fd30a596e27548379873f12784bfee791f132c74656e0671ef84509"
+    },
+    "backbone.vitae.stage1.1.pcm.4.bias": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "54352d8ad72718d4a2c8d6bbba7e11b66909c62f6658985d40f401c28f4fa118"
+    },
+    "backbone.vitae.stage1.1.pcm.6.weight": {
+      "shape": [
+        64,
+        64,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "7ba400606bda9e6d0b57217a76441c7984606cb23c91cbd22fb1f132b3db2ab5"
+    },
+    "backbone.vitae.stage1.1.pcm.6.bias": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "471aa7dec2a7207dc90a8524b838ce751e4f51fe0ba129e677d93e1a6526c3fe"
+    },
+    "backbone.vitae.rc1.prm_convs.0.0.weight": {
+      "shape": [
+        64,
+        64,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "c180232314ad06b5a39dd89ef9d79b7ba82846955c136852552737ba5da19ec1"
+    },
+    "backbone.vitae.rc1.prm_convs.0.0.bias": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "edb8deab3ded47e8c8ad471a0ed9e7760c31c52841a252453882624e94d2bfaa"
+    },
+    "backbone.vitae.rc1.prm_convs.1.0.weight": {
+      "shape": [
+        64,
+        64,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "9eb2de8f79b14636a7510f8aa82dd8311e4949ba018c21d30257006ab2d1f903"
+    },
+    "backbone.vitae.rc1.prm_convs.1.0.bias": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "fa4f8dfd1f833f5bce1c7815d8a255539507fbc007e4ae7f9b3bbd96cebe06db"
+    },
+    "backbone.vitae.rc1.prm_convs.2.0.weight": {
+      "shape": [
+        64,
+        64,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "0ab9c896d432ee5f700def6d38d2e8cafeb1084a343b492829c1ec146b7e02de"
+    },
+    "backbone.vitae.rc1.prm_convs.2.0.bias": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "df370cae7e42b968f4ee2a7a0a069f4f912de779ca85fa44a10f2029e78c38a6"
+    },
+    "backbone.vitae.rc1.prm_convs.3.0.weight": {
+      "shape": [
+        64,
+        64,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "8527e2de3d196d6c6f814cdf79a34311f7557199f300d803b2c204cadf9d3b2d"
+    },
+    "backbone.vitae.rc1.prm_convs.3.0.bias": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "a15da0142438aa2b421489274deddeb3c3c3d8c6b574b23f01f113fb1888092b"
+    },
+    "backbone.vitae.rc1.prm_proj.weight": {
+      "shape": [
+        128,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "95ad2f128e6163df88e28f9172657cc45975c06f05b0409b1d4d7e3778572607"
+    },
+    "backbone.vitae.rc1.pcm.0.weight": {
+      "shape": [
+        64,
+        4,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "93227a553e1cb8983da4eecca03fe34b4e8ca92008c5dbd07f37dc58a2f12b2a"
+    },
+    "backbone.vitae.rc1.pcm.0.bias": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "9b463d9c4ec180248d19789ae472f867a177f280bf0869b7c8ea6a19cf2c08ec"
+    },
+    "backbone.vitae.rc1.pcm.1.weight": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "f702d5bfb8c68cd470b26ecc8ff0aa58d8d58de5bed47d4c15280ef4478b16e2"
+    },
+    "backbone.vitae.rc1.pcm.1.bias": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "9186bfdf78e4ee9f9ff47fe128df70771e84c5a5e1b891a9acf3ae671a033d2a"
+    },
+    "backbone.vitae.rc1.pcm.3.weight": {
+      "shape": [
+        64,
+        4,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "7026024c1103d57dd90424d1ab8ef22daeb786b3b1cff0ca6e2fc01e47337e5b"
+    },
+    "backbone.vitae.rc1.pcm.3.bias": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "7a3aa8be51361ff9ea56df09a12b79cbdcf6109594e94a7c78d72fb5d2ffcf2b"
+    },
+    "backbone.vitae.rc1.pcm.4.weight": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "44647dab0b647112c2e500dac2796e2859e498a8b27edb2e343671d224393e8d"
+    },
+    "backbone.vitae.rc1.pcm.4.bias": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "83726d35512698dbd0986f484ed8a7a0f7e401127130844a9c0e7b2f446881ee"
+    },
+    "backbone.vitae.rc1.pcm.6.weight": {
+      "shape": [
+        128,
+        4,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "5692bd9deee344f34afb33d2604284754de20dcc500584b7130aabf617076e99"
+    },
+    "backbone.vitae.rc1.pcm.6.bias": {
+      "shape": [
+        128
+      ],
+      "dtype": "torch.float32",
+      "sha256": "0313c07ef146d14698d45187ab59c5c256b803cb258164d6f6b035d26e8db555"
+    },
+    "backbone.vitae.rc1.norm_attn.weight": {
+      "shape": [
+        128
+      ],
+      "dtype": "torch.float32",
+      "sha256": "eeba3086f7b14cb31f33b08b7c9c83da140982c9e4703b5fab0e6004f8083f06"
+    },
+    "backbone.vitae.rc1.qkv.weight": {
+      "shape": [
+        384,
+        128
+      ],
+      "dtype": "torch.float32",
+      "sha256": "5b8fbd9bd4226c155c25b93571b151ee5b4590a09e96bf2538effd8d8d0d7dc6"
+    },
+    "backbone.vitae.rc1.attn_proj.weight": {
+      "shape": [
+        128,
+        128
+      ],
+      "dtype": "torch.float32",
+      "sha256": "ab89765d2189859cec86ee0205c48ff312ba2edbbca86767ddd6d76fe10cc3e5"
+    },
+    "backbone.vitae.rc1.norm_ffn.weight": {
+      "shape": [
+        128
+      ],
+      "dtype": "torch.float32",
+      "sha256": "99bba651df134bda5ed2df472c7263cb01c2b65c135b33feae036cf8e439e164"
+    },
+    "backbone.vitae.rc1.mlp.fc1.weight": {
+      "shape": [
+        128,
+        128
+      ],
+      "dtype": "torch.float32",
+      "sha256": "4049d8cf3e99f1a42536e1d436682842c474aa49fe010678dd1cfcdb9bf19536"
+    },
+    "backbone.vitae.rc1.mlp.fc2.weight": {
+      "shape": [
+        128,
+        128
+      ],
+      "dtype": "torch.float32",
+      "sha256": "b0ef1b34aa94f56225b400ec26d102fb2414c04595f5bead97ab4434abc647f9"
+    },
+    "backbone.vitae.stage2.0.norm1.weight": {
+      "shape": [
+        128
+      ],
+      "dtype": "torch.float32",
+      "sha256": "9efda282ac477609e09731fb96ceca90c10dbc79f6192b0654db2f4d324d394c"
+    },
+    "backbone.vitae.stage2.0.norm2.weight": {
+      "shape": [
+        128
+      ],
+      "dtype": "torch.float32",
+      "sha256": "bfc8bb1f769d6eeb1cf27ba2bf62a49552928652face6e1f7ba2c61c99acc154"
+    },
+    "backbone.vitae.stage2.0.qkv.weight": {
+      "shape": [
+        384,
+        128
+      ],
+      "dtype": "torch.float32",
+      "sha256": "b7fe5dd6e9eb33470fe31fcc18d81e2661e7de8ede8e49dea6342539c9ec93e4"
+    },
+    "backbone.vitae.stage2.0.proj.weight": {
+      "shape": [
+        128,
+        128
+      ],
+      "dtype": "torch.float32",
+      "sha256": "664e92f7a2445a2d100c1cfb3b53d96d3a78f5d90bad556ef033c23a3c444cc9"
+    },
+    "backbone.vitae.stage2.0.mlp.gate_proj.weight": {
+      "shape": [
+        342,
+        128
+      ],
+      "dtype": "torch.float32",
+      "sha256": "2347fbba1e4f773ca7d481b654deb7bfdeab19c5b189a2b94da2eb68fc067374"
+    },
+    "backbone.vitae.stage2.0.mlp.up_proj.weight": {
+      "shape": [
+        342,
+        128
+      ],
+      "dtype": "torch.float32",
+      "sha256": "1bd583c2c871a1e766dc485ffa54cf609e43122850ab9692c580b329cc9deca6"
+    },
+    "backbone.vitae.stage2.0.mlp.down_proj.weight": {
+      "shape": [
+        128,
+        342
+      ],
+      "dtype": "torch.float32",
+      "sha256": "af4df361011605ee84a7b1a4f7a888876741bd7fb9e306dd48a26312cee4c6c2"
+    },
+    "backbone.vitae.stage2.0.pcm.0.weight": {
+      "shape": [
+        512,
+        4,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "f2303d214d84a51357ebca054fc7892c1ae02f8d2cd65eb488e9cabfd93a6b6d"
+    },
+    "backbone.vitae.stage2.0.pcm.0.bias": {
+      "shape": [
+        512
+      ],
+      "dtype": "torch.float32",
+      "sha256": "7c4989f1f4adaf978f11e0f699f7456c944201b79f6abe37278533347feba9f6"
+    },
+    "backbone.vitae.stage2.0.pcm.1.weight": {
+      "shape": [
+        512
+      ],
+      "dtype": "torch.float32",
+      "sha256": "3f9a5ce3c6d4bfb07495a3fb02f1d189fc3992195769d0d766660a1b2cc0b58c"
+    },
+    "backbone.vitae.stage2.0.pcm.1.bias": {
+      "shape": [
+        512
+      ],
+      "dtype": "torch.float32",
+      "sha256": "b495ff7cf59cfc208fac43bb0d9bd01aa06e338e890a3a6fd3c678a18a138a0a"
+    },
+    "backbone.vitae.stage2.0.pcm.3.weight": {
+      "shape": [
+        128,
+        16,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "e5db3850d9be5e039b934b8a7b5442ae5934d586fc93ee974db25c8a478c88f1"
+    },
+    "backbone.vitae.stage2.0.pcm.3.bias": {
+      "shape": [
+        128
+      ],
+      "dtype": "torch.float32",
+      "sha256": "11e36dd1c578551f35c14c8c6706be2380a40ccad83161f74f69e7750ffdf73f"
+    },
+    "backbone.vitae.stage2.0.pcm.4.weight": {
+      "shape": [
+        128
+      ],
+      "dtype": "torch.float32",
+      "sha256": "42c8283d80a03521004001b40c2cc0bd2c972bf6a56295d156caec5559ac63d0"
+    },
+    "backbone.vitae.stage2.0.pcm.4.bias": {
+      "shape": [
+        128
+      ],
+      "dtype": "torch.float32",
+      "sha256": "d89890e181dd4f4fe7d5aa596f0de6f88b3e91e67ee868bbb707fa97c8cfffa2"
+    },
+    "backbone.vitae.stage2.0.pcm.6.weight": {
+      "shape": [
+        128,
+        4,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "56763785bb0216aef6c5e385e927a7b36712aa4c19145154b9efcbc13dbf8321"
+    },
+    "backbone.vitae.stage2.0.pcm.6.bias": {
+      "shape": [
+        128
+      ],
+      "dtype": "torch.float32",
+      "sha256": "7366c76fe44c500a39c538193fa832f2599ec707ccf2443184760195884e6e08"
+    },
+    "backbone.vitae.stage2.1.norm1.weight": {
+      "shape": [
+        128
+      ],
+      "dtype": "torch.float32",
+      "sha256": "c25688e5042ece5a7ae8df1acdba7b8ca40abefa4709fc575b826be84456d7dc"
+    },
+    "backbone.vitae.stage2.1.norm2.weight": {
+      "shape": [
+        128
+      ],
+      "dtype": "torch.float32",
+      "sha256": "0e4abf6c85720ba7dd8d13a2756979601d744d1d18037ef191ef6e909665af6a"
+    },
+    "backbone.vitae.stage2.1.qkv.weight": {
+      "shape": [
+        384,
+        128
+      ],
+      "dtype": "torch.float32",
+      "sha256": "2d3e81e1eb6ef97570b845e8a2dbbc6653d7b61c5deda913c80eaa85bbe1b0cb"
+    },
+    "backbone.vitae.stage2.1.proj.weight": {
+      "shape": [
+        128,
+        128
+      ],
+      "dtype": "torch.float32",
+      "sha256": "a503f02a8be6929523636d131680cde7e530f3496e0cd22ef1bdfa1720e81abb"
+    },
+    "backbone.vitae.stage2.1.mlp.gate_proj.weight": {
+      "shape": [
+        342,
+        128
+      ],
+      "dtype": "torch.float32",
+      "sha256": "86d3a32b6723db74ec896c97dbb3c723460a95d60d6ff1677795e4c154c29488"
+    },
+    "backbone.vitae.stage2.1.mlp.up_proj.weight": {
+      "shape": [
+        342,
+        128
+      ],
+      "dtype": "torch.float32",
+      "sha256": "aeb33d7979253d03bd2c2903eea7efb4361d7aa514f4ece8bbc80eda0f07d321"
+    },
+    "backbone.vitae.stage2.1.mlp.down_proj.weight": {
+      "shape": [
+        128,
+        342
+      ],
+      "dtype": "torch.float32",
+      "sha256": "d841e4f9e7824f5e1f8daf116c15d9a6c8b691682944022ca5b59f168b841ed9"
+    },
+    "backbone.vitae.stage2.1.pcm.0.weight": {
+      "shape": [
+        512,
+        4,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "88cd284e235b5b65d65629540af362e71e4930e0f7c9e6dda7a89bf3bee1b0e0"
+    },
+    "backbone.vitae.stage2.1.pcm.0.bias": {
+      "shape": [
+        512
+      ],
+      "dtype": "torch.float32",
+      "sha256": "545147919a65ea70318a9bd1ba2ffaa2bba08e128e590dda2fe5346deb5abe14"
+    },
+    "backbone.vitae.stage2.1.pcm.1.weight": {
+      "shape": [
+        512
+      ],
+      "dtype": "torch.float32",
+      "sha256": "43f9e4c357ad405aa096023b7eff6cfefe711081665a6999079bee127af9b8f6"
+    },
+    "backbone.vitae.stage2.1.pcm.1.bias": {
+      "shape": [
+        512
+      ],
+      "dtype": "torch.float32",
+      "sha256": "41d5d36c60bd5937efdb667d04cee70aea0c9e15a0f360ca9acc15794e03b1d7"
+    },
+    "backbone.vitae.stage2.1.pcm.3.weight": {
+      "shape": [
+        128,
+        16,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "b79338121116c5a84c64b0b63ba8c3b4d88dc86fa2d2d19076ec2f6667936888"
+    },
+    "backbone.vitae.stage2.1.pcm.3.bias": {
+      "shape": [
+        128
+      ],
+      "dtype": "torch.float32",
+      "sha256": "12ab86dcd51b81c6028aa9dd4e287fbcc2fc81a42463ba8162df822dff401f15"
+    },
+    "backbone.vitae.stage2.1.pcm.4.weight": {
+      "shape": [
+        128
+      ],
+      "dtype": "torch.float32",
+      "sha256": "f5ee683019cf912759af3967a5a4729ee54762740d036ccbfc34a1294c7cbb22"
+    },
+    "backbone.vitae.stage2.1.pcm.4.bias": {
+      "shape": [
+        128
+      ],
+      "dtype": "torch.float32",
+      "sha256": "3b1a646033da12090256fb8e77280788cc4279bc4495f20a3276e4be50dddd60"
+    },
+    "backbone.vitae.stage2.1.pcm.6.weight": {
+      "shape": [
+        128,
+        4,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "6df45a2282d2ce08aa1901fbf9e2dbfdf03435bf0fe7b807ee2f539dc706e515"
+    },
+    "backbone.vitae.stage2.1.pcm.6.bias": {
+      "shape": [
+        128
+      ],
+      "dtype": "torch.float32",
+      "sha256": "cdf3532ed9f7a1670dfd45ca7ce8fb3df1bcdc8bdb2aa97fb8ba96abc1d9610f"
+    },
+    "backbone.vitae.rc2.prm_convs.0.0.weight": {
+      "shape": [
+        128,
+        128,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "f41aeb59fa7ac734f42b9761eaf8054da51665cd1e02d85764b4191072ebe0ec"
+    },
+    "backbone.vitae.rc2.prm_convs.0.0.bias": {
+      "shape": [
+        128
+      ],
+      "dtype": "torch.float32",
+      "sha256": "879528a817c7469f69016071bc1561c80c6973a7c390977c09582c2552c3b52e"
+    },
+    "backbone.vitae.rc2.prm_convs.1.0.weight": {
+      "shape": [
+        128,
+        128,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "4636e4178a8905384cfd0403cc177d964d4e9da8d7d28d93bd9bf2848b484aca"
+    },
+    "backbone.vitae.rc2.prm_convs.1.0.bias": {
+      "shape": [
+        128
+      ],
+      "dtype": "torch.float32",
+      "sha256": "1b15e37b8c9b6eb560213fb6de2aa0b35c5eeece8b6875de690d0409b78a498b"
+    },
+    "backbone.vitae.rc2.prm_convs.2.0.weight": {
+      "shape": [
+        128,
+        128,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "aad7d9ff5f7e07d627bcd22e2e59db59ac9f3f92713e9a36ef15601f0eabe56d"
+    },
+    "backbone.vitae.rc2.prm_convs.2.0.bias": {
+      "shape": [
+        128
+      ],
+      "dtype": "torch.float32",
+      "sha256": "6c46b1d3ff7e026c392cc4ac8eeda9bf873c1175aa230cebdd1c87b335a47d21"
+    },
+    "backbone.vitae.rc2.prm_convs.3.0.weight": {
+      "shape": [
+        128,
+        128,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "19bfc7b40dfdfe36bea576f01c5edea319958804ceb287e7d3dc8c5b0921079c"
+    },
+    "backbone.vitae.rc2.prm_convs.3.0.bias": {
+      "shape": [
+        128
+      ],
+      "dtype": "torch.float32",
+      "sha256": "11be09e787d549db569d4ddea19b6f56d30a485a5bd34428efbfcb596e545a14"
+    },
+    "backbone.vitae.rc2.prm_proj.weight": {
+      "shape": [
+        256,
+        512
+      ],
+      "dtype": "torch.float32",
+      "sha256": "4fbce938479bc20c0ff1de85b28a19f54661b738bcce3321a8d76071030c9354"
+    },
+    "backbone.vitae.rc2.pcm.0.weight": {
+      "shape": [
+        128,
+        4,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "4ccb4ea700d4405a36e1062d0d3e7cd9131a24b1df04643f7d4b9265e61d9a42"
+    },
+    "backbone.vitae.rc2.pcm.0.bias": {
+      "shape": [
+        128
+      ],
+      "dtype": "torch.float32",
+      "sha256": "e30244d622c52aa23f3a16db965534db6a01814ad5c00a10dec1c316f90592f1"
+    },
+    "backbone.vitae.rc2.pcm.1.weight": {
+      "shape": [
+        128
+      ],
+      "dtype": "torch.float32",
+      "sha256": "0f2511ef68e7584e3b819145fc532b191f6814e966128f95655ad6b00082b04d"
+    },
+    "backbone.vitae.rc2.pcm.1.bias": {
+      "shape": [
+        128
+      ],
+      "dtype": "torch.float32",
+      "sha256": "305f4394802b8d9e34baaf7f944439a5b254ed5f91138f30f1f53759245ab59f"
+    },
+    "backbone.vitae.rc2.pcm.3.weight": {
+      "shape": [
+        128,
+        4,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "1ca91c02712618e79d39ad5bd719432cd9c273e0e6706412ba28b5d2a7b2f0e6"
+    },
+    "backbone.vitae.rc2.pcm.3.bias": {
+      "shape": [
+        128
+      ],
+      "dtype": "torch.float32",
+      "sha256": "b560984c5d3bf08d8b34cf41360a8d10978c5a111f60fbcc2654c093d276a284"
+    },
+    "backbone.vitae.rc2.pcm.4.weight": {
+      "shape": [
+        128
+      ],
+      "dtype": "torch.float32",
+      "sha256": "efaec7bf9be98333ebb40bc9bff4f020d996c840ddd3ec41d1f6307d2a98ccbd"
+    },
+    "backbone.vitae.rc2.pcm.4.bias": {
+      "shape": [
+        128
+      ],
+      "dtype": "torch.float32",
+      "sha256": "39f827418ccecf02b19063096b31e796d5d8de478adf40546783a8b03f173a98"
+    },
+    "backbone.vitae.rc2.pcm.6.weight": {
+      "shape": [
+        256,
+        4,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "c4e5a57a253abb5515ccd7da5ce3d1a1b22e178e889ec47dc627308d9230bc82"
+    },
+    "backbone.vitae.rc2.pcm.6.bias": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "b826d5591566f18f72f62d4ae5c3c944c6cedc626df61cc9462203d2f9a343b5"
+    },
+    "backbone.vitae.rc2.norm_attn.weight": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "8ba20f7abce8b0762d24ea7f083aa4132f8fadaed87fb8f9a2ef3aeba25f3cbb"
+    },
+    "backbone.vitae.rc2.qkv.weight": {
+      "shape": [
+        768,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "d63999b0ddb67bc0650d33fe77559795b359da0e5562d1aef0de4eb1d37c026b"
+    },
+    "backbone.vitae.rc2.attn_proj.weight": {
+      "shape": [
+        256,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "4d557a93869aa5ce2048a5e8bf8d33fc8c00bdd3ce6d7b4df038e13637866faa"
+    },
+    "backbone.vitae.rc2.norm_ffn.weight": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "0220273454e4415adbdd1119c514c381452447de599c2d316040bcd0d97546fb"
+    },
+    "backbone.vitae.rc2.mlp.fc1.weight": {
+      "shape": [
+        256,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "bda262ad7aee44c6da56f9ca37b7be9777805e5a8206841b4bb812b174dda2e5"
+    },
+    "backbone.vitae.rc2.mlp.fc2.weight": {
+      "shape": [
+        256,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "5c6bafce375decab9120b003c198df9e7d26156ddf6f995f3e431839dd991a77"
+    },
+    "backbone.vitae.stage3.0.norm1.weight": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "5cc1dadfc9a63aa1387035d8038fb33a9542d61cbc3b4a5385bf58eaa2fba44c"
+    },
+    "backbone.vitae.stage3.0.norm2.weight": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "374d9249d9b819d9f71f227774abdcf25192274fc2b49e6c0ebcd148595a6fad"
+    },
+    "backbone.vitae.stage3.0.qkv.weight": {
+      "shape": [
+        768,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "c2bbcb01ea3a5a1c8da98ab33e618b2945d8b66a3f477c17aa79c4e928f8b3ba"
+    },
+    "backbone.vitae.stage3.0.proj.weight": {
+      "shape": [
+        256,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "3cd7466d3446890ecc1d393b4f680d47fa01d05e1500a23276d7583ae7ae4bad"
+    },
+    "backbone.vitae.stage3.0.mlp.gate_proj.weight": {
+      "shape": [
+        683,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "749040e316c145201df04a3ae9f92d58c50eaf7833ce3faa1587751b9914b440"
+    },
+    "backbone.vitae.stage3.0.mlp.up_proj.weight": {
+      "shape": [
+        683,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "34139e41cd476cd1dc2d7d3a296d57cf393ceb110f7e7c8756b6f7c01a6aa7b9"
+    },
+    "backbone.vitae.stage3.0.mlp.down_proj.weight": {
+      "shape": [
+        256,
+        683
+      ],
+      "dtype": "torch.float32",
+      "sha256": "b39b610824900b002b9d1331a8cfc8d55d795a518370cb69a37b8135ce36df67"
+    },
+    "backbone.vitae.stage3.0.pcm.0.weight": {
+      "shape": [
+        1024,
+        4,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "6b28dae8bfbd2c2f02bfba5fde071d81409a81dd6f84169c8495ffa312ae72f7"
+    },
+    "backbone.vitae.stage3.0.pcm.0.bias": {
+      "shape": [
+        1024
+      ],
+      "dtype": "torch.float32",
+      "sha256": "db867dbdcdb2e65eca492e97b3128a347ad33bf7395b0e687a9fa6efad6786af"
+    },
+    "backbone.vitae.stage3.0.pcm.1.weight": {
+      "shape": [
+        1024
+      ],
+      "dtype": "torch.float32",
+      "sha256": "6fa14b1112fceebd959a3859ff26da713b97c761944ff7bca0184aea21d705e4"
+    },
+    "backbone.vitae.stage3.0.pcm.1.bias": {
+      "shape": [
+        1024
+      ],
+      "dtype": "torch.float32",
+      "sha256": "040ef9f1b27c39c84eb27bbc2ff3b05fe0135b2c4b3f884d0ed4e4961eb76fa7"
+    },
+    "backbone.vitae.stage3.0.pcm.3.weight": {
+      "shape": [
+        256,
+        16,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "2a4619c13b2ea56cffacebe074d18c96eb8053abebb911471d6d49b2aaa3b0e4"
+    },
+    "backbone.vitae.stage3.0.pcm.3.bias": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "365b954243fbfb7194ae17f6864f396413643051706ecc7eda724fd56346f8de"
+    },
+    "backbone.vitae.stage3.0.pcm.4.weight": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "fd4d90da559d91672e04cc936ab0fdad4e2f0541e04990c18f13c91cfb8d64c9"
+    },
+    "backbone.vitae.stage3.0.pcm.4.bias": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "0461ceaa646174371684a2af2034a000650c85e0003e2d350662ed1c993a212f"
+    },
+    "backbone.vitae.stage3.0.pcm.6.weight": {
+      "shape": [
+        256,
+        4,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "48888369f86292a8ff475e6e42fac0e9b184ed6957e8c68e049ed6fcdad3fdb5"
+    },
+    "backbone.vitae.stage3.0.pcm.6.bias": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "c1418eb660758c1e2d121b6959204756884b53b9d929e36c906159cddf8618d2"
+    },
+    "backbone.vitae.stage3.1.norm1.weight": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "48ad6c42eca3bf91d6470c6b45dd5be334183d3be6bf8da76755911f39224a00"
+    },
+    "backbone.vitae.stage3.1.norm2.weight": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "2bffa77c73b4d6e8659b18e547f183ac079484dad74a13ee6a8d4c0d4bdf730e"
+    },
+    "backbone.vitae.stage3.1.qkv.weight": {
+      "shape": [
+        768,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "7080d207b0c9a3836a8abea3367749592ce8bf78da87676c8563a8d1b62061ed"
+    },
+    "backbone.vitae.stage3.1.proj.weight": {
+      "shape": [
+        256,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "de3344b54b97e15612a682b6b2460fa2c0bd9d16cdd7d54ed1324400fb92fd05"
+    },
+    "backbone.vitae.stage3.1.mlp.gate_proj.weight": {
+      "shape": [
+        683,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "86177720305ad4efbeeeeaa2d070b9e7ef1c319da0df615a8fc1482b7226753d"
+    },
+    "backbone.vitae.stage3.1.mlp.up_proj.weight": {
+      "shape": [
+        683,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "9572abdc90508abd4677e4974d2ef583567369fdbccbf9177117832cb0082ed6"
+    },
+    "backbone.vitae.stage3.1.mlp.down_proj.weight": {
+      "shape": [
+        256,
+        683
+      ],
+      "dtype": "torch.float32",
+      "sha256": "21c148bd276e0b26e57c65505b3791c47667e62931937a2fa83b5203c2f6ad1b"
+    },
+    "backbone.vitae.stage3.1.pcm.0.weight": {
+      "shape": [
+        1024,
+        4,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "28b92c36135ac06d0b8511351c08fe7127c3148499f627af6708ea6297ba0946"
+    },
+    "backbone.vitae.stage3.1.pcm.0.bias": {
+      "shape": [
+        1024
+      ],
+      "dtype": "torch.float32",
+      "sha256": "d9640ad7bfe989c9e1fa4ea8aca142c265ffda280e28498a51a6a79b74762315"
+    },
+    "backbone.vitae.stage3.1.pcm.1.weight": {
+      "shape": [
+        1024
+      ],
+      "dtype": "torch.float32",
+      "sha256": "282718ed0d3a0f5eb2c16285bf045d6d0128cf9724b4d6d81e44feea354fde0e"
+    },
+    "backbone.vitae.stage3.1.pcm.1.bias": {
+      "shape": [
+        1024
+      ],
+      "dtype": "torch.float32",
+      "sha256": "184122ddd2d6383fd201c6d9db9cf20d0d945f828285bd9687952ab4e2d9cc30"
+    },
+    "backbone.vitae.stage3.1.pcm.3.weight": {
+      "shape": [
+        256,
+        16,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "d41dc4d112e845dfbeb5f2825f08f2902046cedb8aa771c98329d34e81da3af4"
+    },
+    "backbone.vitae.stage3.1.pcm.3.bias": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "5b6d53d6e8b32c8d09eb46906e56fd071a868f5e8c10242216cbbe4ceaccdac5"
+    },
+    "backbone.vitae.stage3.1.pcm.4.weight": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "e24ccc5936c7ba269caebb0f0f4f1b4a5881c19adbe46f180c2306c59c996531"
+    },
+    "backbone.vitae.stage3.1.pcm.4.bias": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "60bd599d10267658bf6f2e44f41a629f5e08b0b1712ee7ad3f57b611685f79b9"
+    },
+    "backbone.vitae.stage3.1.pcm.6.weight": {
+      "shape": [
+        256,
+        4,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "7495574c86021f4b00c54ca591be21eb8f06396a83ae25070e8e42c238b289ee"
+    },
+    "backbone.vitae.stage3.1.pcm.6.bias": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "cbf0bbcdcbbd4668149423de0726da02fd2900db39de340b6c460c6a140cda1c"
+    },
+    "backbone.vitae.stage3.2.norm1.weight": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "ec5fbc83fa6542a982c05b233ee599df3450015f4229d2f190d16b20c26e75d8"
+    },
+    "backbone.vitae.stage3.2.norm2.weight": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "6eeb98789d93fade8d5e8d54835baea5a51249231af289fafd06dc893f7d19b3"
+    },
+    "backbone.vitae.stage3.2.qkv.weight": {
+      "shape": [
+        768,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "4c4025a07cad62dfb90c8804e97fd3c80eb1c772e699d8105143813c5143530a"
+    },
+    "backbone.vitae.stage3.2.proj.weight": {
+      "shape": [
+        256,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "c55fc4cff62f931ca12f023d96f0db1950fdb1ce227114776ca31bdacd0a4d4b"
+    },
+    "backbone.vitae.stage3.2.mlp.gate_proj.weight": {
+      "shape": [
+        683,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "67cfe760443b9e0e894d2524d2f68c92bc35d5315d1149b6be4a565f0e6fa2e4"
+    },
+    "backbone.vitae.stage3.2.mlp.up_proj.weight": {
+      "shape": [
+        683,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "12220242279c5ca60846e33629a3028e10b7930124f436b44880e056cea99f71"
+    },
+    "backbone.vitae.stage3.2.mlp.down_proj.weight": {
+      "shape": [
+        256,
+        683
+      ],
+      "dtype": "torch.float32",
+      "sha256": "9aeacc728b9c162750f4284a39c4cc3cbbd5f7b58423aae2af6ace81e0192b8c"
+    },
+    "backbone.vitae.stage3.2.pcm.0.weight": {
+      "shape": [
+        1024,
+        4,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "25a544ca828a743a4d25b24f142c91ea63841fcaeec0805399c4573ef0db66a9"
+    },
+    "backbone.vitae.stage3.2.pcm.0.bias": {
+      "shape": [
+        1024
+      ],
+      "dtype": "torch.float32",
+      "sha256": "080cc6577b7282b092bf49a139727e0b0032f069c870a0a2a5c6c7a4a3c3c17e"
+    },
+    "backbone.vitae.stage3.2.pcm.1.weight": {
+      "shape": [
+        1024
+      ],
+      "dtype": "torch.float32",
+      "sha256": "52a96846677494217e05d3fe4a041ecba76e1b1d43dc74d003cec6b9de716bb5"
+    },
+    "backbone.vitae.stage3.2.pcm.1.bias": {
+      "shape": [
+        1024
+      ],
+      "dtype": "torch.float32",
+      "sha256": "8cce92e67f5f332500d9b79a8e4dd41e8fc86a2cbe7c7fb8d02d521c4896e096"
+    },
+    "backbone.vitae.stage3.2.pcm.3.weight": {
+      "shape": [
+        256,
+        16,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "57054bf8443348f6be5a05b9d001d306abb1b9c32a54430b542dac86d88e5f5d"
+    },
+    "backbone.vitae.stage3.2.pcm.3.bias": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "db7d86a2bae288e7117bf19a55dc24f8cbcc3a51a9aea2546719eee1282dfe69"
+    },
+    "backbone.vitae.stage3.2.pcm.4.weight": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "1c49f397440ef103eaeb2fab5a9d723e09f2bbe55039ffa59c1667d8cfed1793"
+    },
+    "backbone.vitae.stage3.2.pcm.4.bias": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "e140b5e2afe5cf0df1f507fd93e46718221e9d52b243caf29287869fe742f4f4"
+    },
+    "backbone.vitae.stage3.2.pcm.6.weight": {
+      "shape": [
+        256,
+        4,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "dd7db2e87bde7f047ad8ce97c132965a7928bb27b7b3f55a941005cc7ea81a70"
+    },
+    "backbone.vitae.stage3.2.pcm.6.bias": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "ff7ed770b6fa1d385f19fbbd030b9ee7c1737e32d11ee79dda22918d7b83eb53"
+    },
+    "backbone.vitae.stage3.3.norm1.weight": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "ac6d3a68c7c66a4776836bc3fc9bc310bd642e0035db4eb926c595b50c4d9ea1"
+    },
+    "backbone.vitae.stage3.3.norm2.weight": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "0add14a397e3a6db65846d73e1ddd978a0dfb8123185fbd0eca608a0704555d9"
+    },
+    "backbone.vitae.stage3.3.qkv.weight": {
+      "shape": [
+        768,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "5d0502e875a64a4156707d4202b3971b4aa39b783f24d750aa026fa8b4366037"
+    },
+    "backbone.vitae.stage3.3.proj.weight": {
+      "shape": [
+        256,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "296d23ed1a16ab2ae218b7f3678e8d3847d950900889f5eff0462ca93de78c8e"
+    },
+    "backbone.vitae.stage3.3.mlp.gate_proj.weight": {
+      "shape": [
+        683,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "82ed94f9120e259555c37d882cff6a66665c984d949ef2bc7edcb7b45cce64c8"
+    },
+    "backbone.vitae.stage3.3.mlp.up_proj.weight": {
+      "shape": [
+        683,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "3deff61fec56ab5c954e10fc8f22bb6798ed0ab9120840ef57375469d2445da2"
+    },
+    "backbone.vitae.stage3.3.mlp.down_proj.weight": {
+      "shape": [
+        256,
+        683
+      ],
+      "dtype": "torch.float32",
+      "sha256": "497116abd992111445da7065f678f874f3db0116b575d5b1934c56dbd03ffc71"
+    },
+    "backbone.vitae.stage3.3.pcm.0.weight": {
+      "shape": [
+        1024,
+        4,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "bfb5e0438160e9f214a34ac36e3011ba607435964c70f1f3bdc71d903ccdd402"
+    },
+    "backbone.vitae.stage3.3.pcm.0.bias": {
+      "shape": [
+        1024
+      ],
+      "dtype": "torch.float32",
+      "sha256": "80729efe96f103b85ebfa275710fc4ccdc8ce181cd62b14b81bd00fee74f4b0f"
+    },
+    "backbone.vitae.stage3.3.pcm.1.weight": {
+      "shape": [
+        1024
+      ],
+      "dtype": "torch.float32",
+      "sha256": "09535fbb4b12c2b22f01795d0892f02b36ad756b0ca16252713dda0637971a7b"
+    },
+    "backbone.vitae.stage3.3.pcm.1.bias": {
+      "shape": [
+        1024
+      ],
+      "dtype": "torch.float32",
+      "sha256": "3428a602b67085b12e174899b06811aee394c7df20886a3972f9088706efeb0e"
+    },
+    "backbone.vitae.stage3.3.pcm.3.weight": {
+      "shape": [
+        256,
+        16,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "18e83966018128a6a6115b923c1dbf3b55bda587dcf4e60191052f440665aa9a"
+    },
+    "backbone.vitae.stage3.3.pcm.3.bias": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "b56c6d950cebad4a27b067f5911a03bdd8aa1b3add78d45d80c26b1111812bcd"
+    },
+    "backbone.vitae.stage3.3.pcm.4.weight": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "6d5a981740c548248ce08557ed3a69e4a72c253ba9f3f1af674ed7e9044fe7f6"
+    },
+    "backbone.vitae.stage3.3.pcm.4.bias": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "174742c0717ee3b52384f77448320153492e51a85da09e3aaffdf501e4100bd5"
+    },
+    "backbone.vitae.stage3.3.pcm.6.weight": {
+      "shape": [
+        256,
+        4,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "2eb52cb7dc5f417d0e2633ab5e77a6751de3ccf9df60f7f974c84927b87b6eb0"
+    },
+    "backbone.vitae.stage3.3.pcm.6.bias": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "fd2357f3311d8d073eff2c99a338e63d87f4f9ed6c42ef056d7658ab3b364b6f"
+    },
+    "backbone.vitae.stage3.4.norm1.weight": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "5965abc66b6684198c0edde53beba9eeb15e4eb2198711fcf459f4859b1c1659"
+    },
+    "backbone.vitae.stage3.4.norm2.weight": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "fb46cd17ad9b256af5aa977c582852472272371be352610546f2b3ed66221ec1"
+    },
+    "backbone.vitae.stage3.4.qkv.weight": {
+      "shape": [
+        768,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "a21c2780d9826a7eba7f058d39b58446b6c2f9b10355dfd02615c4ea691d030b"
+    },
+    "backbone.vitae.stage3.4.proj.weight": {
+      "shape": [
+        256,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "c65414d41bbea814c34baa6550c2caaa8857c4bd901a262bcca87a2685202301"
+    },
+    "backbone.vitae.stage3.4.mlp.gate_proj.weight": {
+      "shape": [
+        683,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "ade37af62a3c26458673313f5ea2e7f394ae32f01e915b99d17ac92592953792"
+    },
+    "backbone.vitae.stage3.4.mlp.up_proj.weight": {
+      "shape": [
+        683,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "e85f2f147bcb5df6e894ab49fce649b64c3dbda76c81947c64124d3f82db3beb"
+    },
+    "backbone.vitae.stage3.4.mlp.down_proj.weight": {
+      "shape": [
+        256,
+        683
+      ],
+      "dtype": "torch.float32",
+      "sha256": "de3ef1b47c39ed0ad2792ad673c0dc3223a487249f201f703f0e3560be4a41d3"
+    },
+    "backbone.vitae.stage3.4.pcm.0.weight": {
+      "shape": [
+        1024,
+        4,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "1f70c2de5c870723ee0084d85f46df9131a19c31a3efe553368b232e18d6ea36"
+    },
+    "backbone.vitae.stage3.4.pcm.0.bias": {
+      "shape": [
+        1024
+      ],
+      "dtype": "torch.float32",
+      "sha256": "cbdd4da95993045a599e1fefc323000c35575c48a684e76381be7e809639d2b4"
+    },
+    "backbone.vitae.stage3.4.pcm.1.weight": {
+      "shape": [
+        1024
+      ],
+      "dtype": "torch.float32",
+      "sha256": "fcdd26f45f112c7a403ef1ce6d6b6875bf00ff98dbf9d6c399b7eed2c251832d"
+    },
+    "backbone.vitae.stage3.4.pcm.1.bias": {
+      "shape": [
+        1024
+      ],
+      "dtype": "torch.float32",
+      "sha256": "94030ce5d4c6dc1060a0ef171a64ac58f92794a72d4b3303d5f429de15b93c1f"
+    },
+    "backbone.vitae.stage3.4.pcm.3.weight": {
+      "shape": [
+        256,
+        16,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "bcb189bec44f43572172e19e0e022b84f0590ac26877605d598520d197b7d2bf"
+    },
+    "backbone.vitae.stage3.4.pcm.3.bias": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "85ce80855d210660faf642e1a86b3e019e9c6fa40e124490177cbfadc7ecea0c"
+    },
+    "backbone.vitae.stage3.4.pcm.4.weight": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "d864f1795fa4528af23e282928223aace286b90309020468fe0eda792dd33e45"
+    },
+    "backbone.vitae.stage3.4.pcm.4.bias": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "259669308bba4f10ecf6b9d3f5ebdbbb4ddff676df3628570412baf908342dba"
+    },
+    "backbone.vitae.stage3.4.pcm.6.weight": {
+      "shape": [
+        256,
+        4,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "c312f325234261ec8341b376394893f0d64fd3475b80e26e354c9151cacdfc11"
+    },
+    "backbone.vitae.stage3.4.pcm.6.bias": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "4e4bb2e66a13afc2a931a8e165cd9511baa11eb15230de1fb315a81d849f8c7d"
+    },
+    "backbone.vitae.stage3.5.norm1.weight": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "675b3c130ee851302353cc26e8014ab8ecf38b0c17606d114e090728df2f6e3b"
+    },
+    "backbone.vitae.stage3.5.norm2.weight": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "767328c59c87f7b333e69d2a11d8dd88904bd6868d3e5513b4354077addd15b2"
+    },
+    "backbone.vitae.stage3.5.qkv.weight": {
+      "shape": [
+        768,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "a451385ed769d47d1b946afa645a44bc56b58cb31bbd5dd2cc00fd79cfc714d4"
+    },
+    "backbone.vitae.stage3.5.proj.weight": {
+      "shape": [
+        256,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "d2bf879b71844a8c3ca68cbb1ff262ab2b16ccd1829af0b4f68de2586b583a37"
+    },
+    "backbone.vitae.stage3.5.mlp.gate_proj.weight": {
+      "shape": [
+        683,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "ea56edb231b8ba288c61fa765a27495e2ec559c2fb9981b46cf89de0ded5d81e"
+    },
+    "backbone.vitae.stage3.5.mlp.up_proj.weight": {
+      "shape": [
+        683,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "ece20c338e98a304fe6d4840d4ce2e1d7cb13f6e592765b23c63fd6f73b9ca1e"
+    },
+    "backbone.vitae.stage3.5.mlp.down_proj.weight": {
+      "shape": [
+        256,
+        683
+      ],
+      "dtype": "torch.float32",
+      "sha256": "8458dc35364c5883699d0aabdc975cd0065323665d341726ab178050c5c9338d"
+    },
+    "backbone.vitae.stage3.5.pcm.0.weight": {
+      "shape": [
+        1024,
+        4,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "f2e6a7d6519da244f4ac4d94ea06147f0695df51faea263efce6a747fbf3d932"
+    },
+    "backbone.vitae.stage3.5.pcm.0.bias": {
+      "shape": [
+        1024
+      ],
+      "dtype": "torch.float32",
+      "sha256": "5ae3040d1d7ccead21c3930a9977b4f3688dcebab4a2b6c8e7211d10eb12281d"
+    },
+    "backbone.vitae.stage3.5.pcm.1.weight": {
+      "shape": [
+        1024
+      ],
+      "dtype": "torch.float32",
+      "sha256": "7686d1f4080b9247ac2462a6d9c73a46050c4077a142afebb6ec714d0c03d648"
+    },
+    "backbone.vitae.stage3.5.pcm.1.bias": {
+      "shape": [
+        1024
+      ],
+      "dtype": "torch.float32",
+      "sha256": "4a0e9ee3fd462861c4842a6a1063b617393009bc9f493111666620916190d839"
+    },
+    "backbone.vitae.stage3.5.pcm.3.weight": {
+      "shape": [
+        256,
+        16,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "0d43f3c3b393d14be29a5992e3c305dfc90c2efb52648fdc3315c28881daadb7"
+    },
+    "backbone.vitae.stage3.5.pcm.3.bias": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "e59e732a23046527940d47e671cbe713494d164ff0167fd46c2c302880177613"
+    },
+    "backbone.vitae.stage3.5.pcm.4.weight": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "da8389f194e16ade927d4edec5903eefa9f9f836841ee57302d46cdc03bac904"
+    },
+    "backbone.vitae.stage3.5.pcm.4.bias": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "5ef803edb03e2bd89b8d9fec1b4c07502cb6466f7c6843174df17b8b580417f9"
+    },
+    "backbone.vitae.stage3.5.pcm.6.weight": {
+      "shape": [
+        256,
+        4,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "a45326daadc1c7d98595a70e347c1999a6a860550621cad1dca8f722efe03c28"
+    },
+    "backbone.vitae.stage3.5.pcm.6.bias": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "452f5c70b5a6d7a54f6fe73b5d5ff8c825ed797933342582cbd6adafd49decfd"
+    },
+    "backbone.vitae.stage3.6.norm1.weight": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "5ffabd40a6a4571a115482baa8d7255bcd21f37b588c61abbf8c6bb25db3c126"
+    },
+    "backbone.vitae.stage3.6.norm2.weight": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "f2121deddd8142324644cb8bf0118c34a18e40a12c6236f1afa97b9461506e99"
+    },
+    "backbone.vitae.stage3.6.qkv.weight": {
+      "shape": [
+        768,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "3cbcdc2bb0caf6d1a3ac1f57a78a73a6ace72f4f95b20301d062084832c40cb7"
+    },
+    "backbone.vitae.stage3.6.proj.weight": {
+      "shape": [
+        256,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "04a5ef13998392e8b6cd8141d080d038c5dd8f7c5fc5d915bc65dd995f04306a"
+    },
+    "backbone.vitae.stage3.6.mlp.gate_proj.weight": {
+      "shape": [
+        683,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "26af4e2486d564988f1e1dfc67f61935483e080c1e7bb629241f391172869acb"
+    },
+    "backbone.vitae.stage3.6.mlp.up_proj.weight": {
+      "shape": [
+        683,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "3d35a422a120d44309742669e0874413a6c195f093919d3c13975625b17963c9"
+    },
+    "backbone.vitae.stage3.6.mlp.down_proj.weight": {
+      "shape": [
+        256,
+        683
+      ],
+      "dtype": "torch.float32",
+      "sha256": "7fb9994f3f36de4bb366d6d636a587c2b64501c14cd06ab955ec14fa977e1f11"
+    },
+    "backbone.vitae.stage3.6.pcm.0.weight": {
+      "shape": [
+        1024,
+        4,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "243ae92a050f8972bd82ee4aeafecede3117d15d331d35f6811ca47699e2f2d4"
+    },
+    "backbone.vitae.stage3.6.pcm.0.bias": {
+      "shape": [
+        1024
+      ],
+      "dtype": "torch.float32",
+      "sha256": "ac01bade26b4e220d96d8aff72b32f0c001a9b191badb77a08b09a3eddcc33cf"
+    },
+    "backbone.vitae.stage3.6.pcm.1.weight": {
+      "shape": [
+        1024
+      ],
+      "dtype": "torch.float32",
+      "sha256": "7c70d832c36423b029cd54af2f0707a816a106813ac18d30f08439dcfac72f8a"
+    },
+    "backbone.vitae.stage3.6.pcm.1.bias": {
+      "shape": [
+        1024
+      ],
+      "dtype": "torch.float32",
+      "sha256": "ffc43aed1c6192dfa1fc5a2eaf506c7f97d5883ecab3358a40a967710953d473"
+    },
+    "backbone.vitae.stage3.6.pcm.3.weight": {
+      "shape": [
+        256,
+        16,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "03b76c05e38817c03e0393876728e906ab6398729bbf4c3cf04ad890f7fec858"
+    },
+    "backbone.vitae.stage3.6.pcm.3.bias": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "fd57df18393a7190b89e59c8355367531aefdb31387cb078b4f7ec65f7554723"
+    },
+    "backbone.vitae.stage3.6.pcm.4.weight": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "b19d5445ca82416920079e30bc03e95d551d4f96ac867a78873c89ae45c08668"
+    },
+    "backbone.vitae.stage3.6.pcm.4.bias": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "6a3582be0c958caa5aa88f9ea2df8920f65471e4eff0dfc2b225eb4cd72617cf"
+    },
+    "backbone.vitae.stage3.6.pcm.6.weight": {
+      "shape": [
+        256,
+        4,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "e8ad036c0f27f4ac2bb5a9b31bf1b23d7f3ca3e6e5de9ad95de5ad75cfe0efc8"
+    },
+    "backbone.vitae.stage3.6.pcm.6.bias": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "bd430bf8b9fdc4c4de40d31bd52805a817d6d966a71bdd1bc17f75fe5ebc0c31"
+    },
+    "backbone.vitae.stage3.7.norm1.weight": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "cc4a878a04041cbbf3dd85e219a70ec2c4b8e73a30b6f04aeef5760cbf2c8705"
+    },
+    "backbone.vitae.stage3.7.norm2.weight": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "c45e6d10e1acf46b625e9a4341bb278a1b27af44ebd8cac59adfa20139ece323"
+    },
+    "backbone.vitae.stage3.7.qkv.weight": {
+      "shape": [
+        768,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "0e6b83675537aeb6042b447849d4e33fe4812f073561fd8c10ce36068c3a2aaa"
+    },
+    "backbone.vitae.stage3.7.proj.weight": {
+      "shape": [
+        256,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "209a9c0c7d3e47ba3bd2ca3128fe6133e1311877db622cebdef1afad76ec0457"
+    },
+    "backbone.vitae.stage3.7.mlp.gate_proj.weight": {
+      "shape": [
+        683,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "1314a65552c7d4c3f558db3fd174be4f14555158db2a6377114c52f9a70d051d"
+    },
+    "backbone.vitae.stage3.7.mlp.up_proj.weight": {
+      "shape": [
+        683,
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "4ef9742efc1cc9705e6e57ca629fa2839e73c07e0fa373e034dfce1c150d5b83"
+    },
+    "backbone.vitae.stage3.7.mlp.down_proj.weight": {
+      "shape": [
+        256,
+        683
+      ],
+      "dtype": "torch.float32",
+      "sha256": "4787398ab9391959d3a68047bda7d74c1c568dc981f93da750595726dd849377"
+    },
+    "backbone.vitae.stage3.7.pcm.0.weight": {
+      "shape": [
+        1024,
+        4,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "2f71cbc45dde4a6393e32533433ac21fa60051810c40348893a5a4cf9b1879ea"
+    },
+    "backbone.vitae.stage3.7.pcm.0.bias": {
+      "shape": [
+        1024
+      ],
+      "dtype": "torch.float32",
+      "sha256": "020f14307413979a65637fe870d9f3e706a2ba431811819393a066817d3ee4df"
+    },
+    "backbone.vitae.stage3.7.pcm.1.weight": {
+      "shape": [
+        1024
+      ],
+      "dtype": "torch.float32",
+      "sha256": "d49deaae0526f2f1909a3f2b61bf9038485b7000334ea398e2a3fbd4e2e8bf93"
+    },
+    "backbone.vitae.stage3.7.pcm.1.bias": {
+      "shape": [
+        1024
+      ],
+      "dtype": "torch.float32",
+      "sha256": "994872aa41d61596843a6af756b058c64935e15fffcdffd15d18fcb798c000b0"
+    },
+    "backbone.vitae.stage3.7.pcm.3.weight": {
+      "shape": [
+        256,
+        16,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "09022ea8e619e25953f7baecbb42bac8133f545c49c88e76283d8b61b7a0de45"
+    },
+    "backbone.vitae.stage3.7.pcm.3.bias": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "4e6914f0493ef4fcd56850d7f8609c5757de90929349861012634bf7dc0d35e9"
+    },
+    "backbone.vitae.stage3.7.pcm.4.weight": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "9a4dbf82b33fdf2a31377bf2a94c06fe5d98b4cfe86c07b29a0a21d805ae94b3"
+    },
+    "backbone.vitae.stage3.7.pcm.4.bias": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "0477c87f9d97404d1eb05edb96469547f0685a5b89f54f97bbf164d6f67de3c9"
+    },
+    "backbone.vitae.stage3.7.pcm.6.weight": {
+      "shape": [
+        256,
+        4,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "f784da2bf85b345f967092ee2e5c1a89061d3f52f3a409d5b088be202e00e172"
+    },
+    "backbone.vitae.stage3.7.pcm.6.bias": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "3ad437cdeb87c08b41fd1935a98732ddc466359e8d000bff42302a3d57246380"
+    },
+    "backbone.vitae.rc3.prm_convs.0.0.weight": {
+      "shape": [
+        256,
+        256,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "0c84ee58038d1203fc40fb8e9516770298d3ecc95e33d4eef557f0acfc1026d8"
+    },
+    "backbone.vitae.rc3.prm_convs.0.0.bias": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "c1d7439eb026c076fcf93683ce82da385fa894a0a9cc7a8698edbdb27f110790"
+    },
+    "backbone.vitae.rc3.prm_convs.1.0.weight": {
+      "shape": [
+        256,
+        256,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "3deabdf7dd6a42a00ffa2a397cb733b4019cd5a2502e52af87c070574bc30c62"
+    },
+    "backbone.vitae.rc3.prm_convs.1.0.bias": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "3b342c868df7f71d03a8513ba9c0afea96d11ae2a8f1657f3fe3973de22a1698"
+    },
+    "backbone.vitae.rc3.prm_convs.2.0.weight": {
+      "shape": [
+        256,
+        256,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "86ec78140b6673ac74917d6e916d7522869baa010dfc7d17feefeb7767edffff"
+    },
+    "backbone.vitae.rc3.prm_convs.2.0.bias": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "434ee9d473ef1d7d3617715fb1b12496c419a1a4e3317618cc42c163255dd621"
+    },
+    "backbone.vitae.rc3.prm_convs.3.0.weight": {
+      "shape": [
+        256,
+        256,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "2d6d4b96ea0f3dfd428ce61c46416c92d8c8aa03e2c2a2dcb85c50e450f2ded1"
+    },
+    "backbone.vitae.rc3.prm_convs.3.0.bias": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "0f58240a575e921837bd4a6b6d9c2e3ea406a1f836f6be30597190e81571f022"
+    },
+    "backbone.vitae.rc3.prm_proj.weight": {
+      "shape": [
+        512,
+        1024
+      ],
+      "dtype": "torch.float32",
+      "sha256": "635224ca2bf0fb9318bf21e0d3647e9a9cf2f1cdfcc0fe3cee323da370e907c9"
+    },
+    "backbone.vitae.rc3.pcm.0.weight": {
+      "shape": [
+        256,
+        4,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "2872ee53fe726c4576856d074f6863cd6b1aeb5a1c482cfe5534e6e1f179039b"
+    },
+    "backbone.vitae.rc3.pcm.0.bias": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "9c5742847c55da61988ed63e011abe6a08202568acd2299996933cdd69878cd2"
+    },
+    "backbone.vitae.rc3.pcm.1.weight": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "9fcb74d89cfeb11018c6b17ccf2f90bb381f8427f6c65122bd69e9972154f308"
+    },
+    "backbone.vitae.rc3.pcm.1.bias": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "5e37fb6aedc4835e390ab32091bf7f30ec327fc331ac0088a212c23730dc991f"
+    },
+    "backbone.vitae.rc3.pcm.3.weight": {
+      "shape": [
+        256,
+        4,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "afbd71ab49b73fb4d8b9b61e0758ba3433a9c8b5138676860e45a43944cdb8b9"
+    },
+    "backbone.vitae.rc3.pcm.3.bias": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "d4855f9c53782157448a7f197cd025f22eec2f2db816cba3ca7d91b188711449"
+    },
+    "backbone.vitae.rc3.pcm.4.weight": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "6e6fefe032ca80f266fa07d70247c3c10eb747632c0f597a5b461807609c253b"
+    },
+    "backbone.vitae.rc3.pcm.4.bias": {
+      "shape": [
+        256
+      ],
+      "dtype": "torch.float32",
+      "sha256": "44a91bd0fd004262c7f50a2e673f2d1d0743fdc2be981b3e5dddebd8aa553dbe"
+    },
+    "backbone.vitae.rc3.pcm.6.weight": {
+      "shape": [
+        512,
+        4,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "06c5718610e436825853c934bfb648a405529cdd3ede3c998c757e203c68c7eb"
+    },
+    "backbone.vitae.rc3.pcm.6.bias": {
+      "shape": [
+        512
+      ],
+      "dtype": "torch.float32",
+      "sha256": "f7494bfc98a8541ff674ce0537531e6c8cf2cd901e7e2a1c9a1f9b05313dfccf"
+    },
+    "backbone.vitae.rc3.norm_attn.weight": {
+      "shape": [
+        512
+      ],
+      "dtype": "torch.float32",
+      "sha256": "5bcb11d80e50657c6e8b887b8bf264f6e46458b056fe0c1d3017d6e1ef84bdb7"
+    },
+    "backbone.vitae.rc3.qkv.weight": {
+      "shape": [
+        1536,
+        512
+      ],
+      "dtype": "torch.float32",
+      "sha256": "4284baefce7fc26630be0229c0e0b7514a38e7dca76efc3b7f2d136c359e37f3"
+    },
+    "backbone.vitae.rc3.attn_proj.weight": {
+      "shape": [
+        512,
+        512
+      ],
+      "dtype": "torch.float32",
+      "sha256": "38af65f701ebf95042210715ba5b742a8c40db9a2321f19a4890aa019d35d133"
+    },
+    "backbone.vitae.rc3.norm_ffn.weight": {
+      "shape": [
+        512
+      ],
+      "dtype": "torch.float32",
+      "sha256": "96aa64a4ee4ee02673c62166e65e5a729a879e73f3c901b37faa7f0f0e2d9566"
+    },
+    "backbone.vitae.rc3.mlp.fc1.weight": {
+      "shape": [
+        512,
+        512
+      ],
+      "dtype": "torch.float32",
+      "sha256": "a3fbead03f275a1ace741f6969db76cee10e8aecf4ebcc5c0766a6a39cf63eb8"
+    },
+    "backbone.vitae.rc3.mlp.fc2.weight": {
+      "shape": [
+        512,
+        512
+      ],
+      "dtype": "torch.float32",
+      "sha256": "685264d534dffc5d6ee5d9e79fb12d0619e976d24e638b76a0ee342ec3bda051"
+    },
+    "backbone.vitae.stage4.0.norm1.weight": {
+      "shape": [
+        512
+      ],
+      "dtype": "torch.float32",
+      "sha256": "f0459ce3c6d7a862c43789bcedfeb93b86d95b2323dae5294e8f0fd9349bd28e"
+    },
+    "backbone.vitae.stage4.0.norm2.weight": {
+      "shape": [
+        512
+      ],
+      "dtype": "torch.float32",
+      "sha256": "24a889a21bb15cf0a590bdc7a822016a2e84ac2cff95dc0a2024ea73a4d10e0f"
+    },
+    "backbone.vitae.stage4.0.qkv.weight": {
+      "shape": [
+        1536,
+        512
+      ],
+      "dtype": "torch.float32",
+      "sha256": "dd3aa5f8a20617a8c63d866a25714b7d1c22c7848edf5aef6fc55cc95c5f6b1a"
+    },
+    "backbone.vitae.stage4.0.proj.weight": {
+      "shape": [
+        512,
+        512
+      ],
+      "dtype": "torch.float32",
+      "sha256": "1f18b42284a6a86a10a8cabe523167e81f1f5540cb48dd6fdd462899e76b3df7"
+    },
+    "backbone.vitae.stage4.0.mlp.gate_proj.weight": {
+      "shape": [
+        1366,
+        512
+      ],
+      "dtype": "torch.float32",
+      "sha256": "36d167b958e51637dc17c03c51f1ee02d841c6fb75638ad56da030476d07e899"
+    },
+    "backbone.vitae.stage4.0.mlp.up_proj.weight": {
+      "shape": [
+        1366,
+        512
+      ],
+      "dtype": "torch.float32",
+      "sha256": "66665f1223ff58c80b9a0db7561d169f74122b6dcf86dd9e0fea44d122fe9e2b"
+    },
+    "backbone.vitae.stage4.0.mlp.down_proj.weight": {
+      "shape": [
+        512,
+        1366
+      ],
+      "dtype": "torch.float32",
+      "sha256": "267bfbc697cefb8feb35da97f8f786a98d404f1c4f137ef40ddc6b6ebb190541"
+    },
+    "backbone.vitae.stage4.0.pcm.0.weight": {
+      "shape": [
+        2048,
+        4,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "f25416a91c43542a4fcc39eec69a2ddd80d5d6b83fcb3d38ef5c5ee1b5766824"
+    },
+    "backbone.vitae.stage4.0.pcm.0.bias": {
+      "shape": [
+        2048
+      ],
+      "dtype": "torch.float32",
+      "sha256": "5a895e08c9866955aba6194a02f5c141719fe0e94c499107dea7a3519cbabb04"
+    },
+    "backbone.vitae.stage4.0.pcm.1.weight": {
+      "shape": [
+        2048
+      ],
+      "dtype": "torch.float32",
+      "sha256": "03f62514f62ec85d9321ffdb9c21446d4f3e01a375f26f4258ae53426b28743f"
+    },
+    "backbone.vitae.stage4.0.pcm.1.bias": {
+      "shape": [
+        2048
+      ],
+      "dtype": "torch.float32",
+      "sha256": "f663d6ed3e44d472ba1a961d751d4201e0c9848acaeceb25b6ca7df61c02ad38"
+    },
+    "backbone.vitae.stage4.0.pcm.3.weight": {
+      "shape": [
+        512,
+        16,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "4170ae1a53ccb753d60a649e5a693551b92f6e6c08476b925f217d07181530ce"
+    },
+    "backbone.vitae.stage4.0.pcm.3.bias": {
+      "shape": [
+        512
+      ],
+      "dtype": "torch.float32",
+      "sha256": "4546d9ad0ed013f18f147b1ccad7512a7a6ff4bae4ba2904164903cb4c10183b"
+    },
+    "backbone.vitae.stage4.0.pcm.4.weight": {
+      "shape": [
+        512
+      ],
+      "dtype": "torch.float32",
+      "sha256": "0c9ab4ba5ffae772699aade526a6f329661906318227cb51ca42cff00e449baf"
+    },
+    "backbone.vitae.stage4.0.pcm.4.bias": {
+      "shape": [
+        512
+      ],
+      "dtype": "torch.float32",
+      "sha256": "a8280e4b36d651a497cf8e08e17d7b5a31f9bae638755352264fe04fc6191325"
+    },
+    "backbone.vitae.stage4.0.pcm.6.weight": {
+      "shape": [
+        512,
+        4,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "ae216ec04e61eb9efa6a2376ee199e9a176f7ee694ef273a3d20513ce247a7df"
+    },
+    "backbone.vitae.stage4.0.pcm.6.bias": {
+      "shape": [
+        512
+      ],
+      "dtype": "torch.float32",
+      "sha256": "314942be1c0e4282b6ef88c6304f91328f0cc005a3f925d490a9e87480fbeb7e"
+    },
+    "backbone.vitae.stage4.1.norm1.weight": {
+      "shape": [
+        512
+      ],
+      "dtype": "torch.float32",
+      "sha256": "c7811be24434515e4d047e161f0e0bf350f7a59e1ce842c7ec13ea39e5455ecb"
+    },
+    "backbone.vitae.stage4.1.norm2.weight": {
+      "shape": [
+        512
+      ],
+      "dtype": "torch.float32",
+      "sha256": "2da76cc41e1fbf04e5d2da23ea3b7fe3c72748d11ecc5f554b12531bd168ba45"
+    },
+    "backbone.vitae.stage4.1.qkv.weight": {
+      "shape": [
+        1536,
+        512
+      ],
+      "dtype": "torch.float32",
+      "sha256": "c05a01bb989ad1e22e5352b796889074a45fb0ee36e83b80a752627973f5e53b"
+    },
+    "backbone.vitae.stage4.1.proj.weight": {
+      "shape": [
+        512,
+        512
+      ],
+      "dtype": "torch.float32",
+      "sha256": "871acb6c06099c18ade2d5e50f73ba0e5c9e08b79fedfed5d31acb2cea4efbbe"
+    },
+    "backbone.vitae.stage4.1.mlp.gate_proj.weight": {
+      "shape": [
+        1366,
+        512
+      ],
+      "dtype": "torch.float32",
+      "sha256": "4bd3e00cd46bdba174010e8989d455a19f1807052c92f388fd0c115ecdc1d204"
+    },
+    "backbone.vitae.stage4.1.mlp.up_proj.weight": {
+      "shape": [
+        1366,
+        512
+      ],
+      "dtype": "torch.float32",
+      "sha256": "a932720c0aa5ff2976243f37df3631ebe4273e5959bb294bd18510723477a624"
+    },
+    "backbone.vitae.stage4.1.mlp.down_proj.weight": {
+      "shape": [
+        512,
+        1366
+      ],
+      "dtype": "torch.float32",
+      "sha256": "7e7a0dead6187566d94d16699951d192eed4c787810a1264cf834d49563ef221"
+    },
+    "backbone.vitae.stage4.1.pcm.0.weight": {
+      "shape": [
+        2048,
+        4,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "28e8216367dcb31d96c02a46408e7fb9bd24369bb55a40266d8363fad04c056b"
+    },
+    "backbone.vitae.stage4.1.pcm.0.bias": {
+      "shape": [
+        2048
+      ],
+      "dtype": "torch.float32",
+      "sha256": "17872521a535aa096989a074768314ce25a399a99ca22ca758ec2cfed1679a45"
+    },
+    "backbone.vitae.stage4.1.pcm.1.weight": {
+      "shape": [
+        2048
+      ],
+      "dtype": "torch.float32",
+      "sha256": "8ab4608ae742321ee5b2ea61318294b2acc9bfbb3c0122c9f02469b1067c8930"
+    },
+    "backbone.vitae.stage4.1.pcm.1.bias": {
+      "shape": [
+        2048
+      ],
+      "dtype": "torch.float32",
+      "sha256": "f27ba6fc8ef324ca0dfad411ded2343708c00de2d4fdfa0697170f37079eb242"
+    },
+    "backbone.vitae.stage4.1.pcm.3.weight": {
+      "shape": [
+        512,
+        16,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "aa46ba5a67b481175675d41d49bbacf5d322d0518147cb4e4269d6e88be05249"
+    },
+    "backbone.vitae.stage4.1.pcm.3.bias": {
+      "shape": [
+        512
+      ],
+      "dtype": "torch.float32",
+      "sha256": "71836e92524c087a592d614b3bde5f627c1004928892ac753391a12f6fe0d651"
+    },
+    "backbone.vitae.stage4.1.pcm.4.weight": {
+      "shape": [
+        512
+      ],
+      "dtype": "torch.float32",
+      "sha256": "f92d32b0cd4e2068641546f9a2ed7b5d2a8f11feede43db50c16724a04c0aabd"
+    },
+    "backbone.vitae.stage4.1.pcm.4.bias": {
+      "shape": [
+        512
+      ],
+      "dtype": "torch.float32",
+      "sha256": "518369a31ae428d90d9ee833142168e510cac61679170ac50fe96185b65a123a"
+    },
+    "backbone.vitae.stage4.1.pcm.6.weight": {
+      "shape": [
+        512,
+        4,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "d5a9cf1a3603c6555b2f860a96e1b326f20bf10dd12500d686058798f1fb735b"
+    },
+    "backbone.vitae.stage4.1.pcm.6.bias": {
+      "shape": [
+        512
+      ],
+      "dtype": "torch.float32",
+      "sha256": "f47a395cbeb7be87121b970e666e9fb2ed7924c74fddbba4f536dbf4608b2998"
+    },
+    "backbone.vitae.post_trunk_norm.weight": {
+      "shape": [
+        512
+      ],
+      "dtype": "torch.float32",
+      "sha256": "c7463d3e79e7e94c15bf61da2bfba8a6a8fa54074365abeba6fa3f3f069c0915"
+    },
+    "neck.lateral_convs.0.conv.weight": {
+      "shape": [
+        256,
+        64,
+        1,
+        1
+      ],
+      "dtype": "torch.float32",
+      "sha256": "fe99cce9692629b73e2207ada7c8ec4485c0dd55e844fd2811621656ca2663c0"
+    },
+    "neck.lateral_convs.1.conv.weight": {
+      "shape": [
+        256,
+        128,
+        1,
+        1
+      ],
+      "dtype": "torch.float32",
+      "sha256": "e6086e749fed0859eafeaf8505fcbf6094016f2a35e24b380041536855028f26"
+    },
+    "neck.lateral_convs.2.conv.weight": {
+      "shape": [
+        256,
+        256,
+        1,
+        1
+      ],
+      "dtype": "torch.float32",
+      "sha256": "7d8d41ddda9dd7a3b8bbe85bc1370a14594f26db803d0bf458eeba56247f59ea"
+    },
+    "neck.lateral_convs.3.conv.weight": {
+      "shape": [
+        256,
+        512,
+        1,
+        1
+      ],
+      "dtype": "torch.float32",
+      "sha256": "e85128982712b097c399ccc819fcdcc9eb5c2ddf3d853a0d80276c1bf5b8627e"
+    },
+    "neck.smooth_convs.0.conv.weight": {
+      "shape": [
+        64,
+        256,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "24f7c6cacdd04df589d4e453e6e6918ba540d20d2912b7a80e17d09a504baf70"
+    },
+    "neck.smooth_convs.1.conv.weight": {
+      "shape": [
+        64,
+        256,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "1c13b23dad5951c0f21281d20165d1a79b61fcbc83ff8ee75b8ba706b3fdb110"
+    },
+    "neck.smooth_convs.2.conv.weight": {
+      "shape": [
+        64,
+        256,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "6243f3ecbc612e52cbd59d1c8c01a26b642dabfbf14d68c372117f08312b8d68"
+    },
+    "neck.smooth_convs.3.conv.weight": {
+      "shape": [
+        64,
+        256,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "6d2891fd8b95c17c6f07022a2abdcc1ce12551a5ff3824b4f5aea4095a9c4088"
+    },
+    "det_head.binarize.0.weight": {
+      "shape": [
+        64,
+        256,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "3695f5b0fb1b48c3006c1e38b1857091b1b5f5ba1a8e0ab7242d76d4c0ad47e1"
+    },
+    "det_head.binarize.1.weight": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "5897c60e9e785621569dd180bb8675b10632b4c31e33c58c917fef54351603c5"
+    },
+    "det_head.binarize.1.bias": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "b54553ff4c1ee45ca28645bd234746e5a87d190812b69ebb4c9021243587a528"
+    },
+    "det_head.binarize.1.running_mean": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "c73f445b0c838098b5d1d2f19ef27c09b7af34f0e39705b401499f8f277d4009"
+    },
+    "det_head.binarize.1.running_var": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "2931c9384b74ff45ea54de12a37e4a9bc4d2a21e7f51236804db9786333d3064"
+    },
+    "det_head.binarize.1.num_batches_tracked": {
+      "shape": [],
+      "dtype": "torch.int64",
+      "sha256": "6db4d9a7ee1ad3819edcbed0d764292ff04ccc5ee68afa238608f852d8e219ed"
+    },
+    "det_head.binarize.3.weight": {
+      "shape": [
+        64,
+        64,
+        2,
+        2
+      ],
+      "dtype": "torch.float32",
+      "sha256": "1b1dabfcdd6215baf8ec40bc48170a72272099fd99a0ddf121cb2a40dcb7f857"
+    },
+    "det_head.binarize.3.bias": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "b719e64f560fbcb97f155a586f50ccca74162fc19841f2cdb84a1bcce1811966"
+    },
+    "det_head.binarize.4.weight": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "bbc9d836f46c17e908e72b9c39b8b27dc9b2cb3f93a69d03dc89c577840bee95"
+    },
+    "det_head.binarize.4.bias": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "cdf5b3d894c0cfb682f9ea00f7c1e42d2861c9b1db17dedcf92e9f17a101a970"
+    },
+    "det_head.binarize.4.running_mean": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "219f155ae516d97c6961f7f8c40227cfac118a3ceae6882441d1b4751fc0a1ea"
+    },
+    "det_head.binarize.4.running_var": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "e1e8da2cfbc1e09e87c795122d8ac4ba473a48f9f363faffc8e026f6920a6716"
+    },
+    "det_head.binarize.4.num_batches_tracked": {
+      "shape": [],
+      "dtype": "torch.int64",
+      "sha256": "6db4d9a7ee1ad3819edcbed0d764292ff04ccc5ee68afa238608f852d8e219ed"
+    },
+    "det_head.binarize.6.weight": {
+      "shape": [
+        64,
+        1,
+        2,
+        2
+      ],
+      "dtype": "torch.float32",
+      "sha256": "df0dff2cf9ccce70c8da590e49515ee25352c20197e443c3249cc2b10dba9f91"
+    },
+    "det_head.binarize.6.bias": {
+      "shape": [
+        1
+      ],
+      "dtype": "torch.float32",
+      "sha256": "af083a847972a907ef813c524da3a393193b065eb2f29f7cd287345a214dd16e"
+    },
+    "det_head.threshold.0.weight": {
+      "shape": [
+        64,
+        256,
+        3,
+        3
+      ],
+      "dtype": "torch.float32",
+      "sha256": "dc430f59fd875b9ab309e5150470b8c55ab8bbf0fd4aa29bd1c156600491aa90"
+    },
+    "det_head.threshold.1.weight": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "f5d2d858a36c5e3b89164eab507452bb809efc92b377588422551093a29a9706"
+    },
+    "det_head.threshold.1.bias": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "d7f85c8f0c1eafa55abab6379efb55d991dba4851ed3278cc38d259949045fe7"
+    },
+    "det_head.threshold.1.running_mean": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "11bf09a9462c76d9e6be369cc66f4bb1b38c8de9e319b71e9992d10a43782890"
+    },
+    "det_head.threshold.1.running_var": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "fa2968c8e1c719826d8e2d6843db794fec9895832d3d31d16ec0798b9b4c92a1"
+    },
+    "det_head.threshold.1.num_batches_tracked": {
+      "shape": [],
+      "dtype": "torch.int64",
+      "sha256": "6db4d9a7ee1ad3819edcbed0d764292ff04ccc5ee68afa238608f852d8e219ed"
+    },
+    "det_head.threshold.3.weight": {
+      "shape": [
+        64,
+        64,
+        2,
+        2
+      ],
+      "dtype": "torch.float32",
+      "sha256": "7f8ee9aa5235a553df8af10b3873fe685286dbc0efa2cfb0d1dd253c84f31e2b"
+    },
+    "det_head.threshold.3.bias": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "28448b2fab92595cd2f801ebf73bbe887d05ef4f15842ff00059673025204fb6"
+    },
+    "det_head.threshold.4.weight": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "adb124b8068c27f1c823e74fa3dd669df971183ad4323ff6da82885eb0d39a16"
+    },
+    "det_head.threshold.4.bias": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "bfe37b0bf1159abb9f77430ceb3c7c37c3f4bd045e39c69f7374fe76a9decce9"
+    },
+    "det_head.threshold.4.running_mean": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "b1a890291f8f7fa338e2027045f194995604c4be54c00b1200b12740827eb5a6"
+    },
+    "det_head.threshold.4.running_var": {
+      "shape": [
+        64
+      ],
+      "dtype": "torch.float32",
+      "sha256": "e9fea6aac78aeb1f7650f74dc7bf807e2a6d2c5ef5283f25349d0c91000f0762"
+    },
+    "det_head.threshold.4.num_batches_tracked": {
+      "shape": [],
+      "dtype": "torch.int64",
+      "sha256": "6db4d9a7ee1ad3819edcbed0d764292ff04ccc5ee68afa238608f852d8e219ed"
+    },
+    "det_head.threshold.6.weight": {
+      "shape": [
+        64,
+        1,
+        2,
+        2
+      ],
+      "dtype": "torch.float32",
+      "sha256": "8fc66e968326343448603397943182c91415cdc1b285deb541664f47711b9bf2"
+    },
+    "det_head.threshold.6.bias": {
+      "shape": [
+        1
+      ],
+      "dtype": "torch.float32",
+      "sha256": "6b9efc898960979327e9d03ab5113dac77b393bf025bf4db158660aa7f79443b"
+    }
+  }
+}

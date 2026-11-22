@@ -1,0 +1,12 @@
+{
+  "date": "2026-11-22",
+  "status": "PASS",
+  "artifact_hashes": 95,
+  "weights_verified": 7,
+  "b1_tensor_reference_verified": 377,
+  "split_check": "15222 TRAIN and 3262 validation IDs unique and disjoint; no TEST reads",
+  "metric_check": "source-count aggregates reproduce published P/R/Hmean and TP/FP/FN for latent 1k/10k, fixed diagnostics and CRAFT; height bins checked for latent",
+  "portable_config_check": "six configs resolved with MMEngine on verified HPC Python; model type and fixed quad postprocessing parameters checked",
+  "prior_bundle": "pr_quad_audit_v1 verifier --counts --weights PASS; original files unchanged",
+  "scope": "No training/inference/submission during publication. This verifies downloaded evidence, not independent statistical confirmation or character-label quality."
+}
