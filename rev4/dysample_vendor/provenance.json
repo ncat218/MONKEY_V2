@@ -1,0 +1,24 @@
+{
+  "repository": "https://github.com/tiny-smart/dysample",
+  "commit": "81a1de5caa95d55a0f5488425fa53ec7ef47f8f0",
+  "files": {
+    "dysample.py": {
+      "url": "https://raw.githubusercontent.com/tiny-smart/dysample/81a1de5caa95d55a0f5488425fa53ec7ef47f8f0/dysample.py",
+      "upstream_sha256": "c3f8dff42b81ce292c44165b99275d2803af77da6aff2046ee8a1dbcb753f233",
+      "vendored_sha256": "c3f8dff42b81ce292c44165b99275d2803af77da6aff2046ee8a1dbcb753f233"
+    },
+    "LICENSE": {
+      "url": "https://raw.githubusercontent.com/tiny-smart/dysample/81a1de5caa95d55a0f5488425fa53ec7ef47f8f0/LICENSE",
+      "upstream_sha256": "7190aca12cb0dc8568ec3fcc97d7af0831a729bdadc6387427cfa74cb7c3d06f",
+      "vendored_sha256": "7190aca12cb0dc8568ec3fcc97d7af0831a729bdadc6387427cfa74cb7c3d06f"
+    },
+    "README.md": {
+      "url": "https://raw.githubusercontent.com/tiny-smart/dysample/81a1de5caa95d55a0f5488425fa53ec7ef47f8f0/README.md",
+      "upstream_sha256": "3c0d3da662edc6c87cc43f6e96c5bbb91b75dc29f7a9303209a28ecd4013c3c0",
+      "vendored_sha256": "3c0d3da662edc6c87cc43f6e96c5bbb91b75dc29f7a9303209a28ecd4013c3c0"
+    }
+  },
+  "patches": [
+    "LF and trailing-whitespace normalization; zero offset initialization applied by wrapper"
+  ]
+}

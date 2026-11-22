@@ -10,6 +10,8 @@
 
 [Latent mở rộng · 10.000 updates mỗi nhánh, thiết kế và lệnh chạy](docs/latent-10k-extension.md)
 
+[Đợt tiếp · ASF/DySample, pilot và full chung job, ngưỡng và generalization](docs/fusion_research_and_generalization.md)
+
 [Đề xuất nghiên cứu phục hồi ảnh trước DBNet](docs/lr2-restoration-proposal.md)
 
 [Pilot chưng cất đặc trưng Clean → LR2, có đối chứng train tiếp](docs/lr2-feature-distillation-pilot.md)
