@@ -1,6 +1,6 @@
 # Bàn giao MONKEY_V2 · CS431
 
-Cập nhật **22/11/2026**, snapshot kết quả đã xác minh; job fusion **106090 đang chạy khi lấy snapshot**. Điểm bắt đầu cho người nhận: [workflow hiện tại](docs/research/current-workflow.md), [bảng kết quả/báo cáo gốc](docs/handoff/results/README.md), [checkpoint tải được](docs/handoff/checkpoints.md), [artifacts mới](docs/handoff/artifacts/research_20261122/README.md).
+Cập nhật **22/11/2026**, snapshot kết quả đã xác minh; job fusion **106090 đã FAILED ở cleanup đánh giá; recovery v2 được chuẩn bị**. Điểm bắt đầu cho người nhận: [workflow hiện tại](docs/research/current-workflow.md), [bảng kết quả/báo cáo gốc](docs/handoff/results/README.md), [checkpoint tải được](docs/handoff/checkpoints.md), [artifacts mới](docs/handoff/artifacts/research_20261122/README.md).
 
 ## 1. Câu hỏi và phạm vi báo cáo
 
@@ -91,7 +91,7 @@ Latency ngắn của B1 ở job latent: mean của image-median khoảng Clean *
 
 ## 6. Đang chạy và bước tiếp theo
 
-**Fusion job 106090:** nearest control, ASF, bilinear control, DySample; cùng B1 init, freeze backbone, train **FPNC + DBHead** 10k updates. Đây là chế độ trainable khác A0 cũ nên phải có control mới. 1k pilot nằm trong cùng run 10k, giữ optimizer/scheduler; lỗi probe thì dừng toàn job, metric pilot âm không tự đổi mục tiêu. Probe kỹ thuật và frozen-corruption check đã PASS tại snapshot, chưa có metric kết thúc. [Thiết kế và nguồn nghiên cứu](docs/fusion_research_and_generalization.md), [identity/probe snapshot](docs/handoff/artifacts/research_20261122/fusion_snapshot/).
+**Fusion job106090 đã dừng ở cleanup ASF; [recovery v2](docs/fusion-recovery-v2.md) giữ nguyên checkpoint và chạy tiếp phần thiếu.** Thiết kế gốc: nearest control, ASF, bilinear control, DySample; cùng B1 init, freeze backbone, train **FPNC + DBHead** 10k updates. Đây là chế độ trainable khác A0 cũ nên phải có control mới. 1k pilot nằm trong cùng run 10k, giữ optimizer/scheduler; lỗi probe thì dừng toàn job, metric pilot âm không tự đổi mục tiêu. Probe kỹ thuật và frozen-corruption check đã PASS. Nearest/ASF đã train đủ10k; Clean/LR2 đủ2.262 nguồn, stress ASF còn thiếu; Bilinear/DySample chưa train. Chưa có báo cáo tổng kết đầy đủ. [Thiết kế và nguồn nghiên cứu](docs/fusion_research_and_generalization.md), [identity/probe snapshot](docs/handoff/artifacts/research_20261122/fusion_snapshot/).
 
 Sau run: so ASF với nearest, DySample với bilinear và với B1; Clean/LR2 đủ 2.262 nguồn, fixed `.40/.60` chính, `.30/.40` phụ; transfer LR4/LR8/blur/JPEG trên 500 nguồn đã chọn bằng hash. Không chọn threshold riêng theo corruption để làm đẹp kết quả.
 

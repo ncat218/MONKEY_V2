@@ -22,13 +22,21 @@ FPNC_SHA='493d4369e4ca42eafba42c8d671782aba3cdfc8fd5aa04a921b599ca5459c3fe'
 MODELS=('B1','B-Clean')+ARMS
 
 
-def light():
+def light(recover=False):
     a=original.light('latent');a.output=REPO/'.runtime/fusion_study/v1'
     extra=['submit_fusion_study.py','rev4/durable_io.py','rev4/fusion_plan.py','rev4/fusion_modules.py',
-           'rev4/fusion_plugins.py','rev4/fusion_training.py','rev4/fusion_evaluation.py','tests/test_fusion_study.py']
+           'rev4/fusion_plugins.py','rev4/fusion_training.py','rev4/fusion_evaluation.py','tests/test_fusion_study.py',
+           'rev4/local_scratch.py','rev4/fusion_recovery.py','tests/test_fusion_recovery.py']
     extra+=[str(p.relative_to(REPO)).replace('\\','/') for p in sorted((REPO/'rev4/dysample_vendor').iterdir()) if p.is_file()]
     a.launch_identity=dict(stage='fusion study v1; single allocation',recipe=RECIPE,no_test=True,
         source={**a.launch_identity['source'],**{name:sha256(REPO/name) for name in extra}})
+    if recover:
+        from rev4.fusion_recovery import PARENT_IDENTITY_SHA
+        a.recover_from=REPO/'.runtime/fusion_study/v1'
+        a.output=REPO/'.runtime/fusion_study/recovery_v2'
+        a.launch_identity.update(stage='fusion study recovery v2; single allocation',
+            recovery=dict(parent_job='106090',parent_identity_sha256=PARENT_IDENTITY_SHA,
+                          changes='node-local temporary images; bounded cleanup retry; verified checkpoint/count reuse'))
     return a
 
 
@@ -38,6 +46,7 @@ def verified(a):
     from rev4.fusion_evaluation import stress_ids
     from rev4.calibration import validation_cohort
     ctx=original.verified(a)
+    ctx.recover_from=getattr(a,'recover_from',None)
     parent=REPO/'.runtime/latent_refinement/long_10k_v1'
     completed=read_json(parent/'results/complete.json')
     require(read_json(parent/'submission/latest_job.json')['job_id']=='88935' and
@@ -58,6 +67,7 @@ def command(a):
     env='export PYTHONDONTWRITEBYTECODE=1 PYTHONPATH='+shlex.quote(str(a.s1/'pillow-11.3.0'))
     env+=' LD_LIBRARY_PATH='+shlex.quote(str(a.cuda/'lib'))+'${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}; exec '
     args=[str(a.python),'-u',str(REPO/'submit_fusion_study.py'),'--worker']
+    if getattr(a,'recover_from',None):args.append('--recover')
     return ['sbatch','--parsable','--job-name=monkey_v2_fusion_study','--ntasks=1','--account=uit','--partition=normal',
         '--gres=gpu:2g.35gb:1','--qos=mig2-35','--cpus-per-task=8','--mem=40G','--time=12:00:00','--chdir='+str(REPO),
         '--output='+str(a.output/'logs/job_%j.stdout.log'),'--error='+str(a.output/'logs/job_%j.stderr.log'),
@@ -66,6 +76,7 @@ def command(a):
 
 def child(a,phase,arm=None):
     args=[str(a.python),'-u',str(REPO/'submit_fusion_study.py'),'--phase',phase]
+    if getattr(a,'recover_from',None):args.append('--recover')
     if arm:args+=['--arm',arm]
     print('START',phase,arm or '',flush=True)
     result=subprocess.run(args,cwd=REPO)
@@ -94,11 +105,15 @@ def allocated(a,args):
     with (ctx.output/'worker.lock').open('a') as handle:
         fcntl.flock(handle,fcntl.LOCK_EX|fcntl.LOCK_NB)
         storage_probe(ctx.output)
-        subprocess.run([str(a.python),'-m','unittest','tests.test_fusion_study','tests.test_latent_recovery','-v'],cwd=REPO,check=True)
+        subprocess.run([str(a.python),'-m','unittest','tests.test_fusion_study','tests.test_fusion_recovery',
+                        'tests.test_latent_recovery','-v'],cwd=REPO,check=True)
         rows,_,selected=evaluation.specification(ctx)
         save_json(ctx.output/'stress_sources.json',dict(source_ids=selected,sha256=identity(selected),
                   selection='lowest SHA256(42:fusion-stress:source_id), independent of predictions',development=True))
         child(a,'probe')
+        if ctx.recover_from:
+            from rev4.fusion_recovery import restore
+            restore(ctx)
         # Baselines verify transfer and the evaluator before spending full training budget.
         for name in ('B1','B-Clean'):child(a,'evaluate',name)
         for arm in ARMS:
@@ -116,10 +131,11 @@ def main():
     actions.add_argument('--worker',action='store_true',help=argparse.SUPPRESS)
     actions.add_argument('--phase',choices=('probe','train','evaluate','report'),help=argparse.SUPPRESS)
     parser.add_argument('--arm',choices=MODELS,help=argparse.SUPPRESS)
+    parser.add_argument('--recover',action='store_true',help='Recover job106090 into a new audited run; reuse finished training')
     args=parser.parse_args()
     require((args.phase in ('train','evaluate'))==bool(args.arm),'Unexpected/missing arm')
     require(args.phase!='train' or args.arm in ARMS,'Baseline checkpoints must not be trained')
-    a=light()
+    a=light(args.recover)
     if args.worker or args.phase:
         faulthandler.enable(all_threads=True)
         try:allocated(a,args)

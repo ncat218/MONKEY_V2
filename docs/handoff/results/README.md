@@ -18,7 +18,7 @@ Xem [handoff](../../../handoff.md) để hiểu B0/B-Clean/B1, dữ liệu và c
 | CRAFT screen,74220 | [Report](../artifacts/research_20261122/craft/results/craft_report.md) | Standalone defaults; chưa train auxiliary head |
 | Latent pilot,81918 | [Report](../artifacts/research_20261122/latent_pilot/results/latent_report.md) | Recovery1k; không vượt B1 |
 | Latent10k,88935 | [Report/CI](../artifacts/research_20261122/latent_10k/results/latent_report.md) | A0/A1/A2 đủ10k, không có lợi ích adapter |
-| Fusion,106090 | [Probe/snapshot](../artifacts/research_20261122/fusion_snapshot/), [thiết kế](../../fusion_research_and_generalization.md) | RUNNING tại snapshot; không có final score |
+| Fusion,106090 | [Probe/snapshot](../artifacts/research_20261122/fusion_snapshot/), [thiết kế](../../fusion_research_and_generalization.md) | FAILED ở cleanup ASF; [recovery v2](../../fusion-recovery-v2.md) giữ checkpoint/cache |
 | TASK3 audit18/11 | [Preflight lịch sử](task3_preflight_20261118.md) | STOP vì SSH timeout ở ngày đó; không phải kết quả TASK3A/C/D hoàn tất |
 
 [Bảng máy đọc](current_fixed_results.csv) lấy trực tiếp từ JSON nguồn, chứa P/R/Hmean dưới dạng fraction cùng TP/FP/FN; không gộp common và expanded, pilot và full. B0 dùng setting riêng đã chọn; CRAFT có resize/default riêng. CSV này là chỉ mục, raw JSON/CI và source counts là bằng chứng chính.
@@ -29,4 +29,4 @@ Xem [handoff](../../../handoff.md) để hiểu B0/B-Clean/B1, dữ liệu và c
 - Expanded calibration cải thiện B1 LR2 +1,610 pp so `.30/.40`; đó là hậu xử lý, không phải module kiến trúc.
 - PRC, feature KD và residual/gated adapter sau FPNC chưa vượt matched controls. CRAFT standalone chưa cạnh tranh với B1 trong screen hiện tại; còn teacher QC chưa review.
 - EDSR có lợi ích nhỏ ở operating point cũ, chưa đủ để kết luận là giải pháp cuối do thiếu Clean và transfer, có chi phí latency/FP.
-- Fusion đang chạy: chưa có cơ sở chọn ASF/DySample hoặc tuyên bố cải tiến. [Workflow tiếp](../../research/current-workflow.md) nêu các quyết định còn thiếu.
+- Fusion chưa hoàn tất: Nearest/ASF đã train10k, phần đánh giá stress ASF dở dang; Bilinear/DySample chưa train. Chưa có cơ sở chọn ASF/DySample hoặc tuyên bố cải tiến. [Workflow tiếp](../../research/current-workflow.md) nêu các quyết định còn thiếu.

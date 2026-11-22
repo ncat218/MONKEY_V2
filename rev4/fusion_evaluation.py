@@ -5,13 +5,13 @@ import hashlib
 import time
 from io import BytesIO
 from pathlib import Path
-from tempfile import TemporaryDirectory
 
 import numpy as np
 from lowres.common import read_json,sha256
 from rev4 import require,calibration
 from rev4.durable_io import save_json,write_text
 from rev4.fusion_plan import ARMS,PAIRS,CONDITIONS,PRIMARY,RECIPE
+from rev4.local_scratch import local_directory
 
 
 def stress_ids(rows):
@@ -42,12 +42,15 @@ def materialize(a,task,row):
         image,format=variant(image,task['condition'])
         # Canonical metadata-free encoding; decoded pixels are audited against frozen scripts.
         image=Image.fromarray(np.asarray(image))
-    with TemporaryDirectory(prefix='stress-',dir=a.output/'scratch') as directory:
-        path=Path(directory)/('variant.jpg' if format=='JPEG' else 'variant.png')
-        options=dict(quality=int(task['condition'][4:])) if format=='JPEG' else {}
-        image.save(path,format=format,**options)
-        with Image.open(path) as check:check.load();require(check.size==image.size,'Stress write/decode failed')
-        yield make_task(task['source_image_id'],task['condition'],path,image.size,sha256(path))
+    try:
+        with local_directory(prefix='monkey-fusion-stress-') as directory:
+            path=directory/('variant.jpg' if format=='JPEG' else 'variant.png')
+            options=dict(quality=int(task['condition'][4:])) if format=='JPEG' else {}
+            image.save(path,format=format,**options)
+            with Image.open(path) as check:check.load();require(check.size==image.size,'Stress write/decode failed')
+            yield make_task(task['source_image_id'],task['condition'],path,image.size,sha256(path))
+    finally:
+        image.close()
 
 
 def specification(a):
@@ -68,7 +71,7 @@ def corruption_probe(a):
     for row in jsonl(a.calibration_prepared/TRAIN_NAME):
         rows.append(row)
         if len(rows)==2:break
-    with TemporaryDirectory(prefix='corruption-probe-',dir=a.output/'scratch') as directory:
+    with local_directory(prefix='monkey-fusion-corruption-probe-') as directory:
         directory=Path(directory);selection=directory/'sources.txt'
         write_text(selection,'\n'.join(v['clean_relpath'] for v in rows)+'\n')
         reference=directory/'reference'
@@ -246,5 +249,9 @@ def report(a):
             'Bins use GT height mapped to native LR2 across conditions. See JSON for full counts, bins, threshold curves and costs.',
             'This is one-seed exploratory development; source CIs do not capture seed or selection uncertainty. '
             'Robustness on corruptions does not prove transfer to a different dataset. Final TextVQA/ICDAR2015 TEST is not run.','']
+    if getattr(a,'recover_from',None):
+        lines+=['Recovery of job106090: Nearest/ASF final checkpoints and verified prediction prefixes were reused.',
+                'Only temporary-file handling changed; recipe, split, evaluator and thresholds are unchanged. '
+                'See recovery_import.json for exact parent hashes. Timing was remeasured in the recovery allocation.','']
     write_text(root/'fusion_report.md','\n'.join(lines))
     save_json(root/'complete.json',dict(identity=a.trial_identity,no_test=True,report_sha256=sha256(root/'fusion_report.md')))

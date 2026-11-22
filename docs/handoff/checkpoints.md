@@ -12,7 +12,7 @@ Cập nhật 22/11/2026. **B0 và B1 đều tải trực tiếp từ repo này q
 | A1 — residual +10k | [latent10k-plain-inference.pth](weights/latent10k-plain-inference.pth) | [plain](configs/latent10k_plain.py) | `fce82ebb147c8ca0762742773f9f6cd1ef8bff0c48778ba58083cc192d49e4d9` |
 | A2 — gated +10k | [latent10k-gated-inference.pth](weights/latent10k-gated-inference.pth) | [gated](configs/latent10k_gated.py) | `52ba9896b63c8d3973447474d98f32892315b5d848ee4f246c6a89c371a7e872` |
 
-A0/A1/A2 là kết quả **âm** của job88935, chưa vượt B1 hoặc matched control. Công khai để tái lập, không khuyến nghị thay B1. M/PRC cũng chưa có lợi ích xác nhận. Chưa có checkpoint fusion final vì job106090 còn chạy tại snapshot.
+A0/A1/A2 là kết quả **âm** của job88935, chưa vượt B1 hoặc matched control. Công khai để tái lập, không khuyến nghị thay B1. M/PRC cũng chưa có lợi ích xác nhận. Checkpoint fusion chưa công bố: job106090 đã dừng ở cleanup sau khi Nearest/ASF train đủ10k; [recovery v2](../fusion-recovery-v2.md) sẽ hoàn tất phần còn lại.
 
 ## Tải đủ weights
 

@@ -14,12 +14,12 @@
 | EDSR | +0,60 pp LR2 tại operating point cũ, có CI và chi phí | Nếu chọn nhánh SR: đo Clean, calibration mới, transfer và policy áp dụng mọi ảnh hay router; chưa chọn làm final |
 | CRAFT | Screen độc lập + 200 TRAIN teacher maps; chưa có auxiliary head | Review 32 cards, đánh giá độ tin cậy ký tự trước khi cân nhắc head |
 | Residual/gated latent sau FPNC | Pilot 1k và full 10k hoàn thành; chưa có lợi ích | Dừng lặp lại cùng cấu hình; chỉ mở lại khi có giả thuyết và bằng chứng mới |
-| ASF/DySample fusion | Job106090 RUNNING ở snapshot; probe PASS | Chờ hoàn tất, giữ matched controls và fixed-threshold transfer |
+| ASF/DySample fusion | Job106090 FAILED ở cleanup ASF; Nearest/ASF đã train10k | [Recovery v2](../fusion-recovery-v2.md): giữ checkpoint/cache, hoàn thành phần thiếu |
 | Multi-seed / final benchmark | Chưa hoàn tất | Chỉ sau khi khóa method; không dùng TEST chọn hướng |
 
 ## Hành động ngay
 
-1. Kiểm tra job106090 và receipts, không submit trùng. Dừng phân tích nếu identity/count/precision/checkpoint FAIL; giữ log và báo lỗi.
+1. Theo dõi [recovery v2](../fusion-recovery-v2.md) của job106090, không submit trùng. Dừng phân tích nếu identity/count/precision/checkpoint FAIL; giữ log và báo lỗi.
 2. Nếu hoàn tất: công bố toàn bộ nearest/ASF/bilinear/DySample, checkpoint cuối, fixed threshold, paired source CI, FP và 4 height bins. ASF phải so với nearest; DySample phải so với bilinear để tách interpolation khỏi learned sampling. Cùng FPNC+DBHead trainable và stream; A0 cũ chỉ DBHead không đủ làm control.
 3. Đọc transfer LR4/LR8/blur/JPEG trên cùng 500 nguồn và clean/LR2 anchors; ghi đây là stress trên development đã xem, chưa chứng minh real-world LR. Báo cả suy giảm, không chọn corruption tốt nhất.
 4. Song song hoàn tất manual review. Người review ghi nhãn/ghi chú ở bản sao CSV riêng có version, giữ blank nếu chưa review; không sửa raw snapshot. Dùng paired card + GT + P-map để phân biệt localization, chữ nhỏ yếu, merge/split, ignore/annotation và nền giống chữ.
