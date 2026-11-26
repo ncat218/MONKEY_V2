@@ -40,3 +40,7 @@ Giữ kết quả common `.30/.40` và expanded `.40/.60` ở bảng riêng. Kh�
 ASF/DySample đang kiểm tra fusion thay vì tiếp tục adapter đầu ra FPNC không có tín hiệu. Character/affinity supervision chỉ mở lại nếu teacher QC đáng tin và có complementary TP hữu ích. C2/C3 refinement, alignment loss khác hoặc hard negatives chỉ nên thiết kế sau khi manual EDA chỉ ra lỗi mục tiêu; chưa phải kết quả đã làm.
 
 Mix A/B, QRoute, DualAgree thuộc workflow cộng tác viên: đánh giá và deployment budget riêng; chưa gộp vào kết luận của main flow. Các [đề xuất có ngày cũ](../archive/README.md) được giữ để truy nguồn, không đại diện ưu tiên hiện tại.
+
+## Nhánh kết hợp được yêu cầu26/11
+
+[EDSR × ASF](../edsr-asf-v1.md) dùng checkpoint ASF đã train xong, giữ frozen; chờ job163012 thành công rồi tái dùng3 đối chứng B1 và chạy3 nhánh ASF. Báo riêng so B1,ASF,EDSR+B1 và interaction; không giả định hai lợi ích cộng tuyến tính. Không đổi code/job EDSR đang chạy.

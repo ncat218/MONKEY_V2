@@ -40,3 +40,5 @@ Nếu đã clone: `git pull --ff-only && git lfs pull`. Weights và ZIP review d
 Code submit nằm trong repo để tái lập từng giai đoạn; không chạy tất cả launcher. [Thiết kế fusion đang chạy](docs/fusion_research_and_generalization.md) gồm pilot/full trong cùng một job, dừng khi probe kỹ thuật FAIL. Không sửa code worker hay submit trùng khi job còn chạy.
 
 Ảnh dataset, optimizer states và cache P-map toàn bộ không được đưa vào Git. Repo có IDs, hash, config, checkpoint inference, số đếm theo nguồn và review có chọn lọc. [Hướng dẫn cũ và các đề xuất trước đây](docs/archive/README.md) được lưu để truy lịch sử; không phải workflow mặc định hiện tại.
+
+[EDSR × ASF](docs/edsr-asf-v1.md): nhánh kết hợp dùng checkpoint ASF đã train, chạy sau EDSR163012 để tái dùng đối chứng; inference-only, cùng ngưỡng và cohort.
