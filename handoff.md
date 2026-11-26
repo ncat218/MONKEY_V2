@@ -1,6 +1,6 @@
 # Bàn giao MONKEY_V2 · CS431
 
-Cập nhật **22/11/2026**, snapshot kết quả đã xác minh; job fusion **106090 đã FAILED ở cleanup đánh giá; recovery v2 job111683 đã submit và RUNNING ở lần kiểm tra khởi động**. Điểm bắt đầu cho người nhận: [workflow hiện tại](docs/research/current-workflow.md), [bảng kết quả/báo cáo gốc](docs/handoff/results/README.md), [checkpoint tải được](docs/handoff/checkpoints.md), [artifacts mới](docs/handoff/artifacts/research_20261122/README.md).
+Cập nhật **22/11/2026**, snapshot kết quả đã xác minh; job fusion **106090 đã FAILED ở cleanup đánh giá; recovery111683 đã COMPLETED; [kết quả đầy đủ và phân tích đa chỉ số](docs/handoff/artifacts/fusion_completed_111683/README.md) đã cập nhật26/11**. Điểm bắt đầu cho người nhận: [workflow hiện tại](docs/research/current-workflow.md), [bảng kết quả/báo cáo gốc](docs/handoff/results/README.md), [checkpoint tải được](docs/handoff/checkpoints.md), [artifacts mới](docs/handoff/artifacts/research_20261122/README.md).
 
 ## 1. Câu hỏi và phạm vi báo cáo
 
@@ -113,3 +113,7 @@ Nhánh Mix A/B, QRoute/DualAgree của cộng tác viên được theo dõi riê
 - [Trang cũ đã lưu](docs/archive/README.md); dùng workflow hiện tại để quyết định bước tiếp, dùng raw report cho chi tiết thực nghiệm.
 
 Đóng góp báo cáo có thể bảo vệ bằng bằng chứng là benchmark degradation có kiểm soát, clean-only control tách domain/resolution adaptation, calibration đối xứng và phân tích đánh đổi tiny recall/FP/Clean; các kết quả âm có đối chứng được trình bày đầy đủ. Nếu fusion không vượt control, báo đúng kết quả và giới hạn thay vì coi một module thêm vào là cải tiến đã thành công.
+
+## Cập nhật26/11: fusion và mục tiêu chữ nhỏ
+
+[Fusion111683 hoàn tất](docs/handoff/artifacts/fusion_completed_111683/README.md), đủ10k mỗi nhánh và7,524 tasks mỗi model. Tất cả nhánh khởi tạo từ B1 đã fine-tune; AS frozen,FPNC/DBHead train tiếp. ASF tăng tiny recall+0,737pp so B1,CI[+0,159;+1,207], nhưng thêm137FP và giảm recall chữ lớn. Tiny gain so Nearest còn CI chứa0, nên phần đóng góp riêng ASF chưa tách chắc khỏi train thêm. Đây là cải thiện recall có đánh đổi trên development, chưa phải ưu thế Hmean hoặc kết luận final. [EDSR recheck](docs/edsr-recheck-v1.md) giữ B1 frozen, so native/bicubic/EDSR cùng2 operating points, gồm Clean và corruption transfer.

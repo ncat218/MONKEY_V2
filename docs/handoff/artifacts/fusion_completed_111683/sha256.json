@@ -1,0 +1,22 @@
+{
+  "complete.json": {
+    "sha256": "c0d42bcd50a9492d1ef5bc9bc0bbbd523193979c2643965c779a5fcb41c7e269",
+    "bytes": 4384
+  },
+  "fusion_report.md": {
+    "sha256": "56c55ad32bedf047fd43643b272a5dc5bd3dada70004d13b7d61687285ab2fa0",
+    "bytes": 3659
+  },
+  "fusion_summary.json": {
+    "sha256": "fcca140f73b1ff60d1f244d79d25da5fb1c8d9a0c9a260e1f501e90e130f22fc",
+    "bytes": 116685
+  },
+  "multimetric_posthoc.json": {
+    "sha256": "5ba976ab77c2b9de03b44e2e67634fe3d280c528d98226c446af3c942fb08add",
+    "bytes": 4872
+  },
+  "README.md": {
+    "sha256": "0c9a906cbe1d103acbbf86ebb5ee2f82512611b0147ecf9bd4a739c165da6aba",
+    "bytes": 2210
+  }
+}

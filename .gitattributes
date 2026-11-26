@@ -10,3 +10,5 @@ docs/handoff/artifacts/pr_quad_audit_v1/review/review_cards.zip filter=lfs diff=
 
 docs/handoff/artifacts/research_20261122/** -text whitespace=cr-at-eol
 docs/handoff/artifacts/research_20261122/**/*.zip filter=lfs diff=lfs merge=lfs -text
+
+docs/handoff/artifacts/fusion_completed_111683/** -text whitespace=cr-at-eol

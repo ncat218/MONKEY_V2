@@ -2,7 +2,7 @@
 
 CS431: MonkeyOCRv2-AS → FPNC → DBNet, ảnh TextVQA với word-level ground truth từ TextOCR. Mục tiêu là đo ảnh hưởng native LR2, tách thích nghi miền khỏi thích nghi độ phân giải, và kiểm tra cải tiến vượt baseline đã calibration. Đây là nhánh **text detection**, chưa phải reproduce toàn bộ document parsing/recognition của MonkeyOCRv2.
 
-**Cập nhật 22/11/2026:** B-Clean/B1, PR/quad diagnosis, CRAFT screen và latent 10.000 updates đã có báo cáo. Chưa thấy lợi ích của residual/gated adapter sau FPNC. Job fusion **106090 FAILED ở cleanup khi đánh giá ASF**, sau khi Nearest/ASF đã train đủ10k. [Recovery v2 · job111683](docs/fusion-recovery-v2.md) đã submit, đang RUNNING; giữ checkpoint/cache và chạy tiếp phần thiếu; chưa có kết quả cuối đầy đủ.
+**Cập nhật 22/11/2026:** B-Clean/B1, PR/quad diagnosis, CRAFT screen và latent 10.000 updates đã có báo cáo. Chưa thấy lợi ích của residual/gated adapter sau FPNC. [Fusion111683 đã COMPLETED](docs/handoff/artifacts/fusion_completed_111683/README.md): ASF/DySample gần ngang B1 về Hmean; ASF có tăng recall chữ nhỏ kèm tăng FP. [EDSR recheck](docs/edsr-recheck-v1.md) kiểm lại trên B1 đã fine-tune, cùng calibration và thêm Clean/transfer.
 
 ## Đọc theo thứ tự
 
