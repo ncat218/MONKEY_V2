@@ -1,7 +1,9 @@
 # Frozen Tri box-quality × ASF × EDSR
 
-Requested26/11/2026. **Job166132 submitted, PENDING afterok163064;20/20 CPU tests PASS.**
-[Submission receipt](handoff/artifacts/tri_quality_166132/). GPU probes are not yet run.
+Requested26/11/2026. **Job166132 was cancelled while PENDING and replaced by combined job166501.**
+[Current replacement receipt](handoff/artifacts/monkey_combined_166501/); the exact quality study runs
+first in that allocation, after successful163064. 41/41 combined/quality/research CPU tests PASS.
+[Original submission receipt](handoff/artifacts/tri_quality_166132/). GPU probes are not yet run.
 Parent163064 was already RUNNING at inspection, so it is preserved;
 this is a separate inference-only successor with `afterok:163064`. No detector/scorer training,
 cutoff selection, TEST access, protocol/split edits, or overwrite of earlier results.

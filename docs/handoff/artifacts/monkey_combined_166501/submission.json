@@ -1,0 +1,40 @@
+{
+  "job_id": "166501",
+  "scheduler": {
+    "JobId": "166501",
+    "JobName": "monkey_v2_combined",
+    "JobState": "PENDING",
+    "Dependency": "afterok:163064(unfulfilled)",
+    "Reason": "None",
+    "Priority": "1"
+  },
+  "replaced_jobs": [
+    "165276",
+    "166132"
+  ],
+  "old_accounting": [
+    "165276|CANCELLED by 659401126|0:0",
+    "166132|CANCELLED by 659401126|0:0"
+  ],
+  "parent_job": "163064",
+  "parent_preserved": {
+    "JobId": "163064",
+    "JobName": "monkey_v2_edsr_asf",
+    "JobState": "RUNNING",
+    "Dependency": "(null)",
+    "Reason": "None",
+    "Priority": "1"
+  },
+  "cpu_tests_passed": 41,
+  "gpu_preflight": "PENDING inside original child workers",
+  "source_commit": "207279d2c17d14ae8e9d0f32bb80c962bd6e22a4",
+  "launch_sha256": "e512e8d14152e0fdb701cd770033276dcba073818daf605f3da45eaa91def9d6",
+  "output": "/datastore/dungmt/textvqa/Tuan/MONKEY_V2/.runtime/monkey_combined/v1",
+  "children": {
+    "quality": "/datastore/dungmt/textvqa/Tuan/MONKEY_V2/.runtime/tri_quality_combo/v1",
+    "research": "/datastore/dungmt/textvqa/Tuan/MONKEY_V2/.runtime/research_bundle/v1"
+  },
+  "no_test": true,
+  "time_limit": "2-06:00:00",
+  "checked_at_utc": "2026-11-26T15:09:11.017488+00:00"
+}
