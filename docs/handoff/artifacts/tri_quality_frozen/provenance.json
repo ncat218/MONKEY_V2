@@ -1,0 +1,28 @@
+{
+  "repository": "https://github.com/minhtridaoo/monkeyocrv2-mix",
+  "commit": "7517ce53f86962e07fd440397f0c525faea45c00",
+  "method": "frozen box-quality v1, no fit or cutoff selection",
+  "files": {
+    "mixab/__init__.py": {
+      "source_path": "mixab/__init__.py",
+      "sha256": "c34074faa7ebf40b2216691526176b319d2f8051a24a6ec4b133200a9a2ebec5"
+    },
+    "mixab/boxquality_janek.py": {
+      "source_path": "mixab/boxquality_janek.py",
+      "sha256": "3542a35c7196401113bd9ec88c7d04e4639ec8753d665e0ec9563363d177f263"
+    },
+    "mixab/boxquality_devA_janek.py": {
+      "source_path": "mixab/boxquality_devA_janek.py",
+      "sha256": "c4ade658c800a3fea73fe6faf28beb5deccf3ffe6e707560dcb9f6180c248dae"
+    },
+    "docs/handoff/artifacts/tri_quality_frozen/model_janek.npz": {
+      "source_path": "docs/handoff/artifacts/janek/boxquality_v1_T4/model_janek.npz",
+      "sha256": "81867a494e391db180d293635e63bfdd87ddac59b09b5aac9f18417159196eb9"
+    },
+    "docs/handoff/artifacts/tri_quality_frozen/boxquality_fit_janek.json": {
+      "source_path": "docs/handoff/artifacts/janek/boxquality_v1_T4/boxquality_fit_janek.json",
+      "sha256": "76386825b11f9fff7d31e6129f1d7cdde67897ce7633aadf205eb6552d5ab8c3"
+    }
+  },
+  "line_endings": "Exact git blobs (LF); report source CRLF hashes differ by line endings only."
+}
