@@ -32,7 +32,7 @@ class FrozenQualityTests(unittest.TestCase):
 
     def test_raw_float_precision_floor_and_quality_filter_preserve_matching(self):
         row=dict(clean_size=[100,100],roi_clean=mapping(box(0,0,100,100)),
-            gt_clean=dict(valid=[dict(ann_id='word',geometry=mapping(box(10,10,30,16)),original_height=6)],ignore=[]))
+            gt_clean=dict(valid=[dict(ann_id='word',geometry=mapping(box(10,10,30,16)),original_height=6)],ignored=[]))
         policy=read_json(ROOT/'docs/handoff/textvqa_evaluation_protocol.json')
         pred=dict(polygons=[[10,10,30,10,30,16,10,16],[60,60,70,60,70,70,60,70]],scores=[.6,.9])
         raw=[.59999999999,.9]
@@ -53,7 +53,7 @@ class FrozenQualityTests(unittest.TestCase):
 
     def test_empty_pool_retains_gt_and_official_parity(self):
         row=dict(clean_size=[100,100],roi_clean=mapping(box(0,0,100,100)),
-            gt_clean=dict(valid=[dict(ann_id='word',geometry=mapping(box(10,10,30,16)),original_height=6)],ignore=[]))
+            gt_clean=dict(valid=[dict(ann_id='word',geometry=mapping(box(10,10,30,16)),original_height=6)],ignored=[]))
         policy=read_json(ROOT/'docs/handoff/textvqa_evaluation_protocol.json')
         result=evaluate_pool(dict(polygons=[],scores=[]),[],[],frozen_model(ROOT),row,policy,True)
         self.assertTrue(all(v['counts']==[0,1,0] for v in result.values()))
