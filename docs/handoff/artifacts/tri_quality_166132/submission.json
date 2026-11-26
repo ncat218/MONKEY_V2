@@ -1,0 +1,27 @@
+{
+  "job_id": "166132",
+  "parent_job": "163064",
+  "scheduler": {
+    "JobId": "166132",
+    "JobState": "PENDING",
+    "Dependency": "afterok:163064(unfulfilled)",
+    "Reason": "Dependency"
+  },
+  "checked_at_utc": "2026-11-26T14:33:39.117223+00:00",
+  "launch_sha256": "a99baf83b2560efb6110ef2274f7317f3209c2537062c42cd7e39598186c2b45",
+  "source_commit": "1362b3012ad29c117f3962d0897168f309587f4c",
+  "cpu_checks": {
+    "tests": 20,
+    "passed": 20,
+    "modules": [
+      "tests.test_quality_combo",
+      "tests.test_sr_asf",
+      "tests.test_sr_recheck"
+    ]
+  },
+  "gpu_preflight": "PENDING: runs inside allocation before full inference",
+  "no_training": true,
+  "no_test": true,
+  "output": "/datastore/dungmt/textvqa/Tuan/MONKEY_V2/.runtime/tri_quality_combo/v1",
+  "no_cancelled_jobs": true
+}
