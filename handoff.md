@@ -91,9 +91,9 @@ Latency ngắn của B1 ở job latent: mean của image-median khoảng Clean *
 
 ## 6. Đang chạy và bước tiếp theo
 
-**Fusion job106090 đã dừng ở cleanup ASF; [recovery v2](docs/fusion-recovery-v2.md) giữ nguyên checkpoint và chạy tiếp phần thiếu.** Thiết kế gốc: nearest control, ASF, bilinear control, DySample; cùng B1 init, freeze backbone, train **FPNC + DBHead** 10k updates. Đây là chế độ trainable khác A0 cũ nên phải có control mới. 1k pilot nằm trong cùng run 10k, giữ optimizer/scheduler; lỗi probe thì dừng toàn job, metric pilot âm không tự đổi mục tiêu. Probe kỹ thuật và frozen-corruption check đã PASS. Nearest/ASF đã train đủ10k; Clean/LR2 đủ2.262 nguồn, stress ASF còn thiếu; Bilinear/DySample chưa train. Chưa có báo cáo tổng kết đầy đủ. [Thiết kế và nguồn nghiên cứu](docs/fusion_research_and_generalization.md), [identity/probe snapshot](docs/handoff/artifacts/research_20261122/fusion_snapshot/).
+**Fusion111683 đã COMPLETED**, đủ4 nhánh10k và7.524 tasks mỗi model; [raw report và phân tích đa chỉ số](docs/handoff/artifacts/fusion_completed_111683/README.md). ASF/DySample bắt đầu từ B1 đã fine-tune đủ10k; AS giữ frozen, FPNC+DBHead và module mới train tiếp10k. ASF có tiny-recall gain so B1 và đánh đổi FP/chữ lớn; Hmean gần ngang. Tiny gain so matched Nearest còn CI chứa0.
 
-Sau run: so ASF với nearest, DySample với bilinear và với B1; Clean/LR2 đủ 2.262 nguồn, fixed `.40/.60` chính, `.30/.40` phụ; transfer LR4/LR8/blur/JPEG trên 500 nguồn đã chọn bằng hash. Không chọn threshold riêng theo corruption để làm đẹp kết quả.
+**EDSR recheck163012 RUNNING** trên h200node01, [protocol](docs/edsr-recheck-v1.md) và [GPU smoke PASS](docs/handoff/artifacts/edsr_recheck_163012/). Giữ cùng B1 frozen, so native/bicubic/EDSR ở main `.40/.60` và historical `.30/.40`; có Clean và cùng500 nguồn LR4/LR8/blur/JPEG. Không training,retune hay TEST. Chưa có final result mới.
 
 Việc còn thiếu quyết định chất lượng báo cáo:
 

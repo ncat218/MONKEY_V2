@@ -1,6 +1,6 @@
 # EDSR recheck v1 · frozen fine-tuned B1
 
-Requested26/11/2026. Inference only; no new detector or SR training, threshold search, TEST access or split/protocol changes.
+Requested26/11/2026. **Job163012 submitted,RUNNING on h200node01;7/7 HPC tests and real GPU smoke across8 conditions PASS.** [Startup receipts](handoff/artifacts/edsr_recheck_163012/). Inference only; no new detector or SR training, threshold search, TEST access or split/protocol changes.
 
 ## Exact comparison
 

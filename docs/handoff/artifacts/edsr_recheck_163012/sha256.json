@@ -1,0 +1,10 @@
+{
+  "latest_job.json": {
+    "sha256": "1e7396aef137c7b37db8f11760e475eeee8055ad532da08bbf5ef73e4db3ab2d",
+    "bytes": 3885
+  },
+  "preflight.json": {
+    "sha256": "689d734d64a0ecaeebb80e86ae05fec592e8a444c4010bb8db903fc1cdc32d38",
+    "bytes": 6548
+  }
+}

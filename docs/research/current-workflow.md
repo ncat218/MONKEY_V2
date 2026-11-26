@@ -11,7 +11,7 @@
 | B-Clean clean-only control | Hoàn thành cùng init/sources/updates | Báo riêng domain adaptation và lợi ích LR mixing |
 | EDA / PR / quad grid | Có per-source counts/CI; job 63985 và fixed diagnosis 73827 | Hoàn tất review 127 paired cards ở ngưỡng mới; tránh trộn với 160 cards cũ |
 | PRC / feature KD | Đã chạy; chưa vượt matched controls | PRC mask low-activity còn cần chẩn đoán, không train lại mù |
-| EDSR | +0,60 pp LR2 tại operating point cũ, có CI và chi phí | Nếu chọn nhánh SR: đo Clean, calibration mới, transfer và policy áp dụng mọi ảnh hay router; chưa chọn làm final |
+| EDSR | Cũ +0,60pp LR2; recheck163012 RUNNING, GPU smoke PASS | Cùng frozen B1,2 điểm calibration,Clean và stress transfer; chưa có kết quả final mới |
 | CRAFT | Screen độc lập + 200 TRAIN teacher maps; chưa có auxiliary head | Review 32 cards, đánh giá độ tin cậy ký tự trước khi cân nhắc head |
 | Residual/gated latent sau FPNC | Pilot 1k và full 10k hoàn thành; chưa có lợi ích | Dừng lặp lại cùng cấu hình; chỉ mở lại khi có giả thuyết và bằng chứng mới |
 | ASF/DySample fusion | Recovery111683 COMPLETED; đủ4 nhánh10k và mọi điều kiện | [Kết quả](../handoff/artifacts/fusion_completed_111683/README.md): Hmean gần ngang B1; tiny recall có lợi ích/đánh đổi |
