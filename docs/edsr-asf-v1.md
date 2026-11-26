@@ -1,6 +1,6 @@
 # EDSR x ASF v1 · frozen factorial inference
 
-Requested26/11/2026. Pipeline: RGB input → fixed pretrained EDSR x2 → MonkeyOCRv2-AS → trained ASF-FPNC → DBHead → fixed quad postprocessing. No training or threshold selection.
+Requested26/11/2026. **Job163064 submitted,PENDING(Dependency) afterok163012.12/12 HPC tests PASS.** [Submission receipt](handoff/artifacts/edsr_asf_163064/). Pipeline: RGB input → fixed pretrained EDSR x2 → MonkeyOCRv2-AS → trained ASF-FPNC → DBHead → fixed quad postprocessing. No training or threshold selection.
 
 ## Weights and comparisons
 

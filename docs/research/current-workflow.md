@@ -43,4 +43,4 @@ Mix A/B, QRoute, DualAgree thuộc workflow cộng tác viên: đánh giá và d
 
 ## Nhánh kết hợp được yêu cầu26/11
 
-[EDSR × ASF](../edsr-asf-v1.md) dùng checkpoint ASF đã train xong, giữ frozen; chờ job163012 thành công rồi tái dùng3 đối chứng B1 và chạy3 nhánh ASF. Báo riêng so B1,ASF,EDSR+B1 và interaction; không giả định hai lợi ích cộng tuyến tính. Không đổi code/job EDSR đang chạy.
+[EDSR × ASF · job163064 PENDING sau163012](../edsr-asf-v1.md) dùng checkpoint ASF đã train xong, giữ frozen; chờ job163012 thành công rồi tái dùng3 đối chứng B1 và chạy3 nhánh ASF. Báo riêng so B1,ASF,EDSR+B1 và interaction; không giả định hai lợi ích cộng tuyến tính. Không đổi code/job EDSR đang chạy.
