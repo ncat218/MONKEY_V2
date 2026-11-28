@@ -1,0 +1,35 @@
+{
+  "job_id": "189496",
+  "parent_job": "166501",
+  "source_commit": "d819296b11223399d5ab979bce11b9c71c42f6e1",
+  "launch_sha256": "102dcc1e208083d144ca3fb651b37382d78cbf26d3c86308fe63194282e86a28",
+  "gpu_probe_sha256": "1645eba2931bdb5dca064150664413b9fa61923e45722233f5d29e09622251ad",
+  "gpu_probe": {
+    "status": "PASS",
+    "models": {
+      "ASF": [
+        "clean::000bb81adefe7332",
+        "clean::000d96ad76e6b834",
+        "lr2::000bb81adefe7332",
+        "lr2::000d96ad76e6b834"
+      ],
+      "B1": [
+        "clean::000bb81adefe7332",
+        "clean::000d96ad76e6b834",
+        "lr2::000bb81adefe7332",
+        "lr2::000d96ad76e6b834"
+      ]
+    },
+    "no_test": true,
+    "no_training": true
+  },
+  "cpu_tests_passed": 9,
+  "quota_write_probe": "PASS:1.2MB flushed/fsynced/read back",
+  "status": {
+    "B1_s43": "RUNNING",
+    "zoom_probe": "PASS"
+  },
+  "slurm": "RUNNING|00:03:16|0:0",
+  "output": "/datastore/dungmt/textvqa/Tuan/MONKEY_V2/.runtime/monkey_recovery/v1",
+  "checked_at_utc": "2026-11-28T04:25:03.395978+00:00"
+}
