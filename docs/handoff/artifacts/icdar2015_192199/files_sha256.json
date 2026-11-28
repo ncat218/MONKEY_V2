@@ -1,0 +1,15 @@
+{
+  "b0_per_image_metric_audit.json": "00f523ca73ba292e3751b4411731d18b726c71d15ad64a718840eb9fd2045854",
+  "b0_reproduction_gate.json": "7f189d48e61c0fe1c0e9e4076fd35a08f6cee995e3793dcabb58cfbcf607ceb9",
+  "complete.json": "ff135ecbf2705f1a0330d3ae133f938698e91c8958c61586f486d0e44d89d746",
+  "component_contrasts.json": "31763adad9936207250531f422c38d3ea9a28f89326963f886c1ea8a560fce80",
+  "data_audit.json": "09aa70b72b6274b71f85e57294b44941490efe057147d2f88becc9ebddb1cfbf",
+  "final_identity_audit.json": "1e0878f8655e5df53382f48d32f8c9c6fcb9de488b2d6e77c3a3316a0f908b33",
+  "icdar2015_report.md": "4b235340f113061acd978927e6f336f92c0aae4d22c80a6fdbb74aee84ff5a40",
+  "icdar2015_summary.json": "0a075c6c539454905bd902c8efbffbba0e44d923d7078b3cdcbd8518c4ef6006",
+  "identity.json": "c4f886fb41f5bbd058f150b102986c30d423d8e8c0bc30d8aea377f45c164adf",
+  "latest_job.json": "2338de744e583fa47fa812a9c74605f8f4fdf26f9b72dcf4de936f53ca0a0d3a",
+  "README.md": "9f871f1701db54a59bb5b5683a2f6ae653415dc5b24a455ae72d75a1da26203d",
+  "slurm_job.txt": "8ab324a12b619db104c88b951c61bc2fad389fc2be093141f107bc4246657a73",
+  "source_counts.npz": "07d5f368f3d7dea400d3102ae2a09b58a7dc4bc00d54a65a2c0e882ae7030a21"
+}

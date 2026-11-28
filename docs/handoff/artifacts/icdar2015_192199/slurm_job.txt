@@ -1,0 +1,2 @@
+JobID|JobName|State|Elapsed|ExitCode|NodeList|AllocTRES|Start|End
+192199|monkey_v2_icdar2015|COMPLETED|00:57:18|0:0|h200node01|billing=2,cpu=8,gres/gpu:2g.35gb=1,gres/gpu=1,mem=40G,node=1|2026-11-28T15:42:04|2026-11-28T16:39:22

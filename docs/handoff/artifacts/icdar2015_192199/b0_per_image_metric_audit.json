@@ -1,0 +1,12 @@
+{
+  "images": 500,
+  "old_counts": [
+    1800,
+    2077,
+    1978
+  ],
+  "per_image_count_differences": [],
+  "matched_gt_differences": [],
+  "exact_polygon_equal_images": 426,
+  "source": "job11339 saved predictions at same packed cutoff"
+}

@@ -1,5 +1,7 @@
 # Bàn giao MONKEY_V2 · CS431
 
+**Bổ sung 28/11/2026:** đã chạy [12 setting trên500 ảnh ICDAR2015 gốc](docs/handoff/results/icdar2015_transfer_192199.md), job192199 COMPLETED57m18s, exit0:0. B0 reproduce88,78%; B-Clean82,20%; B1 75,80%; ASF+EDSR+Q78,09% Hmean. Tổ hợp hơn B1 nhưng chưa vượt B0/B-Clean; Recall nhóm<16px không tăng so B1. Audit500 ảnh/hash/EXIF và B0 per-image matching đều PASS. Các phần dưới giữ số liệu lịch sử khi ghi rõ snapshot; xem [đối chiếu TextOCR28/11](docs/handoff/results/comparison_20261128.md) và báo cáo ICDAR riêng để biết kết quả mới.
+
 Cập nhật **22/11/2026**, snapshot kết quả đã xác minh; job fusion **106090 đã FAILED ở cleanup đánh giá; recovery111683 đã COMPLETED; [kết quả đầy đủ và phân tích đa chỉ số](docs/handoff/artifacts/fusion_completed_111683/README.md) đã cập nhật26/11**. Điểm bắt đầu cho người nhận: [workflow hiện tại](docs/research/current-workflow.md), [bảng kết quả/báo cáo gốc](docs/handoff/results/README.md), [checkpoint tải được](docs/handoff/checkpoints.md), [artifacts mới](docs/handoff/artifacts/research_20261122/README.md).
 
 ## 1. Câu hỏi và phạm vi báo cáo
@@ -93,15 +95,15 @@ Latency ngắn của B1 ở job latent: mean của image-median khoảng Clean *
 
 **Fusion111683 đã COMPLETED**, đủ4 nhánh10k và7.524 tasks mỗi model; [raw report và phân tích đa chỉ số](docs/handoff/artifacts/fusion_completed_111683/README.md). ASF/DySample bắt đầu từ B1 đã fine-tune đủ10k; AS giữ frozen, FPNC+DBHead và module mới train tiếp10k. ASF có tiny-recall gain so B1 và đánh đổi FP/chữ lớn; Hmean gần ngang. Tiny gain so matched Nearest còn CI chứa0.
 
-**EDSR recheck163012 RUNNING** trên h200node01, [protocol](docs/edsr-recheck-v1.md) và [GPU smoke PASS](docs/handoff/artifacts/edsr_recheck_163012/). Giữ cùng B1 frozen, so native/bicubic/EDSR ở main `.40/.60` và historical `.30/.40`; có Clean và cùng500 nguồn LR4/LR8/blur/JPEG. Không training,retune hay TEST. Chưa có final result mới.
+**EDSR163012 và EDSR×ASF163064 đã COMPLETED.** [Bảng TextOCR28/11](docs/handoff/results/comparison_20261128.md) ghi B1+EDSR LR2 H77,79%; ASF+EDSR77,87%; thêm Q78,23%, so B1 76,90%. Đây là development đã dùng nhiều lần, không phải TEST cuối. [Scorer transfer đã hoàn tất](docs/handoff/artifacts/quality_completed_166501/quality_combo_report.md) được giữ riêng dù một phase khác của job gộp lỗi sau đó. [ICDAR gốc192199](docs/handoff/results/icdar2015_transfer_192199.md) hiện cũng có kết quả đầy đủ, không gộp vào các số TextOCR.
 
 Việc còn thiếu quyết định chất lượng báo cáo:
 
 1. **Review bằng mắt:** 127 paired cards ở `.40/.60` và 32 CRAFT TRAIN cards vẫn PENDING. Nhãn proxy geometry/weak response chưa phải nguyên nhân thật; không suy diễn FP đều do nền.
-2. **Tổng quát hóa:** chưa chứng minh threshold/module tốt trên nhiều corruption hay ICDAR2015. S1/S2 chỉ là confirmation trên phần development đã xem, không fresh holdout.
+2. **Tổng quát hóa:** ICDAR2015 gốc đã được kiểm với setting khóa: tổ hợp Q tăng Hmean so B1 nhưng còn thấp hơn B0/B-Clean, chưa tăng small recall. EDSR có thể gây hại trên JPEG. Không tuyên bố cải thiện phổ quát; S1/S2 cũng không phải fresh holdout.
 3. **Độ ổn định:** một seed; cần thêm seed matched baseline/method nếu có tín hiệu đáng kể và ngân sách cho phép. CI theo nguồn không thay thế seed.
 4. **Chọn cải tiến:** hiện có adaptation + calibration mạnh, EDSR có lợi ích nhỏ với chi phí rõ; PRC/KD/adapter chưa vượt control. Chưa có module kiến trúc mới được chứng minh tốt hơn baseline mạnh.
-5. **Benchmark cuối:** nhóm khóa method/checkpoint/postprocessing/deployment trước, audit lại manifest và lịch sử TEST, rồi đánh giá internal TextVQA/TextOCR TEST và ICDAR2015 theo evaluator đã công bố. Không dùng hai bộ này chọn hướng. ICDAR evaluator và ignore/matching cần ghi riêng, không tự sửa protocol cho giống nhau.
+5. **Benchmark:** ICDAR2015 gốc đã hoàn tất với method/checkpoint/postprocessing/deployment khóa trước; xem báo cáo192199. Không dùng kết quả để chọn lại ngưỡng/phương pháp. Internal TextVQA/TextOCR TEST không được đọc trong đợt ICDAR này; việc đánh giá đó vẫn cần audit manifest/lịch sử exposure và quyết định riêng. Giữ evaluator/ignore/matching riêng cho từng benchmark.
 
 Nhánh Mix A/B, QRoute/DualAgree của cộng tác viên được theo dõi riêng. Không gộp kết quả chưa xác minh vào bảng Monkey; hệ dùng hai checkpoint cần báo đủ chi phí và thống nhất ràng buộc triển khai. Repo này chưa chứng minh ưu thế của các nhánh đó.
 

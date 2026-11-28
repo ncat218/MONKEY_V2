@@ -2,6 +2,8 @@
 
 CS431: MonkeyOCRv2-AS → FPNC → DBNet, ảnh TextVQA với word-level ground truth từ TextOCR. Mục tiêu là đo ảnh hưởng native LR2, tách thích nghi miền khỏi thích nghi độ phân giải, và kiểm tra cải tiến vượt baseline đã calibration. Đây là nhánh **text detection**, chưa phải reproduce toàn bộ document parsing/recognition của MonkeyOCRv2.
 
+**Mới nhất 28/11/2026:** [ICDAR2015 gốc, job192199 đã COMPLETED](docs/handoff/results/icdar2015_transfer_192199.md), đủ12 setting ×500 ảnh, không train/retune. B0 reproduce88,78%; B-Clean82,20%; B1 75,80%; B1+ASF+EDSR+Q78,09%. Tổ hợp tăng2,293pp so B1 nhưng chưa vượt B0/B-Clean và không tăng Recall chữ nhỏ trong phép đo này. [Audit dataset và B0 từng ảnh](docs/handoff/artifacts/icdar2015_192199/), [index500 ảnh](docs/handoff/data/icdar2015_reproduce/). Kết quả TextOCR development mới nhất nằm trong [bảng28/11](docs/handoff/results/comparison_20261128.md); không gộp hai benchmark.
+
 **Cập nhật 22/11/2026:** B-Clean/B1, PR/quad diagnosis, CRAFT screen và latent 10.000 updates đã có báo cáo. Chưa thấy lợi ích của residual/gated adapter sau FPNC. [Fusion111683 đã COMPLETED](docs/handoff/artifacts/fusion_completed_111683/README.md): ASF/DySample gần ngang B1 về Hmean; ASF có tăng recall chữ nhỏ kèm tăng FP. [EDSR recheck](docs/edsr-recheck-v1.md) kiểm lại trên B1 đã fine-tune, cùng calibration và thêm Clean/transfer.
 
 ## Đọc theo thứ tự
@@ -37,7 +39,7 @@ python docs/handoff/artifacts/research_20261122/verify_bundle.py
 
 Nếu đã clone: `git pull --ff-only && git lfs pull`. Weights và ZIP review dùng Git LFS; file vài dòng bắt đầu `version https://git-lfs` là pointer, chưa phải dữ liệu tải đủ. Xem [cách nạp detector](docs/handoff/checkpoints.md); verifier mặc định kiểm hash/artifacts, không chạy inference hay submit job.
 
-Code submit nằm trong repo để tái lập từng giai đoạn; không chạy tất cả launcher. [Thiết kế fusion đang chạy](docs/fusion_research_and_generalization.md) gồm pilot/full trong cùng một job, dừng khi probe kỹ thuật FAIL. Không sửa code worker hay submit trùng khi job còn chạy.
+Code submit nằm trong repo để tái lập từng giai đoạn; không chạy tất cả launcher. [Thiết kế fusion đã kiểm nghiệm](docs/fusion_research_and_generalization.md) gồm pilot/full trong cùng một job, dừng khi probe kỹ thuật FAIL. Không sửa code worker hay submit trùng khi job còn chạy.
 
 Ảnh dataset, optimizer states và cache P-map toàn bộ không được đưa vào Git. Repo có IDs, hash, config, checkpoint inference, số đếm theo nguồn và review có chọn lọc. [Hướng dẫn cũ và các đề xuất trước đây](docs/archive/README.md) được lưu để truy lịch sử; không phải workflow mặc định hiện tại.
 
